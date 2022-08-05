@@ -1,25 +1,20 @@
-import logo from './logo.svg';
-import './App.css';
+// react router dom
+import { Route, Routes, Navigate } from "react-router-dom";
+// components
+import LayOut from "./components/layout";
+import ShadowGenerator from "./components/ShadowGenerator";
+import Gradient from "./components/Gradient";
 
-function App() {
+const App = () => {
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <LayOut>
+      <Routes>
+        <Route path="/shadowGenerator" element={<ShadowGenerator />} />
+        <Route path="/gradient" element={<Gradient />} />
+        <Route path="/*" element={<Navigate to="/shadowGenerator" />} />
+      </Routes>
+    </LayOut>
   );
-}
+};
 
 export default App;
