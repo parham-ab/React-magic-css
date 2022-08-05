@@ -1,4 +1,7 @@
 import { useEffect, useState } from "react";
+// react toastify
+import { ToastContainer } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
 // copy to clipboard button
 import copy from "copy-to-clipboard";
 // color picker
@@ -10,13 +13,13 @@ import {
   FormControlLabel,
   FormGroup,
   Grid,
-  IconButton,
   Slider,
   Typography,
 } from "@mui/material";
 import { Container } from "@mui/system";
 // icon
 import AssignmentIcon from "@mui/icons-material/Assignment";
+import { notify } from "./functions/toast";
 
 const ShadowGenerator = () => {
   const [x, setX] = useState(0);
@@ -35,21 +38,14 @@ const ShadowGenerator = () => {
   // copy to clipboard button
   const copyToClipboard = () => {
     copy(finalSource);
-    alert(`You have copied "${finalSource}"`);
+    notify("success", "Copied to clipboard ✔");
   };
 
   return (
     <Container>
-      <Grid
-        container
-        sx={{
-          display: "flex",
-          alignItems: "center",
-          justifyContent: "space-around",
-        }}
-      >
-        <Grid item mt={5} xs={7} md={5} className="griddd">
-          <Typography variant="h5" color="text.secondary">
+      <Grid container className="boxshadow-container">
+        <Grid item mt={5} xs={12} sx={{ margin: "4rem auto" }}>
+          <Typography variant="h5" color="text.secondary" textAlign="center">
             X
           </Typography>
           <Slider
@@ -63,7 +59,7 @@ const ShadowGenerator = () => {
             value={x}
             onChange={(e) => setX(e.target.value)}
           />
-          <Typography variant="h5" color="text.secondary">
+          <Typography variant="h5" color="text.secondary" textAlign="center">
             Y
           </Typography>
           <Slider
@@ -77,7 +73,7 @@ const ShadowGenerator = () => {
             value={y}
             onChange={(e) => setY(e.target.value)}
           />
-          <Typography variant="h5" color="text.secondary">
+          <Typography variant="h5" color="text.secondary" textAlign="center">
             Blur
           </Typography>
           <Slider
@@ -91,7 +87,7 @@ const ShadowGenerator = () => {
             value={blur}
             onChange={(e) => setBlur(e.target.value)}
           />
-          <Typography variant="h5" color="text.secondary">
+          <Typography variant="h5" color="text.secondary" textAlign="center">
             Spread
           </Typography>
           <Slider
@@ -116,7 +112,7 @@ const ShadowGenerator = () => {
               label="Inset"
             />
           </FormGroup>
-          <Typography variant="h5" color="text.secondary">
+          <Typography variant="h5" color="text.secondary" textAlign="center">
             Color
           </Typography>
           <SketchPicker
@@ -130,10 +126,10 @@ const ShadowGenerator = () => {
             variant="contained"
             startIcon={<AssignmentIcon />}
           >
-            Copy SourceCode
+            Copy
           </Button>
         </Grid>
-        <Grid item mt={5} xs={12} md={3}>
+        <Grid item mt={5} className="boxshadow-item ">
           <div
             style={{
               width: "130px",
@@ -146,6 +142,7 @@ const ShadowGenerator = () => {
           ></div>
         </Grid>
       </Grid>
+      <ToastContainer />
     </Container>
   );
 };
