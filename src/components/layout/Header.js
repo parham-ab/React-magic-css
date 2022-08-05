@@ -46,7 +46,7 @@ const Header = () => {
         variant="permanent"
         anchor="left"
       >
-        <List>
+        <List sx={{padding:'3px'}}>
           {menuItems.map((item) => (
             <div key={item.path} onClick={() => navigate(`${item.path}`)}>
               <IconButton
