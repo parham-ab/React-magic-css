@@ -31,7 +31,6 @@ const ShadowGenerator = () => {
     insetStatus
       ? setFinalSource(`inset ${x}px ${y}px ${blur}px ${spread}px ${color}`)
       : setFinalSource(`${x}px ${y}px ${blur}px ${spread}px ${color}`);
-    console.log(finalSource);
   }, [x, y, blur, spread, insetStatus, color]);
   // copy to clipboard button
   const copyToClipboard = () => {
@@ -54,8 +53,10 @@ const ShadowGenerator = () => {
             X
           </Typography>
           <Slider
+            min={-130}
+            max={130}
             size="small"
-            defaultValue={70}
+            defaultValue={0}
             aria-label="Small"
             valueLabelDisplay="auto"
             sx={{ color: "#2764b0" }}
@@ -66,8 +67,10 @@ const ShadowGenerator = () => {
             Y
           </Typography>
           <Slider
+            min={-130}
+            max={130}
             size="small"
-            defaultValue={70}
+            defaultValue={0}
             aria-label="Small"
             valueLabelDisplay="auto"
             sx={{ color: "#2764b0" }}
@@ -78,8 +81,10 @@ const ShadowGenerator = () => {
             Blur
           </Typography>
           <Slider
+            min={0}
+            max={130}
             size="small"
-            defaultValue={70}
+            defaultValue={0}
             aria-label="Small"
             valueLabelDisplay="auto"
             sx={{ color: "#2764b0" }}
@@ -90,8 +95,10 @@ const ShadowGenerator = () => {
             Spread
           </Typography>
           <Slider
+            min={-50}
+            max={50}
             size="small"
-            defaultValue={70}
+            defaultValue={0}
             aria-label="Small"
             valueLabelDisplay="auto"
             sx={{ color: "#2764b0" }}
