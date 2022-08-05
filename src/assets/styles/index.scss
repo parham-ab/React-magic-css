@@ -8,6 +8,11 @@
   text-decoration: none;
   outline: none;
 }
+.active {
+  background-color: #a1cbed !important;
+}
+// styles
+@import "boxshadow";
 // scroll bar
 ::-webkit-scrollbar {
   width: 7px;
@@ -24,14 +29,4 @@
 }
 ::-webkit-scrollbar-thumb:active {
   background-color: #786dad;
-}
-// styles
-.boxshadow-container {
-  display: flex !important;
-  flex-direction: column !important;
-  .boxshadow-item {
-    display: flex !important;
-    justify-content: center !important;
-    margin: 3rem 0 10rem !important;
-  }
 }

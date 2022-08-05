@@ -1,0 +1,10 @@
+// styles
+.boxshadow-container {
+  display: flex !important;
+  flex-direction: column !important;
+  .boxshadow-item {
+    display: flex !important;
+    justify-content: center !important;
+    margin: 3rem 0 10rem !important;
+  }
+}
