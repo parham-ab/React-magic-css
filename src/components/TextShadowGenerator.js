@@ -9,12 +9,7 @@ import { notify } from "./functions/toast";
 import {
   Button,
   Container,
-  FormControl,
-  FormControlLabel,
-  FormLabel,
   Grid,
-  Radio,
-  RadioGroup,
   Slider,
   TextField,
   Typography,
@@ -36,11 +31,24 @@ const TextShadowGenerator = () => {
   useEffect(() => {
     setFinalSource(`${x}px ${y}px ${blur}px ${color}`);
   }, [x, y, blur, color]);
+  // copy to clipboard button
+  const copyToClipboard = () => {
+    copy(finalSource);
+    notify("success", "Copied to clipboard ✔");
+  };
 
   return (
     <Container>
-      <Grid container>
-        <Grid item alignItems="center" sx={{ margin: "4rem auto 0" }}>
+      <Grid container sx={{ display: "flex", flexDirection: "column" }}>
+        <Grid
+          item
+          alignItems="center"
+          sx={{
+            margin: "4rem auto 0",
+            display: "flex",
+            flexDirection: "column",
+          }}
+        >
           <TextField
             size="small"
             label="Text"
@@ -48,6 +56,14 @@ const TextShadowGenerator = () => {
             value={testText}
             onChange={(e) => setTestText(e.target.value)}
           />
+          <Button
+            onClick={copyToClipboard}
+            sx={{ marginY: "10px", width: "40%" }}
+            variant="contained"
+            startIcon={<AssignmentIcon />}
+          >
+            Copy
+          </Button>
         </Grid>
 
         <Grid
