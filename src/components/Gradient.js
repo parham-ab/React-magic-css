@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 // copy to clipboard button
 import copy from "copy-to-clipboard";
 // react toastify
@@ -31,6 +31,14 @@ const Gradient = () => {
   const [gradientType, setGradientType] = useState("Linear");
   const [finalSource, setFinalSource] = useState();
   // copy to clipboard button
+  useEffect(() => {
+    gradientType === "Linear"
+      ? setFinalSource(
+          `linear-gradient(${angle}deg,${firstColor},${secondColor})`
+        )
+      : setFinalSource(`radial-gradient(circle,${firstColor},${secondColor})`);
+  }, [firstColor, secondColor, angle, gradientType]);
+
   const copyToClipboard = () => {
     copy(finalSource);
     notify("success", "Copied to clipboard ✔");
