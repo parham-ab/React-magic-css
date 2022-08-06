@@ -67,6 +67,8 @@ const Gradient = () => {
               sm={12}
               xs={5}
               sx={{ margin: "24px auto" }}
+              display="flex"
+              flexDirection="column"
             >
               <FormControl>
                 <FormLabel id="type">Type</FormLabel>
@@ -109,6 +111,14 @@ const Gradient = () => {
                   />
                 </Box>
               )}
+              <Button
+                onClick={copyToClipboard}
+                sx={{ marginY: "50px" }}
+                variant="contained"
+                startIcon={<AssignmentIcon />}
+              >
+                Copy
+              </Button>
             </Grid>
 
             <Grid container display="flex" justifyContent="space-around">
@@ -129,14 +139,6 @@ const Gradient = () => {
                 />
               </Grid>
             </Grid>
-            <Button
-              onClick={copyToClipboard}
-              sx={{ marginY: "50px" }}
-              variant="contained"
-              startIcon={<AssignmentIcon />}
-            >
-              Copy
-            </Button>
           </Box>
         </Grid>
       </Grid>
