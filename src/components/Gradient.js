@@ -50,7 +50,7 @@ const Gradient = () => {
         <Grid item mt={5} sx={{ margin: "4rem auto" }}>
           <Box
             component="div"
-            className="gradient-box"
+            className="custom-box"
             textAlign="center"
             style={{
               background:
