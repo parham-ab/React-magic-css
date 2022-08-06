@@ -123,7 +123,7 @@ const ShadowGenerator = () => {
           />
           <Button
             onClick={copyToClipboard}
-            sx={{ marginY: "50px" }}
+            sx={{ marginY: "50px", width: "100%" }}
             variant="contained"
             startIcon={<AssignmentIcon />}
           >

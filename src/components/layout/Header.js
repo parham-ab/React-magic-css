@@ -8,9 +8,11 @@ import AppBar from "@mui/material/AppBar";
 import Toolbar from "@mui/material/Toolbar";
 import List from "@mui/material/List";
 import Typography from "@mui/material/Typography";
-import AutoFixNormalIcon from "@mui/icons-material/AutoFixNormal";
-import GradientIcon from "@mui/icons-material/Gradient";
 import { IconButton } from "@mui/material";
+// icons
+import GradientIcon from "@mui/icons-material/Gradient";
+import AutoFixNormalIcon from "@mui/icons-material/AutoFixNormal";
+import FormatColorTextIcon from "@mui/icons-material/FormatColorText";
 
 const Header = () => {
   const navigate = useNavigate();
@@ -26,9 +28,9 @@ const Header = () => {
       path: "/gradient",
     },
     {
-      text: "gh",
-      icon: <AutoFixNormalIcon color="text.secondary" />,
-      path: "/",
+      text: "TextShadowGenerator",
+      icon: <FormatColorTextIcon color="text.secondary" />,
+      path: "/TextShadowGenerator",
     },
   ];
 
@@ -46,7 +48,7 @@ const Header = () => {
         variant="permanent"
         anchor="left"
       >
-        <List sx={{padding:'3px'}}>
+        <List sx={{ padding: "3px" }}>
           {menuItems.map((item) => (
             <div key={item.path} onClick={() => navigate(`${item.path}`)}>
               <IconButton
