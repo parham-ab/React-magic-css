@@ -27,18 +27,32 @@ import { SketchPicker } from "react-color";
 
 const TextShadowGenerator = () => {
   const [testText, setTestText] = useState("");
+  const [x, setX] = useState(0);
+  const [y, setY] = useState(0);
+  const [blur, setBlur] = useState(0);
+  const [color, setColor] = useState("#000");
+  const [finalSource, setFinalSource] = useState();
+
+  useEffect(() => {
+    setFinalSource(`${x}px ${y}px ${blur}px ${color}`);
+  }, [x, y, blur, color]);
 
   return (
     <Container>
       <Grid container>
-        <Grid item mt={5} sx={{ margin: "4rem auto" }}>
+        <Grid
+          item
+          mt={5}
+          sx={{ margin: "4rem auto" }}
+          style={{ display: "flex", flexDirection: "column" }}
+        >
           <Box
             component="div"
             className="custom-box"
             textAlign="center"
             padding={6}
             style={{
-              textShadow: "34px -22px 10px #ffff99",
+              textShadow: finalSource,
               height: testText && "auto",
             }}
           >
@@ -52,13 +66,66 @@ const TextShadowGenerator = () => {
           </Box>
         </Grid>
 
-        <Grid item xs={12} alignItems="center">
+        <Grid item alignItems="center" sx={{ margin: "0 auto" }}>
           <TextField
             size="small"
             label="Text"
             variant="filled"
             value={testText}
             onChange={(e) => setTestText(e.target.value)}
+          />
+        </Grid>
+
+        <Grid item>
+          <Typography variant="h5" color="text.secondary" textAlign="center">
+            X
+          </Typography>
+          <Slider
+            // min={-130}
+            // max={130}
+            size="small"
+            defaultValue={0}
+            aria-label="Small"
+            valueLabelDisplay="auto"
+            sx={{ color: "#2764b0" }}
+            value={x}
+            onChange={(e) => setX(e.target.value)}
+          />
+          <Typography variant="h5" color="text.secondary" textAlign="center">
+            Y
+          </Typography>
+          <Slider
+            // min={-130}
+            // max={130}
+            size="small"
+            defaultValue={0}
+            aria-label="Small"
+            valueLabelDisplay="auto"
+            sx={{ color: "#2764b0" }}
+            value={y}
+            onChange={(e) => setY(e.target.value)}
+          />
+          <Typography variant="h5" color="text.secondary" textAlign="center">
+            Blur
+          </Typography>
+          <Slider
+            // min={-130}
+            // max={130}
+            size="small"
+            defaultValue={0}
+            aria-label="Small"
+            valueLabelDisplay="auto"
+            sx={{ color: "#2764b0" }}
+            value={blur}
+            onChange={(e) => setBlur(e.target.value)}
+          />
+          <Typography variant="h5" color="text.secondary" textAlign="center">
+            color
+          </Typography>
+          <SketchPicker
+            width="180px"
+            color={color}
+            onChangeComplete={(e) => setColor(e.hex)}
           />
         </Grid>
       </Grid>
