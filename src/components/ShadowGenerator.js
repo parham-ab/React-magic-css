@@ -19,6 +19,7 @@ import {
 import { Container } from "@mui/system";
 // icon
 import AssignmentIcon from "@mui/icons-material/Assignment";
+// react toastify
 import { notify } from "./functions/toast";
 
 const ShadowGenerator = () => {

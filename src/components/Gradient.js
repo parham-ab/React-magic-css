@@ -1,6 +1,13 @@
 import { useState } from "react";
+// copy to clipboard button
+import copy from "copy-to-clipboard";
+// react toastify
+import { ToastContainer } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
+import { notify } from "./functions/toast";
 // mui components
 import {
+  Button,
   Container,
   FormControl,
   FormControlLabel,
@@ -12,6 +19,8 @@ import {
   Typography,
 } from "@mui/material";
 import { Box } from "@mui/system";
+// icon
+import AssignmentIcon from "@mui/icons-material/Assignment";
 // react color picker
 import { SketchPicker } from "react-color";
 
@@ -20,6 +29,12 @@ const Gradient = () => {
   const [secondColor, setSecondColor] = useState("");
   const [angle, setAngle] = useState(0);
   const [gradientType, setGradientType] = useState("Linear");
+  const [finalSource, setFinalSource] = useState();
+  // copy to clipboard button
+  const copyToClipboard = () => {
+    copy(finalSource);
+    notify("success", "Copied to clipboard ✔");
+  };
 
   return (
     <Container>
@@ -106,10 +121,18 @@ const Gradient = () => {
                 />
               </Grid>
             </Grid>
+            <Button
+              onClick={copyToClipboard}
+              sx={{ marginY: "50px" }}
+              variant="contained"
+              startIcon={<AssignmentIcon />}
+            >
+              Copy
+            </Button>
           </Box>
         </Grid>
       </Grid>
-      {/* <ToastContainer /> */}
+      <ToastContainer />
     </Container>
   );
 };
