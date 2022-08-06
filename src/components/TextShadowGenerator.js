@@ -40,6 +40,16 @@ const TextShadowGenerator = () => {
   return (
     <Container>
       <Grid container>
+        <Grid item alignItems="center" sx={{ margin: "4rem auto 0" }}>
+          <TextField
+            size="small"
+            label="Text"
+            variant="filled"
+            value={testText}
+            onChange={(e) => setTestText(e.target.value)}
+          />
+        </Grid>
+
         <Grid
           item
           mt={5}
@@ -66,23 +76,13 @@ const TextShadowGenerator = () => {
           </Box>
         </Grid>
 
-        <Grid item alignItems="center" sx={{ margin: "0 auto" }}>
-          <TextField
-            size="small"
-            label="Text"
-            variant="filled"
-            value={testText}
-            onChange={(e) => setTestText(e.target.value)}
-          />
-        </Grid>
-
-        <Grid item>
+        <Grid item sx={{ margin: "0 auto" }}>
           <Typography variant="h5" color="text.secondary" textAlign="center">
             X
           </Typography>
           <Slider
-            // min={-130}
-            // max={130}
+            min={-40}
+            max={40}
             size="small"
             defaultValue={0}
             aria-label="Small"
@@ -95,8 +95,8 @@ const TextShadowGenerator = () => {
             Y
           </Typography>
           <Slider
-            // min={-130}
-            // max={130}
+            min={-40}
+            max={40}
             size="small"
             defaultValue={0}
             aria-label="Small"
@@ -109,8 +109,8 @@ const TextShadowGenerator = () => {
             Blur
           </Typography>
           <Slider
-            // min={-130}
-            // max={130}
+            min={0}
+            max={30}
             size="small"
             defaultValue={0}
             aria-label="Small"
