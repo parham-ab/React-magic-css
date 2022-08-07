@@ -13,6 +13,7 @@ import { IconButton } from "@mui/material";
 import GradientIcon from "@mui/icons-material/Gradient";
 import AutoFixNormalIcon from "@mui/icons-material/AutoFixNormal";
 import FormatColorTextIcon from "@mui/icons-material/FormatColorText";
+import GitHubIcon from "@mui/icons-material/GitHub";
 
 const Header = () => {
   const navigate = useNavigate();
@@ -67,8 +68,11 @@ const Header = () => {
         position="fixed"
         sx={{
           width: `calc(100% - ${45}px)`,
-          ml: `${100}px`,
           bgcolor: "#927aff",
+          flexFlow: "inherit",
+          justifyContent: "space-between",
+          alignItems: "center",
+          padding: "0 37px",
         }}
       >
         <Toolbar>
@@ -76,6 +80,16 @@ const Header = () => {
             Magic CSS
           </Typography>
         </Toolbar>
+
+        <a
+          href="https://github.com/parham-ab/React-magic-css"
+          target={"_blank"}
+          rel="noreferrer"
+        >
+          <IconButton size="large" edge="end" color="inherit">
+            <GitHubIcon />
+          </IconButton>
+        </a>
       </AppBar>
       <Toolbar />
     </Box>
