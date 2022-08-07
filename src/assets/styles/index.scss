@@ -8,6 +8,9 @@
   text-decoration: none;
   outline: none;
 }
+a {
+  color: inherit;
+}
 .active {
   background-color: #a1cbed !important;
 }
