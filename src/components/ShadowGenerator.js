@@ -119,7 +119,8 @@ const ShadowGenerator = () => {
               control={
                 <Checkbox
                   checked={insetStatus}
-                  onChange={(e) => setInsetStatus(!insetStatus)}
+                  onChange={() => setInsetStatus(!insetStatus)}
+                  color="success"
                 />
               }
               label="Inset"
