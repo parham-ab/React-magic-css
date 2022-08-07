@@ -1,3 +1,5 @@
+// fonts
+@import url("https://fonts.googleapis.com/css2?family=Quicksand&family=Rubik:ital,wght@0,300;1,300&display=swap");
 // CSS Reset
 *,
 *::before,
@@ -10,6 +12,10 @@
 }
 a {
   color: inherit;
+}
+body {
+  font-family: "Quicksand", sans-serif;
+  font-family: "Rubik", sans-serif;
 }
 .active {
   background-color: #a1cbed !important;

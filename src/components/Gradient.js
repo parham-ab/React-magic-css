@@ -71,7 +71,9 @@ const Gradient = () => {
               flexDirection="column"
             >
               <FormControl>
-                <FormLabel id="type">Type</FormLabel>
+                <FormLabel id="type" color="success">
+                  Type
+                </FormLabel>
                 <RadioGroup
                   name="type"
                   value={gradientType}
@@ -79,12 +81,12 @@ const Gradient = () => {
                 >
                   <FormControlLabel
                     value="Linear"
-                    control={<Radio />}
+                    control={<Radio color="success" />}
                     label="Linear"
                   />
                   <FormControlLabel
                     value="Radial"
-                    control={<Radio />}
+                    control={<Radio color="success" />}
                     label="Radial"
                   />
                 </RadioGroup>

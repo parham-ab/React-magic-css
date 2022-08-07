@@ -5,17 +5,34 @@ import LayOut from "./components/layout";
 import ShadowGenerator from "./components/ShadowGenerator";
 import Gradient from "./components/Gradient";
 import TextShadowGenerator from "./components/TextShadowGenerator";
+import { createTheme, ThemeProvider } from "@mui/material/styles";
+
+const theme = createTheme({
+  typography: {
+    fontFamily: ["Quicksand"].join(","),
+    fontSize: 14,
+    fontWeightLight: 400,
+    fontWeightMedium: 500,
+    fontWeightRegular: 600,
+    fontWeightBold: 700,
+  },
+});
 
 const App = () => {
   return (
-    <LayOut>
-      <Routes>
-        <Route path="/shadowGenerator" element={<ShadowGenerator />} />
-        <Route path="/gradient" element={<Gradient />} />
-        <Route path="/textShadowGenerator" element={<TextShadowGenerator />} />
-        <Route path="/*" element={<Navigate to="/shadowGenerator" />} />
-      </Routes>
-    </LayOut>
+    <ThemeProvider theme={theme}>
+      <LayOut>
+        <Routes>
+          <Route path="/shadowGenerator" element={<ShadowGenerator />} />
+          <Route path="/gradient" element={<Gradient />} />
+          <Route
+            path="/textShadowGenerator"
+            element={<TextShadowGenerator />}
+          />
+          <Route path="/*" element={<Navigate to="/shadowGenerator" />} />
+        </Routes>
+      </LayOut>
+    </ThemeProvider>
   );
 };
 
