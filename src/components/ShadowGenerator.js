@@ -45,6 +45,18 @@ const ShadowGenerator = () => {
   return (
     <Container>
       <Grid container className="boxshadow-container">
+        <Grid item mt={5} className="boxshadow-item ">
+          <div
+            style={{
+              width: "130px",
+              height: "130px",
+              backgroundColor: "#c9c9c9",
+              boxShadow: insetStatus
+                ? `inset ${x}px ${y}px ${blur}px ${spread}px ${color}`
+                : `${x}px ${y}px ${blur}px ${spread}px ${color}`,
+            }}
+          ></div>
+        </Grid>
         <Grid item mt={5} xs={12} sx={{ margin: "4rem auto" }}>
           <Typography variant="h5" color="text.secondary" textAlign="center">
             X
@@ -129,18 +141,6 @@ const ShadowGenerator = () => {
           >
             Copy
           </Button>
-        </Grid>
-        <Grid item mt={5} className="boxshadow-item ">
-          <div
-            style={{
-              width: "130px",
-              height: "130px",
-              backgroundColor: "#c9c9c9",
-              boxShadow: insetStatus
-                ? `inset ${x}px ${y}px ${blur}px ${spread}px ${color}`
-                : `${x}px ${y}px ${blur}px ${spread}px ${color}`,
-            }}
-          ></div>
         </Grid>
       </Grid>
       <ToastContainer />
