@@ -68,7 +68,7 @@ const Header = () => {
         position="fixed"
         sx={{
           width: `calc(100% - ${45}px)`,
-          bgcolor: "#927aff",
+          bgcolor: "#1c2442",
           flexFlow: "inherit",
           justifyContent: "space-between",
           alignItems: "center",
