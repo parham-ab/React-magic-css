@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 // mui components
 import {
   Box,
@@ -25,6 +25,29 @@ const BorderRadius = () => {
   const [topRight, setTopRight] = useState(0);
   const [bottomRight, setBottomRight] = useState(0);
   const [bottomLeft, setBottomLeft] = useState(0);
+  // final source code
+  const [finalSource, setFinalSource] = useState("");
+
+  useEffect(() => {
+    // -----Same on all sides-----
+    if (type === "Same on all sides" && unit === "%") {
+      setFinalSource(`border-radius:${allRadius}%`);
+    } else if (type === "Same on all sides" && unit === "px") {
+      setFinalSource(`border-radius:${allRadius}px`);
+    }
+    // -----Different on all Sides-----
+    if (type === "Different on all Sides" && unit === "px") {
+      setFinalSource(
+        `border-radius:${topLeft}px ${topRight}px ${bottomRight}px ${bottomLeft}px`
+      );
+    } else if (type === "Different on all Sides" && unit === "%") {
+      setFinalSource(
+        `border-radius:${topLeft}% ${topRight}% ${bottomRight}% ${bottomLeft}%`
+      );
+    }
+  }, [type, allRadius, unit, topLeft, topRight, bottomRight, bottomLeft]);
+
+  console.log(finalSource);
 
   return (
     <Container>
