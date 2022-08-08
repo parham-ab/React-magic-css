@@ -63,7 +63,12 @@ const BorderRadius = () => {
 
   return (
     <Container>
-      <Grid container display="flex" justifyContent="space-around">
+      <Grid
+        container
+        display="flex"
+        justifyContent="space-around"
+        minHeight="90vh"
+      >
         <Grid item mt={20}>
           <FormControl fullWidth>
             <InputLabel id="type">Type</InputLabel>
@@ -247,9 +252,8 @@ const BorderRadius = () => {
             }}
           ></Box>
           <Button
-          
             onClick={copyToClipboard}
-            sx={{ marginY: "50px" ,alignItems:'center'}}
+            sx={{ marginY: "50px", alignItems: "center" }}
             variant="contained"
             startIcon={<AssignmentIcon />}
           >

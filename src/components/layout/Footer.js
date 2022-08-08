@@ -2,7 +2,13 @@ import { Grid, Typography } from "@mui/material";
 
 const Footer = () => {
   return (
-    <Grid container sx={{ backgroundColor: "#d2cfff", marginTop: "50px" }}>
+    <Grid
+      container
+      sx={{
+        backgroundColor: "#d2cfff",
+        marginTop: "50px",
+      }}
+    >
       <Grid item sx={{ margin: "15px auto" }} xs={8} sm={6} md={4} lg={3}>
         <Typography
           variant="body1"
