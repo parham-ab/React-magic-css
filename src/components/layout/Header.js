@@ -14,24 +14,34 @@ import GradientIcon from "@mui/icons-material/Gradient";
 import AutoFixNormalIcon from "@mui/icons-material/AutoFixNormal";
 import FormatColorTextIcon from "@mui/icons-material/FormatColorText";
 import GitHubIcon from "@mui/icons-material/GitHub";
+import VignetteIcon from "@mui/icons-material/Vignette";
 
 const Header = () => {
   const navigate = useNavigate();
   const menuItems = [
     {
       text: "Shadow Generator",
-      icon: <AutoFixNormalIcon color="text.secondary" />,
+      icon: (
+        <AutoFixNormalIcon color="text.secondary" sx={{ fontSize: "18px" }} />
+      ),
       path: "/shadowGenerator",
     },
     {
       text: "gradient",
-      icon: <GradientIcon color="text.secondary" />,
+      icon: <GradientIcon color="text.secondary" sx={{ fontSize: "18px" }} />,
       path: "/gradient",
     },
     {
       text: "TextShadowGenerator",
-      icon: <FormatColorTextIcon color="text.secondary" />,
+      icon: (
+        <FormatColorTextIcon color="text.secondary" sx={{ fontSize: "18px" }} />
+      ),
       path: "/TextShadowGenerator",
+    },
+    {
+      text: "BorderRadius",
+      icon: <VignetteIcon color="text.secondary" sx={{ fontSize: "18px" }} />,
+      path: "/border-radius",
     },
   ];
 
@@ -42,7 +52,7 @@ const Header = () => {
           // width: 100,
           flexShrink: 1,
           "& .MuiDrawer-paper": {
-            width: 45,
+            width: 40,
             boxSizing: "border-box",
           },
         }}
@@ -67,7 +77,7 @@ const Header = () => {
       <AppBar
         position="fixed"
         sx={{
-          width: `calc(100% - ${45}px)`,
+          width: `calc(100% - ${40}px)`,
           bgcolor: "#1c2442",
           flexFlow: "inherit",
           justifyContent: "space-between",
