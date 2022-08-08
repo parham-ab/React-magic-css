@@ -1,7 +1,14 @@
 import { useEffect, useState } from "react";
+// copy to clipboard button
+import copy from "copy-to-clipboard";
+// react toastify
+import { ToastContainer } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
+import { notify } from "./functions/toast";
 // mui components
 import {
   Box,
+  Button,
   FormControl,
   FormControlLabel,
   FormLabel,
@@ -15,6 +22,8 @@ import {
   Typography,
 } from "@mui/material";
 import { Container } from "@mui/system";
+// icon
+import AssignmentIcon from "@mui/icons-material/Assignment";
 
 const BorderRadius = () => {
   const [type, setType] = useState("Same on all sides");
@@ -47,12 +56,15 @@ const BorderRadius = () => {
     }
   }, [type, allRadius, unit, topLeft, topRight, bottomRight, bottomLeft]);
 
-  console.log(finalSource);
+  const copyToClipboard = () => {
+    copy(finalSource);
+    notify("success", "Copied to clipboard ✔");
+  };
 
   return (
     <Container>
       <Grid container display="flex" justifyContent="space-around">
-        <Grid item mt={3}>
+        <Grid item mt={20}>
           <FormControl fullWidth>
             <InputLabel id="type">Type</InputLabel>
             <Select
@@ -125,7 +137,7 @@ const BorderRadius = () => {
               </Typography>
               <Slider
                 min={0}
-                max={unit === "px" ? 100 : 50}
+                max={100}
                 size="small"
                 defaultValue={0}
                 aria-label="Small"
@@ -144,7 +156,7 @@ const BorderRadius = () => {
               </Typography>
               <Slider
                 min={0}
-                max={unit === "px" ? 100 : 50}
+                max={100}
                 size="small"
                 defaultValue={0}
                 aria-label="Small"
@@ -163,7 +175,7 @@ const BorderRadius = () => {
               </Typography>
               <Slider
                 min={0}
-                max={unit === "px" ? 100 : 50}
+                max={100}
                 size="small"
                 defaultValue={0}
                 aria-label="Small"
@@ -182,7 +194,7 @@ const BorderRadius = () => {
               </Typography>
               <Slider
                 min={0}
-                max={unit === "px" ? 100 : 50}
+                max={100}
                 size="small"
                 defaultValue={0}
                 aria-label="Small"
@@ -216,12 +228,8 @@ const BorderRadius = () => {
             </>
           )}
         </Grid>
-        {/* <Grid item></Grid> */}
-        {/* different on all sides */}
-        {/* <Grid item></Grid> */}
-
         {/* results */}
-        <Grid item mt={3}>
+        <Grid item mt={20}>
           <Box
             component="div"
             className="radiusbox"
@@ -236,11 +244,20 @@ const BorderRadius = () => {
                   : type === "Different on all Sides" && unit === "%"
                   ? `${topLeft}% ${topRight}% ${bottomRight}% ${bottomLeft}%`
                   : "",
-              // borderRadius: unit === "px" ? `${allRadius}px` : `${allRadius}%`,
             }}
           ></Box>
+          <Button
+          
+            onClick={copyToClipboard}
+            sx={{ marginY: "50px" ,alignItems:'center'}}
+            variant="contained"
+            startIcon={<AssignmentIcon />}
+          >
+            Copy
+          </Button>
         </Grid>
       </Grid>
+      <ToastContainer />
     </Container>
   );
 };

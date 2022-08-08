@@ -38,7 +38,7 @@ const Gradient = () => {
         )
       : setFinalSource(`radial-gradient(circle,${firstColor},${secondColor})`);
   }, [firstColor, secondColor, angle, gradientType]);
-
+  // copy to clipboard function
   const copyToClipboard = () => {
     copy(finalSource);
     notify("success", "Copied to clipboard ✔");
