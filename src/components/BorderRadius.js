@@ -18,7 +18,7 @@ const BorderRadius = () => {
 
   return (
     <Container>
-      <Grid container>
+      <Grid container display="flex" justifyContent="space-around">
         <Grid item mt={3}>
           <FormControl fullWidth>
             <InputLabel id="type">Type</InputLabel>
@@ -61,8 +61,13 @@ const BorderRadius = () => {
         {/* <Grid item></Grid> */}
 
         {/* results */}
-        <Grid item>
-          <Box component="div" className="radiusbox"></Box>
+        <Grid item mt={3}>
+          <Box
+            component="div"
+            className="radiusbox"
+            sx={{ borderRadius: `${allRadius}px` }}
+          ></Box>
+          {console.log(allRadius)}
         </Grid>
       </Grid>
     </Container>
