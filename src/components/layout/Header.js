@@ -22,25 +22,25 @@ const Header = () => {
     {
       text: "Shadow Generator",
       icon: (
-        <AutoFixNormalIcon color="text.secondary" sx={{ fontSize: "18px" }} />
+        <AutoFixNormalIcon color="text.secondary" sx={{ fontSize: "16px" }} />
       ),
       path: "/shadowGenerator",
     },
     {
       text: "gradient",
-      icon: <GradientIcon color="text.secondary" sx={{ fontSize: "18px" }} />,
+      icon: <GradientIcon color="text.secondary" sx={{ fontSize: "16px" }} />,
       path: "/gradient",
     },
     {
       text: "TextShadowGenerator",
       icon: (
-        <FormatColorTextIcon color="text.secondary" sx={{ fontSize: "18px" }} />
+        <FormatColorTextIcon color="text.secondary" sx={{ fontSize: "16px" }} />
       ),
       path: "/TextShadowGenerator",
     },
     {
       text: "BorderRadius",
-      icon: <VignetteIcon color="text.secondary" sx={{ fontSize: "18px" }} />,
+      icon: <VignetteIcon color="text.secondary" sx={{ fontSize: "16px" }} />,
       path: "/border-radius",
     },
   ];
@@ -52,7 +52,7 @@ const Header = () => {
           // width: 100,
           flexShrink: 1,
           "& .MuiDrawer-paper": {
-            width: 40,
+            width: 36,
             boxSizing: "border-box",
           },
         }}
@@ -77,7 +77,7 @@ const Header = () => {
       <AppBar
         position="fixed"
         sx={{
-          width: `calc(100% - ${40}px)`,
+          width: `calc(100% - ${36}px)`,
           bgcolor: "#1c2442",
           flexFlow: "inherit",
           justifyContent: "space-between",
