@@ -12,6 +12,7 @@ import adaImg from "../../assets/img/ada.jpg";
 import dogeImg from "../../assets/img/doge.jpg";
 import bnbImg from "../../assets/img/bnb.jpg";
 import shibImg from "../../assets/img/shib.jpg";
+import DynamicTitle from "../../hooks/DynamicTitle";
 
 const Donation = () => {
   const [walletCard, setWalletCard] = useState([
@@ -65,6 +66,8 @@ const Donation = () => {
       walletId: "0x93AE27D02e008be123d5Eb6C7325cCaD2Ea39518",
     },
   ]);
+  // dynamic title
+  DynamicTitle("Magic CSS - Donation");
 
   return (
     <Container>

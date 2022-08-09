@@ -7,8 +7,15 @@ import {
   CardMedia,
   Typography,
 } from "@mui/material";
+// copy to clipboard button
+import copy from "copy-to-clipboard";
 
 const DonateCard = ({ data }) => {
+  // copy to clipboard function
+  const copyToClipboard = () => {
+    copy();
+  };
+
   return (
     <Card
       elevation={5}
@@ -39,7 +46,7 @@ const DonateCard = ({ data }) => {
           size="small"
           variant="contained"
           sx={{ width: "100%" }}
-          onClick={() => console.log(data.walletId)}
+          onClick={() => copy(data.walletId)}
         >
           Copy
         </Button>
