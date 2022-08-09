@@ -33,7 +33,12 @@ const DonateCard = ({ data }) => {
         </Typography>
       </CardContent>
       <CardActions>
-        <Button size="small" variant="contained" sx={{ width: "100%" }}>
+        <Button
+          size="small"
+          variant="contained"
+          sx={{ width: "100%" }}
+          onClick={() => console.log(data.walletId)}
+        >
           Copy
         </Button>
       </CardActions>
