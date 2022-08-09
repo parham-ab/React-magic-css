@@ -29,7 +29,7 @@ const TextShadowGenerator = () => {
   const [finalSource, setFinalSource] = useState();
 
   useEffect(() => {
-    setFinalSource(`${x}px ${y}px ${blur}px ${color}`);
+    setFinalSource(`text-shadow: ${x}px ${y}px ${blur}px ${color}`);
   }, [x, y, blur, color]);
   // copy to clipboard button
   const copyToClipboard = () => {

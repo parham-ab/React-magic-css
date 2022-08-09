@@ -34,9 +34,9 @@ const Gradient = () => {
   useEffect(() => {
     gradientType === "Linear"
       ? setFinalSource(
-          `linear-gradient(${angle}deg,${firstColor},${secondColor})`
+          `background:linear-gradient(${angle}deg,${firstColor},${secondColor})`
         )
-      : setFinalSource(`radial-gradient(circle,${firstColor},${secondColor})`);
+      : setFinalSource(`background:radial-gradient(circle,${firstColor},${secondColor})`);
   }, [firstColor, secondColor, angle, gradientType]);
   // copy to clipboard function
   const copyToClipboard = () => {

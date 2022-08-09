@@ -33,8 +33,12 @@ const ShadowGenerator = () => {
 
   useEffect(() => {
     insetStatus
-      ? setFinalSource(`inset ${x}px ${y}px ${blur}px ${spread}px ${color}`)
-      : setFinalSource(`${x}px ${y}px ${blur}px ${spread}px ${color}`);
+      ? setFinalSource(
+          `box-shadow:inset ${x}px ${y}px ${blur}px ${spread}px ${color}`
+        )
+      : setFinalSource(
+          `box-shadow:${x}px ${y}px ${blur}px ${spread}px ${color}`
+        );
   }, [x, y, blur, spread, insetStatus, color]);
   // copy to clipboard button
   const copyToClipboard = () => {
