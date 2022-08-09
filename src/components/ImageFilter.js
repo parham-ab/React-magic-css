@@ -77,7 +77,7 @@ const ImageFilter = () => {
 
   return (
     <Container>
-      <Grid container display="flex" justifyContent="space-around">
+      <Grid container display="flex" justifyContent="space-around" className='filterimage-container'>
         <Grid item mt={20}>
           <Typography variant="h5" color="text.secondary" textAlign="center">
             Grayscale
@@ -216,7 +216,19 @@ const ImageFilter = () => {
             value={invertVal}
             onChange={(e) => setInvertVal(e.target.value)}
           />
-
+          <IconButton
+            color="primary"
+            aria-label="upload picture"
+            component="label"
+          >
+            <input
+              hidden
+              accept="image/*"
+              type="file"
+              onChange={onImageChange}
+            />
+            <PhotoCamera />
+          </IconButton>
           <IconButton color="error" component="button" onClick={resetBtn}>
             <RestartAltIcon />
           </IconButton>
@@ -236,25 +248,13 @@ const ImageFilter = () => {
             <img
               src={img}
               alt="upload your img!"
-              width="500px"
+              className="filter-img"
+              width="450px"
               style={{
                 filter: `grayscale(${greyscaleVal}%) blur(${blurVal}px) sepia(${sepiaVal}) saturate(${saturateVal}) opacity(${opacityVal}) brightness(${brightnessVal}%) contrast(${contrastVal}%) hue-rotate(${hueVal}deg) invert(${invertVal}%)`,
               }}
             />
           </Box>
-          <IconButton
-            color="primary"
-            aria-label="upload picture"
-            component="label"
-          >
-            <input
-              hidden
-              accept="image/*"
-              type="file"
-              onChange={onImageChange}
-            />
-            <PhotoCamera />
-          </IconButton>
         </Grid>
       </Grid>
       <ToastContainer />

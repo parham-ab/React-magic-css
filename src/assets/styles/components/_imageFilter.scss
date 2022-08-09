@@ -1,0 +1,16 @@
+// media-queries for custom box
+$Xsmall: 588px;
+$small: 530px;
+$medium: 760px;
+@media screen and (max-width: $medium) {
+  .filterimage-container {
+    flex-direction: column !important;
+    align-items: center !important;
+  }
+}
+@media screen and (max-width: $small) {
+  .filter-img {
+    width: 80% !important;
+    margin: 0 30px !important;
+  }
+}
