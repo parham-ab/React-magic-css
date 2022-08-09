@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import { useEffect, useState } from "react";
 // mui components
 import {
   Box,
@@ -12,8 +12,6 @@ import {
 import PhotoCamera from "@mui/icons-material/PhotoCamera";
 // custom hooks
 import DynamicTitle from "../hooks/DynamicTitle";
-// img
-import car from "../assets/img/1.jpg";
 
 const ImageFilter = () => {
   const [greyscaleVal, setGreyscaleVal] = useState(0);
@@ -25,29 +23,29 @@ const ImageFilter = () => {
   const [contrastVal, setContrastVal] = useState(100);
   const [hueVal, setHueVal] = useState(0);
   const [invertVal, setInvertVal] = useState(0);
+  const [img, setImg] = useState();
   const [finalSource, setFinalSource] = useState("");
 
-  //   useEffect(() => {
-  //     setFinalSource(`filter:`);
-  //   }, [
-  //     greyscaleVal,
-  //     blurVal,
-  //     sepiaVal,
-  //     saturateVal,
-  //     opacityVal,
-  //     brightnessVal,
-  //     contrastVal,
-  //     hueVal,
-  //     invertVal,
-  //   ]);
-
-  const [img, setImg] = useState();
-
-  const onImageChange = (e) => {
+  useEffect(() => {
+    setFinalSource(
+      `filter: grayscale(${greyscaleVal}%) blur(${blurVal}px) sepia(${sepiaVal}) saturate(${saturateVal}) opacity(${opacityVal}) brightness(${brightnessVal}%) contrast(${contrastVal}%) hue-rotate(${hueVal}deg) invert(${invertVal}%)`
+    );
+    console.log(finalSource);
+  }, [
+    greyscaleVal,
+    blurVal,
+    sepiaVal,
+    saturateVal,
+    opacityVal,
+    brightnessVal,
+    contrastVal,
+    hueVal,
+    invertVal,
+  ]);
+  // upload image
+  function onImageChange(e) {
     setImg(URL.createObjectURL(e.target.files[0]));
-    console.log(img);
-  };
-
+  }
   // dynamic title
   DynamicTitle("Magic CSS - Image filter");
 

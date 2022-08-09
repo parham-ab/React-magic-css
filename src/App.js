@@ -33,7 +33,7 @@ const App = () => {
           />
           <Route path="/border-radius" element={<BorderRadius />} />
           <Route path="/image-filter" element={<ImageFilter />} />
-          <Route path="/*" element={<Navigate to="/shadowGenerator" />} />
+          {/* <Route path="/*" element={<Navigate to="/shadowGenerator" />} /> */}
         </Routes>
       </LayOut>
     </ThemeProvider>
