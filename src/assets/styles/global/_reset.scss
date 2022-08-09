@@ -1,0 +1,17 @@
+// CSS Reset
+*,
+*::before,
+*::after {
+  margin: 0;
+  padding: 0;
+  box-shadow: none;
+  text-decoration: none;
+  outline: none;
+}
+a {
+  color: inherit;
+}
+body {
+  font-family: "Quicksand", sans-serif;
+  font-family: "Rubik", sans-serif;
+}

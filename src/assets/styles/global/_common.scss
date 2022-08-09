@@ -1,0 +1,35 @@
+.active {
+  background-color: #a1cbed !important;
+}
+.custom-box {
+  width: 60rem;
+  height: 15rem;
+  border-radius: 10px;
+  box-shadow: 0 0.5rem 1rem rgba(0, 0, 0, 0.15) !important;
+  margin: 0 auto;
+}
+// media-queries for custom box
+$Xsmall: 588px;
+$small: 588px;
+$medium: 930px;
+$big: 1078px;
+@media screen and (max-width: $big) {
+  .custom-box {
+    width: 50rem !important;
+  }
+}
+@media screen and (max-width: $medium) {
+  .custom-box {
+    width: 30rem !important;
+  }
+}
+@media screen and (max-width: $small) {
+  .custom-box {
+    width: 20rem !important;
+  }
+}
+@media screen and (max-width: $Xsmall) {
+  .custom-box {
+    width: 14rem !important;
+  }
+}
