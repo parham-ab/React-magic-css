@@ -2,6 +2,7 @@ import { useEffect, useState } from "react";
 // mui components
 import {
   Box,
+  Button,
   Container,
   Grid,
   IconButton,
@@ -10,8 +11,16 @@ import {
 } from "@mui/material";
 // icons
 import PhotoCamera from "@mui/icons-material/PhotoCamera";
+import AssignmentIcon from "@mui/icons-material/Assignment";
+import RestartAltIcon from "@mui/icons-material/RestartAlt";
 // custom hooks
 import DynamicTitle from "../hooks/DynamicTitle";
+// copy to clipboard button
+import copy from "copy-to-clipboard";
+// react toastify
+import { ToastContainer } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
+import { notify } from "./functions/toast";
 
 const ImageFilter = () => {
   const [greyscaleVal, setGreyscaleVal] = useState(0);
@@ -30,7 +39,6 @@ const ImageFilter = () => {
     setFinalSource(
       `filter: grayscale(${greyscaleVal}%) blur(${blurVal}px) sepia(${sepiaVal}) saturate(${saturateVal}) opacity(${opacityVal}) brightness(${brightnessVal}%) contrast(${contrastVal}%) hue-rotate(${hueVal}deg) invert(${invertVal}%)`
     );
-    console.log(finalSource);
   }, [
     greyscaleVal,
     blurVal,
@@ -46,6 +54,24 @@ const ImageFilter = () => {
   function onImageChange(e) {
     setImg(URL.createObjectURL(e.target.files[0]));
   }
+  //   reset input values (sliders)
+  const resetBtn = () => {
+    setGreyscaleVal(0);
+    setBlurVal(0);
+    setSepiaVal(0);
+    setSaturateVal(1);
+    setOpacityVal(1);
+    setBrightnessVal(100);
+    setContrastVal(100);
+    setHueVal(0);
+    setInvertVal(0);
+  };
+  // copy to clipboard function
+  const copyToClipboard = () => {
+    copy(finalSource);
+    notify("success", "Copied to clipboard ✔");
+  };
+
   // dynamic title
   DynamicTitle("Magic CSS - Image filter");
 
@@ -190,6 +216,20 @@ const ImageFilter = () => {
             value={invertVal}
             onChange={(e) => setInvertVal(e.target.value)}
           />
+
+          <IconButton color="error" component="button" onClick={resetBtn}>
+            <RestartAltIcon />
+          </IconButton>
+
+          <Button
+            onClick={copyToClipboard}
+            sx={{ marginY: "50px" }}
+            variant="contained"
+            startIcon={<AssignmentIcon />}
+            size="small"
+          >
+            Copy
+          </Button>
         </Grid>
         <Grid item mt={20}>
           <Box component="div">
@@ -217,6 +257,7 @@ const ImageFilter = () => {
           </IconButton>
         </Grid>
       </Grid>
+      <ToastContainer />
     </Container>
   );
 };
