@@ -10,13 +10,16 @@ import {
 
 const DonateCard = ({ data }) => {
   return (
-    <Card sx={{ maxWidth: "280px", margin: "50px auto 0" }}>
+    <Card
+      elevation={5}
+      sx={{ maxWidth: { xs: "240px", sm: "300px" }, margin: "50px auto 0" }}
+    >
       <CardMedia
         component="img"
         alt={data.walletTitle}
-        height="280"
         image={data.walletImg}
         loading="lazy"
+        sx={{ height: { xs: "240", sm: "300px" } }}
       />
       <CardContent>
         <Typography
