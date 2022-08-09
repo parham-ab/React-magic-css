@@ -7,6 +7,7 @@ import Gradient from "./components/Gradient";
 import TextShadowGenerator from "./components/TextShadowGenerator";
 import { createTheme, ThemeProvider } from "@mui/material/styles";
 import BorderRadius from "./components/BorderRadius";
+import ImageFilter from "./components/ImageFilter";
 // font customizing
 const theme = createTheme({
   typography: {
@@ -31,6 +32,7 @@ const App = () => {
             element={<TextShadowGenerator />}
           />
           <Route path="/border-radius" element={<BorderRadius />} />
+          <Route path="/image-filter" element={<ImageFilter />} />
           <Route path="/*" element={<Navigate to="/shadowGenerator" />} />
         </Routes>
       </LayOut>

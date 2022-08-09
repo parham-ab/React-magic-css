@@ -15,6 +15,7 @@ import AutoFixNormalIcon from "@mui/icons-material/AutoFixNormal";
 import FormatColorTextIcon from "@mui/icons-material/FormatColorText";
 import GitHubIcon from "@mui/icons-material/GitHub";
 import VignetteIcon from "@mui/icons-material/Vignette";
+import FilterIcon from "@mui/icons-material/Filter";
 
 const Header = () => {
   const navigate = useNavigate();
@@ -42,6 +43,11 @@ const Header = () => {
       text: "BorderRadius",
       icon: <VignetteIcon color="text.secondary" sx={{ fontSize: "16px" }} />,
       path: "/border-radius",
+    },
+    {
+      text: "ImageFilter",
+      icon: <FilterIcon color="text.secondary" sx={{ fontSize: "16px" }} />,
+      path: "/image-filter",
     },
   ];
 
