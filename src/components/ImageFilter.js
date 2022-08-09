@@ -19,10 +19,10 @@ const ImageFilter = () => {
   const [greyscaleVal, setGreyscaleVal] = useState(0);
   const [blurVal, setBlurVal] = useState(0);
   const [sepiaVal, setSepiaVal] = useState(0);
-  const [saturateVal, setSaturateVal] = useState(0);
-  const [opacityVal, setOpacityVal] = useState(0);
-  const [brightnessVal, setBrightnessVal] = useState(0);
-  const [contrastVal, setContrastVal] = useState(0);
+  const [saturateVal, setSaturateVal] = useState(1);
+  const [opacityVal, setOpacityVal] = useState(1);
+  const [brightnessVal, setBrightnessVal] = useState(100);
+  const [contrastVal, setContrastVal] = useState(100);
   const [hueVal, setHueVal] = useState(0);
   const [invertVal, setInvertVal] = useState(0);
   // dynamic title
@@ -86,7 +86,7 @@ const ImageFilter = () => {
             max={1}
             step={0.1}
             size="small"
-            defaultValue={0}
+            defaultValue={1}
             aria-label="Small"
             valueLabelDisplay="auto"
             sx={{ color: "#2764b0" }}
@@ -102,12 +102,27 @@ const ImageFilter = () => {
             max={1}
             step={0.1}
             size="small"
-            defaultValue={0}
+            defaultValue={1}
             aria-label="Small"
             valueLabelDisplay="auto"
             sx={{ color: "#2764b0" }}
             value={opacityVal}
             onChange={(e) => setOpacityVal(e.target.value)}
+          />
+
+          <Typography variant="h5" color="text.secondary" textAlign="center">
+            Brightness
+          </Typography>
+          <Slider
+            min={0}
+            max={200}
+            size="small"
+            defaultValue={100}
+            aria-label="Small"
+            valueLabelDisplay="auto"
+            sx={{ color: "#2764b0" }}
+            value={brightnessVal}
+            onChange={(e) => setBrightnessVal(e.target.value)}
           />
 
           <Typography variant="h5" color="text.secondary" textAlign="center">
@@ -157,12 +172,13 @@ const ImageFilter = () => {
         </Grid>
         <Grid item mt={20}>
           <Box component="div">
+            {console.log(sepiaVal)}
             <img
               src={car}
               alt="car"
               width="500px"
               style={{
-                filter: `grayscale(${greyscaleVal}%) blur(${blurVal}px)`,
+                filter: `grayscale(${greyscaleVal}%) blur(${blurVal}px) sepia(${sepiaVal}) saturate(${saturateVal}) opacity(${opacityVal}) brightness(${opacityVal}%) contrast(${contrastVal}%) hue-rotate(${hueVal}deg) invert(${invertVal}%)`,
               }}
             />
           </Box>
