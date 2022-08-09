@@ -6,38 +6,38 @@ import {
   CardActions,
   CardContent,
   CardMedia,
-  Grid,
   Typography,
 } from "@mui/material";
-import { Container } from "@mui/system";
 
 const DonateCard = ({ data }) => {
   return (
-    <Container>
-      <Grid container>
-        <Card sx={{ maxWidth: 345 }}>
-          <CardMedia
-            component="img"
-            alt={data.walletTitle}
-            height="140"
-            image={data.walletImg}
-          />
-          <CardContent>
-            <Typography gutterBottom variant="h5" component="div">
-              {data.walletTitle}
-            </Typography>
-            <Typography variant="body2" color="text.secondary">
-              {data.walletId}
-            </Typography>
-          </CardContent>
-          <CardActions>
-            <Button size="small" variant="contained">
-              Copy
-            </Button>
-          </CardActions>
-        </Card>
-      </Grid>
-    </Container>
+    <Card sx={{ maxWidth: "280px", margin: "50px auto 0" }}>
+      <CardMedia
+        component="img"
+        alt={data.walletTitle}
+        height="280"
+        image={data.walletImg}
+        loading="lazy"
+      />
+      <CardContent>
+        <Typography
+          gutterBottom
+          variant="h5"
+          component="div"
+          textAlign="center"
+        >
+          {data.walletTitle}
+        </Typography>
+        <Typography variant="body2" color="text.secondary">
+          {data.walletId}
+        </Typography>
+      </CardContent>
+      <CardActions>
+        <Button size="small" variant="contained" sx={{ width: "100%" }}>
+          Copy
+        </Button>
+      </CardActions>
+    </Card>
   );
 };
 

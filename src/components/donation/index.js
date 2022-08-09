@@ -2,6 +2,8 @@ import React, { useState } from "react";
 import DonateCard from "./DonateCard";
 // img
 import walletimg from "../../assets/img/TRX.webp";
+import { Grid } from "@mui/material";
+import { Container } from "@mui/system";
 
 const Donation = () => {
   const [walletCard, setWalletCard] = useState([
@@ -56,11 +58,15 @@ const Donation = () => {
   ]);
 
   return (
-    <>
-      {walletCard.map((item) => (
-        <DonateCard key={item.id} data={item} />
-      ))}
-    </>
+    <Container>
+      <Grid container>
+        {walletCard.map((item) => (
+          <Grid item xs={12} sm={6} key={item.id}>
+            <DonateCard data={item} />
+          </Grid>
+        ))}
+      </Grid>
+    </Container>
   );
 };
 
