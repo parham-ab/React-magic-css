@@ -23,6 +23,8 @@ import { Box } from "@mui/system";
 import AssignmentIcon from "@mui/icons-material/Assignment";
 // react color picker
 import { SketchPicker } from "react-color";
+// custom hooks
+import DynamicTitle from "../hooks/DynamicTitle";
 
 const Gradient = () => {
   const [firstColor, setFirstColor] = useState("");
@@ -36,13 +38,17 @@ const Gradient = () => {
       ? setFinalSource(
           `background:linear-gradient(${angle}deg,${firstColor},${secondColor})`
         )
-      : setFinalSource(`background:radial-gradient(circle,${firstColor},${secondColor})`);
+      : setFinalSource(
+          `background:radial-gradient(circle,${firstColor},${secondColor})`
+        );
   }, [firstColor, secondColor, angle, gradientType]);
   // copy to clipboard function
   const copyToClipboard = () => {
     copy(finalSource);
     notify("success", "Copied to clipboard ✔");
   };
+  // dynamic title
+  DynamicTitle("Magic CSS - gradient");
 
   return (
     <Container>

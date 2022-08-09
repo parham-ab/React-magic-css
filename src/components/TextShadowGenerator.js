@@ -19,6 +19,8 @@ import { Box } from "@mui/system";
 import AssignmentIcon from "@mui/icons-material/Assignment";
 // react color picker
 import { SketchPicker } from "react-color";
+// custom hooks
+import DynamicTitle from "../hooks/DynamicTitle";
 
 const TextShadowGenerator = () => {
   const [testText, setTestText] = useState("");
@@ -36,6 +38,8 @@ const TextShadowGenerator = () => {
     copy(finalSource);
     notify("success", "Copied to clipboard ✔");
   };
+  // dynamic title
+  DynamicTitle("Magic CSS - Text shadow");
 
   return (
     <Container>

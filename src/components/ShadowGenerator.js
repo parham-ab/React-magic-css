@@ -21,6 +21,8 @@ import { Container } from "@mui/system";
 import AssignmentIcon from "@mui/icons-material/Assignment";
 // react toastify
 import { notify } from "./functions/toast";
+// custom hooks
+import DynamicTitle from "../hooks/DynamicTitle";
 
 const ShadowGenerator = () => {
   const [x, setX] = useState(0);
@@ -45,6 +47,8 @@ const ShadowGenerator = () => {
     copy(finalSource);
     notify("success", "Copied to clipboard ✔");
   };
+  // dynamic title
+  DynamicTitle("Magic CSS - shadow generator");
 
   return (
     <Container>
