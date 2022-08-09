@@ -40,6 +40,14 @@ const ImageFilter = () => {
   //     hueVal,
   //     invertVal,
   //   ]);
+
+  const [img, setImg] = useState();
+
+  const onImageChange = (e) => {
+    setImg(URL.createObjectURL(e.target.files[0]));
+    console.log(img);
+  };
+
   // dynamic title
   DynamicTitle("Magic CSS - Image filter");
 
@@ -188,8 +196,8 @@ const ImageFilter = () => {
         <Grid item mt={20}>
           <Box component="div">
             <img
-              src={car}
-              alt="car"
+              src={img}
+              alt="upload your img!"
               width="500px"
               style={{
                 filter: `grayscale(${greyscaleVal}%) blur(${blurVal}px) sepia(${sepiaVal}) saturate(${saturateVal}) opacity(${opacityVal}) brightness(${brightnessVal}%) contrast(${contrastVal}%) hue-rotate(${hueVal}deg) invert(${invertVal}%)`,
@@ -201,7 +209,12 @@ const ImageFilter = () => {
             aria-label="upload picture"
             component="label"
           >
-            <input hidden accept="image/*" type="file" />
+            <input
+              hidden
+              accept="image/*"
+              type="file"
+              onChange={onImageChange}
+            />
             <PhotoCamera />
           </IconButton>
         </Grid>
