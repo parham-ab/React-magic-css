@@ -9,6 +9,7 @@ import { createTheme, ThemeProvider } from "@mui/material/styles";
 import BorderRadius from "./components/BorderRadius";
 import ImageFilter from "./components/ImageFilter";
 import Donate from "./components/donation";
+import ScrollToTop from "./components/functions/ScrollTotop";
 // font customizing
 const theme = createTheme({
   typography: {
@@ -37,6 +38,7 @@ const App = () => {
           <Route path="/donation" element={<Donate />} />
           <Route path="/*" element={<Navigate to="/shadowGenerator" />} />
         </Routes>
+        <ScrollToTop />
       </LayOut>
     </ThemeProvider>
   );
