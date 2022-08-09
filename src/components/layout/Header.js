@@ -1,5 +1,7 @@
 // react router dom
 import { useNavigate } from "react-router-dom";
+// react router dom
+import { Link } from "react-router-dom";
 // mui components
 import Box from "@mui/material/Box";
 import Drawer from "@mui/material/Drawer";
@@ -16,6 +18,9 @@ import FormatColorTextIcon from "@mui/icons-material/FormatColorText";
 import GitHubIcon from "@mui/icons-material/GitHub";
 import VignetteIcon from "@mui/icons-material/Vignette";
 import FilterIcon from "@mui/icons-material/Filter";
+// react awesome button
+import { AwesomeButton } from "react-awesome-button";
+import "react-awesome-button/dist/styles.css";
 
 const Header = () => {
   const navigate = useNavigate();
@@ -91,12 +96,27 @@ const Header = () => {
           padding: "0 37px",
         }}
       >
+        <Link to="/donation">
+          <AwesomeButton
+            type="primary"
+            style={{
+              fontSize: "12px",
+              padding: "4px",
+            }}
+          >
+            Buy me a Coffee
+          </AwesomeButton>
+        </Link>
         <Toolbar>
-          <Typography variant="h6" noWrap component="div">
+          <Typography
+            variant="h6"
+            noWrap
+            component="div"
+            sx={{ display: { xs: "none", sm: "block" } }}
+          >
             Magic CSS
           </Typography>
         </Toolbar>
-
         <a
           href="https://github.com/parham-ab/React-magic-css"
           target={"_blank"}
