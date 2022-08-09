@@ -77,7 +77,12 @@ const ImageFilter = () => {
 
   return (
     <Container>
-      <Grid container display="flex" justifyContent="space-around" className='filterimage-container'>
+      <Grid
+        container
+        display="flex"
+        justifyContent="space-around"
+        className="filterimage-container"
+      >
         <Grid item mt={20}>
           <Typography variant="h5" color="text.secondary" textAlign="center">
             Grayscale
@@ -247,7 +252,7 @@ const ImageFilter = () => {
           <Box component="div">
             <img
               src={img}
-              alt="upload your img!"
+              alt="Upload an img please!"
               className="filter-img"
               width="450px"
               style={{

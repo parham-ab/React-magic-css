@@ -8,6 +8,7 @@ import TextShadowGenerator from "./components/TextShadowGenerator";
 import { createTheme, ThemeProvider } from "@mui/material/styles";
 import BorderRadius from "./components/BorderRadius";
 import ImageFilter from "./components/ImageFilter";
+import Donate from "./components/donation";
 // font customizing
 const theme = createTheme({
   typography: {
@@ -33,7 +34,8 @@ const App = () => {
           />
           <Route path="/border-radius" element={<BorderRadius />} />
           <Route path="/image-filter" element={<ImageFilter />} />
-          {/* <Route path="/*" element={<Navigate to="/shadowGenerator" />} /> */}
+          <Route path="/donation" element={<Donate />} />
+          <Route path="/*" element={<Navigate to="/shadowGenerator" />} />
         </Routes>
       </LayOut>
     </ThemeProvider>
