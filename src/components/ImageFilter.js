@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 // mui components
 import {
   Box,
@@ -25,6 +25,21 @@ const ImageFilter = () => {
   const [contrastVal, setContrastVal] = useState(100);
   const [hueVal, setHueVal] = useState(0);
   const [invertVal, setInvertVal] = useState(0);
+  const [finalSource, setFinalSource] = useState("");
+
+  //   useEffect(() => {
+  //     setFinalSource(`filter:`);
+  //   }, [
+  //     greyscaleVal,
+  //     blurVal,
+  //     sepiaVal,
+  //     saturateVal,
+  //     opacityVal,
+  //     brightnessVal,
+  //     contrastVal,
+  //     hueVal,
+  //     invertVal,
+  //   ]);
   // dynamic title
   DynamicTitle("Magic CSS - Image filter");
 
@@ -172,13 +187,12 @@ const ImageFilter = () => {
         </Grid>
         <Grid item mt={20}>
           <Box component="div">
-            {console.log(sepiaVal)}
             <img
               src={car}
               alt="car"
               width="500px"
               style={{
-                filter: `grayscale(${greyscaleVal}%) blur(${blurVal}px) sepia(${sepiaVal}) saturate(${saturateVal}) opacity(${opacityVal}) brightness(${opacityVal}%) contrast(${contrastVal}%) hue-rotate(${hueVal}deg) invert(${invertVal}%)`,
+                filter: `grayscale(${greyscaleVal}%) blur(${blurVal}px) sepia(${sepiaVal}) saturate(${saturateVal}) opacity(${opacityVal}) brightness(${brightnessVal}%) contrast(${contrastVal}%) hue-rotate(${hueVal}deg) invert(${invertVal}%)`,
               }}
             />
           </Box>
