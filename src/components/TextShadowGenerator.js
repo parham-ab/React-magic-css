@@ -31,11 +31,11 @@ const TextShadowGenerator = () => {
   const [finalSource, setFinalSource] = useState();
 
   useEffect(() => {
-    setFinalSource(`text-shadow: ${x}px ${y}px ${blur}px ${color}`);
+    setFinalSource(`${x}px ${y}px ${blur}px ${color}`);
   }, [x, y, blur, color]);
   // copy to clipboard button
   const copyToClipboard = () => {
-    copy(finalSource);
+    copy(`text-shadow:${finalSource}`);
     notify("success", "Copied to clipboard ✔");
   };
   // dynamic title
@@ -82,14 +82,13 @@ const TextShadowGenerator = () => {
             textAlign="center"
             padding={6}
             style={{
-              textShadow: finalSource,
               height: testText && "auto",
             }}
           >
             <Typography
               variant="h5"
               color="initial"
-              sx={{ wordBreak: "break-all" }}
+              sx={{ textShadow: finalSource, wordBreak: "break-all" }}
             >
               {testText}
             </Typography>
