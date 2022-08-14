@@ -18,6 +18,7 @@ import FormatColorTextIcon from "@mui/icons-material/FormatColorText";
 import GitHubIcon from "@mui/icons-material/GitHub";
 import VignetteIcon from "@mui/icons-material/Vignette";
 import FilterIcon from "@mui/icons-material/Filter";
+import AspectRatioIcon from "@mui/icons-material/AspectRatio";
 // react awesome button
 import { AwesomeButton } from "react-awesome-button";
 import "react-awesome-button/dist/styles.css";
@@ -48,6 +49,13 @@ const Header = () => {
       text: "BorderRadius",
       icon: <VignetteIcon color="text.secondary" sx={{ fontSize: "16px" }} />,
       path: "/border-radius",
+    },
+    {
+      text: "skew",
+      icon: (
+        <AspectRatioIcon color="text.secondary" sx={{ fontSize: "16px" }} />
+      ),
+      path: "/skew",
     },
     {
       text: "ImageFilter",

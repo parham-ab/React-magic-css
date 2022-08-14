@@ -5,11 +5,13 @@ import LayOut from "./components/layout";
 import ShadowGenerator from "./components/ShadowGenerator";
 import Gradient from "./components/Gradient";
 import TextShadowGenerator from "./components/TextShadowGenerator";
-import { createTheme, ThemeProvider } from "@mui/material/styles";
 import BorderRadius from "./components/BorderRadius";
 import ImageFilter from "./components/ImageFilter";
 import Donate from "./components/donation";
+import Skew from "./components/Skew";
 import ScrollToTop from "./components/functions/ScrollTotop";
+// mui
+import { createTheme, ThemeProvider } from "@mui/material/styles";
 // font customizing
 const theme = createTheme({
   typography: {
@@ -35,6 +37,7 @@ const App = () => {
           />
           <Route path="/border-radius" element={<BorderRadius />} />
           <Route path="/image-filter" element={<ImageFilter />} />
+          <Route path="/skew" element={<Skew />} />
           <Route path="/donation" element={<Donate />} />
           <Route path="/*" element={<Navigate to="/shadowGenerator" />} />
         </Routes>
