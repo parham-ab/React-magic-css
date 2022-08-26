@@ -19,6 +19,7 @@ import GitHubIcon from "@mui/icons-material/GitHub";
 import VignetteIcon from "@mui/icons-material/Vignette";
 import FilterIcon from "@mui/icons-material/Filter";
 import AspectRatioIcon from "@mui/icons-material/AspectRatio";
+import ColorLensIcon from "@mui/icons-material/ColorLens";
 // react awesome button
 import { AwesomeButton } from "react-awesome-button";
 import "react-awesome-button/dist/styles.css";
@@ -56,6 +57,11 @@ const Header = () => {
         <AspectRatioIcon color="text.secondary" sx={{ fontSize: "16px" }} />
       ),
       path: "/skew",
+    },
+    {
+      text: "textGenerator",
+      icon: <ColorLensIcon color="text.secondary" sx={{ fontSize: "16px" }} />,
+      path: "/color-picker",
     },
     {
       text: "ImageFilter",
