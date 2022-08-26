@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react";
 // mui components
-import { Button } from "@mui/material";
+import { Button, Grid } from "@mui/material";
 // react color picker
 import { SketchPicker } from "react-color";
 // custom hooks
@@ -13,6 +13,7 @@ import copy from "copy-to-clipboard";
 import { ToastContainer } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import { notify } from "./functions/toast";
+import { Container } from "@mui/system";
 
 const ColorPicker = () => {
   const [firstColor, setFirstColor] = useState("");
@@ -34,18 +35,22 @@ const ColorPicker = () => {
   DynamicTitle("Magic CSS - Color Picker");
 
   return (
-    <div>
-      <SketchPicker color={firstColor} onChangeComplete={changeHandle} />
-      <Button
-        onClick={copyToClipboard}
-        sx={{ marginY: "50px" }}
-        variant="contained"
-        startIcon={<AssignmentIcon />}
-      >
-        Copy
-      </Button>
+    <Container>
+      <Grid container>
+        <Grid item sx={{ margin: "80px auto" }}>
+          <SketchPicker color={firstColor} onChangeComplete={changeHandle} />
+          <Button
+            onClick={copyToClipboard}
+            sx={{ marginY: "50px", width: "220px" }}
+            variant="contained"
+            startIcon={<AssignmentIcon />}
+          >
+            Copy
+          </Button>
+        </Grid>
+      </Grid>
       <ToastContainer />
-    </div>
+    </Container>
   );
 };
 
