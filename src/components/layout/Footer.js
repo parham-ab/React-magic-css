@@ -7,6 +7,7 @@ const Footer = () => {
       sx={{
         backgroundColor: "#d2cfff",
         marginTop: "50px",
+        flexFlow: "column",
       }}
     >
       <Grid item sx={{ margin: "15px auto" }} xs={8} sm={6} md={4} lg={3}>

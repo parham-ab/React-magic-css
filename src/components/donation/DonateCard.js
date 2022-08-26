@@ -11,11 +11,6 @@ import {
 import copy from "copy-to-clipboard";
 
 const DonateCard = ({ data }) => {
-  // copy to clipboard function
-  const copyToClipboard = () => {
-    copy();
-  };
-
   return (
     <Card
       elevation={5}
