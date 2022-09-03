@@ -14,7 +14,7 @@ import PhotoCamera from "@mui/icons-material/PhotoCamera";
 import AssignmentIcon from "@mui/icons-material/Assignment";
 import RestartAltIcon from "@mui/icons-material/RestartAlt";
 // custom hooks
-import DynamicTitle from "../hooks/DynamicTitle";
+import UseTitle from "../hooks/useTitle";
 // copy to clipboard button
 import copy from "copy-to-clipboard";
 // react toastify
@@ -73,7 +73,7 @@ const ImageFilter = () => {
   };
 
   // dynamic title
-  DynamicTitle("Magic CSS - Image filter");
+  UseTitle("Magic CSS - Image filter");
 
   return (
     <Container>

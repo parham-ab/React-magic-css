@@ -25,7 +25,7 @@ import { Container } from "@mui/system";
 // icon
 import AssignmentIcon from "@mui/icons-material/Assignment";
 // custom hooks
-import DynamicTitle from "../hooks/DynamicTitle";
+import UseTitle from "../hooks/useTitle";
 
 const BorderRadius = () => {
   const [type, setType] = useState("Same on all sides");
@@ -63,7 +63,7 @@ const BorderRadius = () => {
     notify("success", "Copied to clipboard ✔");
   };
   // dynamic title
-  DynamicTitle("Magic CSS - Border radius");
+  UseTitle("Magic CSS - Border radius");
 
   return (
     <Container>

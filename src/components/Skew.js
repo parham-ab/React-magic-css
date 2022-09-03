@@ -11,7 +11,7 @@ import { Box } from "@mui/system";
 // icon
 import AssignmentIcon from "@mui/icons-material/Assignment";
 // custom hooks
-import DynamicTitle from "../hooks/DynamicTitle";
+import UseTitle from "../hooks/useTitle";
 
 const Skew = () => {
   const [SkewX, setSkewX] = useState(0);
@@ -27,7 +27,7 @@ const Skew = () => {
     notify("success", "Copied to clipboard ✔");
   };
   // dynamic title
-  DynamicTitle("Magic CSS - Skew");
+  UseTitle("Magic CSS - Skew");
 
   return (
     <Container>

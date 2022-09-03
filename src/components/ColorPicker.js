@@ -4,7 +4,7 @@ import { Button, Grid } from "@mui/material";
 // react color picker
 import { SketchPicker } from "react-color";
 // custom hooks
-import DynamicTitle from "../hooks/DynamicTitle";
+import UseTitle from "../hooks/useTitle";
 // icon
 import AssignmentIcon from "@mui/icons-material/Assignment";
 // copy to clipboard button
@@ -32,7 +32,7 @@ const ColorPicker = () => {
     setFinalSource(firstColor);
   }, [firstColor]);
   // dynamic title
-  DynamicTitle("Magic CSS - Color Picker");
+  UseTitle("Magic CSS - Color Picker");
 
   return (
     <Container>

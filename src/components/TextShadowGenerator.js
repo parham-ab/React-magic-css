@@ -20,7 +20,7 @@ import AssignmentIcon from "@mui/icons-material/Assignment";
 // react color picker
 import { SketchPicker } from "react-color";
 // custom hooks
-import DynamicTitle from "../hooks/DynamicTitle";
+import UseTitle from "../hooks/useTitle";
 
 const TextShadowGenerator = () => {
   const [testText, setTestText] = useState("");
@@ -39,7 +39,7 @@ const TextShadowGenerator = () => {
     notify("success", "Copied to clipboard ✔");
   };
   // dynamic title
-  DynamicTitle("Magic CSS - Text shadow");
+  UseTitle("Magic CSS - Text shadow");
 
   return (
     <Container>

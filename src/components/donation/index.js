@@ -4,6 +4,8 @@ import { Grid } from "@mui/material";
 import { Container } from "@mui/system";
 // components
 import DonateCard from "./DonateCard";
+// hooks
+import UseTitle from "../../hooks/useTitle";
 // img
 import ethImg from "../../assets/img/eth.jpg";
 import usdtImg from "../../assets/img/usdt.jpg";
@@ -12,7 +14,6 @@ import adaImg from "../../assets/img/ada.jpg";
 import dogeImg from "../../assets/img/doge.jpg";
 import bnbImg from "../../assets/img/bnb.jpg";
 import shibImg from "../../assets/img/shib.jpg";
-import DynamicTitle from "../../hooks/DynamicTitle";
 
 const Donation = () => {
   const [walletCard, setWalletCard] = useState([
@@ -67,7 +68,7 @@ const Donation = () => {
     },
   ]);
   // dynamic title
-  DynamicTitle("Magic CSS - Donation");
+  UseTitle("Magic CSS - Donation");
 
   return (
     <Container>

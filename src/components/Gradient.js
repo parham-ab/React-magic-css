@@ -24,7 +24,7 @@ import AssignmentIcon from "@mui/icons-material/Assignment";
 // react color picker
 import { SketchPicker } from "react-color";
 // custom hooks
-import DynamicTitle from "../hooks/DynamicTitle";
+import UseTitle from "../hooks/useTitle";
 
 const Gradient = () => {
   const [firstColor, setFirstColor] = useState("");
@@ -48,7 +48,7 @@ const Gradient = () => {
     notify("success", "Copied to clipboard ✔");
   };
   // dynamic title
-  DynamicTitle("Magic CSS - gradient");
+  UseTitle("Magic CSS - gradient");
 
   return (
     <Container>

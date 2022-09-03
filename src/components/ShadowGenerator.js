@@ -22,7 +22,7 @@ import AssignmentIcon from "@mui/icons-material/Assignment";
 // react toastify
 import { notify } from "./functions/toast";
 // custom hooks
-import DynamicTitle from "../hooks/DynamicTitle";
+import UseTitle from "../hooks/useTitle";
 
 const ShadowGenerator = () => {
   const [x, setX] = useState(0);
@@ -48,7 +48,7 @@ const ShadowGenerator = () => {
     notify("success", "Copied to clipboard ✔");
   };
   // dynamic title
-  DynamicTitle("Magic CSS - shadow generator");
+  UseTitle("Magic CSS - shadow generator");
 
   return (
     <Container>
