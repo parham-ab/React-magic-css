@@ -43,20 +43,33 @@ const TextEditor = () => {
   const [inputVal, setInputVal] = useState("");
   const [alignment, setAlignment] = useState("left");
   const [formats, setFormats] = useState("");
-  const [fontSetting, setFontSetting] = useState({
-    bold: false,
-    italic: false,
-    underlined: "false",
-  });
+  const [finalSource, setFinalSource] = useState({});
 
-  //   const [finalSource, setFinalSource] = useState({
-  //     textAlign: "",
-  //     textFormat: "",
-  //   });
+  useEffect(() => {
+    if (formats.includes("bold")) {
+      setFinalSource({
+        ...finalSource,
+        "font-weight": "bold",
+        "text-align": alignment,
+      });
+    }
+    if (formats.includes("italic")) {
+      setFinalSource({
+        ...finalSource,
+        "font-style": "italic",
+        "text-align": alignment,
+      });
+    }
+    if (formats.includes("underlined")) {
+      setFinalSource({
+        ...finalSource,
+        "text-decoration": "underline",
+        "text-align": alignment,
+      });
+    }
+  }, [alignment, formats]);
+  console.log(finalSource);
 
-  //   useEffect(() => {
-  // setFinalSource({...finalSource},[])
-  //   }, [alignment, setAlignment]);
   // text format
   const handleFormat = (e, newFormats) => {
     setFormats(newFormats);
@@ -155,7 +168,10 @@ const TextEditor = () => {
               color="initial"
               fontWeight={formats.includes("bold") ? "bold" : 100}
               fontStyle={formats.includes("italic") && "italic"}
-              sx={{ wordBreak: "break-all",textDecoration:formats.includes("underlined") && "underline" }}
+              sx={{
+                wordBreak: "break-all",
+                textDecoration: formats.includes("underlined") && "underline",
+              }}
             >
               {inputVal}
               {/* {testText} */}
