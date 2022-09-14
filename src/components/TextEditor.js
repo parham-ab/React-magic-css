@@ -154,7 +154,8 @@ const TextEditor = () => {
               variant="h5"
               color="initial"
               fontWeight={formats.includes("bold") ? "bold" : 100}
-              sx={{ wordBreak: "break-all" }}
+              fontStyle={formats.includes("italic") && "italic"}
+              sx={{ wordBreak: "break-all",textDecoration:formats.includes("underlined") && "underline" }}
             >
               {inputVal}
               {/* {testText} */}
