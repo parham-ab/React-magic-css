@@ -1,11 +1,10 @@
-import React, { useEffect, useState } from "react";
-import { styled } from "@mui/material/styles";
-import Divider from "@mui/material/Divider";
-import Paper from "@mui/material/Paper";
-import ToggleButton from "@mui/material/ToggleButton";
-import ToggleButtonGroup from "@mui/material/ToggleButtonGroup";
+import { useEffect, useState } from "react";
+// mui components
 import {
-  Button,
+  styled,
+  Paper,
+  ToggleButton,
+  ToggleButtonGroup,
   Container,
   Grid,
   Stack,
@@ -14,7 +13,6 @@ import {
 } from "@mui/material";
 import { Box } from "@mui/system";
 // icons
-import AssignmentIcon from "@mui/icons-material/Assignment";
 import FormatAlignLeftIcon from "@mui/icons-material/FormatAlignLeft";
 import FormatAlignCenterIcon from "@mui/icons-material/FormatAlignCenter";
 import FormatAlignRightIcon from "@mui/icons-material/FormatAlignRight";
@@ -52,24 +50,25 @@ const TextEditor = () => {
         "font-weight": "bold",
         "text-align": alignment,
       });
-    }
-    if (formats.includes("italic")) {
+    } else if (formats.includes("italic")) {
       setFinalSource({
         ...finalSource,
         "font-style": "italic",
         "text-align": alignment,
       });
-    }
-    if (formats.includes("underlined")) {
+    } else if (formats.includes("underlined")) {
       setFinalSource({
         ...finalSource,
         "text-decoration": "underline",
         "text-align": alignment,
       });
+    } else {
+      setFinalSource({
+        ...finalSource,
+        "text-align": alignment,
+      });
     }
-  }, [alignment, formats]);
-  console.log(finalSource);
-
+  }, [alignment, setAlignment, formats]);
   // text format
   const handleFormat = (e, newFormats) => {
     setFormats(newFormats);
@@ -137,6 +136,8 @@ const TextEditor = () => {
         {/* text field */}
         <Grid
           item
+          display="flex"
+          flexDirection="column"
           alignItems="center"
           sx={{
             margin: "1rem auto 0",
@@ -149,34 +150,33 @@ const TextEditor = () => {
             value={inputVal}
             onChange={(e) => setInputVal(e.target.value)}
           />
-        </Grid>
-        {/* results */}
-        <Grid
-          item
-          mt={5}
-          sx={{ margin: "4rem auto" }}
-          style={{ display: "flex", flexDirection: "column" }}
-        >
-          <Box
-            className="custom-box"
-            textAlign={alignment}
-            padding={6}
-            sx={{ height: inputVal && "auto" }}
+          {/* results */}
+          <Grid
+            item
+            mt={5}
+            sx={{ margin: "4rem auto" }}
+            style={{ display: "flex", flexDirection: "column" }}
           >
-            <Typography
-              variant="h5"
-              color="initial"
-              fontWeight={formats.includes("bold") ? "bold" : 100}
-              fontStyle={formats.includes("italic") && "italic"}
-              sx={{
-                wordBreak: "break-all",
-                textDecoration: formats.includes("underlined") && "underline",
-              }}
+            <Box
+              className="custom-box"
+              textAlign={alignment}
+              padding={6}
+              sx={{ height: inputVal && "auto" }}
             >
-              {inputVal}
-              {/* {testText} */}
-            </Typography>
-          </Box>
+              <Typography
+                variant="h5"
+                color="initial"
+                fontWeight={formats.includes("bold") ? "bold" : 100}
+                fontStyle={formats.includes("italic") && "italic"}
+                sx={{
+                  wordBreak: "break-all",
+                  textDecoration: formats.includes("underlined") && "underline",
+                }}
+              >
+                {inputVal}
+              </Typography>
+            </Box>
+          </Grid>
         </Grid>
       </Grid>
     </Container>
