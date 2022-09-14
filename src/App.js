@@ -10,6 +10,7 @@ import ImageFilter from "./components/ImageFilter";
 import Donate from "./components/donation";
 import Skew from "./components/Skew";
 import ColorPicker from "./components/ColorPicker";
+import TextEditor from "./components/TextEditor";
 import ScrollToTop from "./components/functions/ScrollTotop";
 // mui
 import { createTheme, ThemeProvider } from "@mui/material/styles";
@@ -40,6 +41,7 @@ const App = () => {
           <Route path="/image-filter" element={<ImageFilter />} />
           <Route path="/skew" element={<Skew />} />
           <Route path="/color-picker" element={<ColorPicker />} />
+          <Route path="/text-editor" element={<TextEditor />} />
           <Route path="/donation" element={<Donate />} />
           <Route path="/*" element={<Navigate to="/shadowGenerator" />} />
         </Routes>
