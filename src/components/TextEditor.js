@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import { styled } from "@mui/material/styles";
 import Divider from "@mui/material/Divider";
 import Paper from "@mui/material/Paper";
@@ -43,12 +43,26 @@ const TextEditor = () => {
   const [inputVal, setInputVal] = useState("");
   const [alignment, setAlignment] = useState("left");
   const [formats, setFormats] = useState("");
+  const [fontSetting, setFontSetting] = useState({
+    bold: false,
+    italic: false,
+    underlined: "false",
+  });
+
+  //   const [finalSource, setFinalSource] = useState({
+  //     textAlign: "",
+  //     textFormat: "",
+  //   });
+
+  //   useEffect(() => {
+  // setFinalSource({...finalSource},[])
+  //   }, [alignment, setAlignment]);
   // text format
-  const handleFormat = (event, newFormats) => {
+  const handleFormat = (e, newFormats) => {
     setFormats(newFormats);
   };
   // text alignment
-  const handleAlignment = (event, newAlignment) => {
+  const handleAlignment = (e, newAlignment) => {
     setAlignment(newAlignment);
   };
 
@@ -71,6 +85,7 @@ const TextEditor = () => {
                 exclusive
                 onChange={handleAlignment}
                 aria-label="text alignment"
+                name="alignment"
               >
                 <ToggleButton value="left" aria-label="left aligned">
                   <FormatAlignLeftIcon />
@@ -112,8 +127,6 @@ const TextEditor = () => {
           alignItems="center"
           sx={{
             margin: "1rem auto 0",
-            display: "flex",
-            flexDirection: "column",
           }}
         >
           <TextField
@@ -133,13 +146,14 @@ const TextEditor = () => {
         >
           <Box
             className="custom-box"
-            textAlign="center"
+            textAlign={alignment}
             padding={6}
             sx={{ height: inputVal && "auto" }}
           >
             <Typography
               variant="h5"
               color="initial"
+              fontWeight={formats.includes("bold") ? "bold" : 100}
               sx={{ wordBreak: "break-all" }}
             >
               {inputVal}
