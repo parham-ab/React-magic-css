@@ -1,49 +1,154 @@
-import { useEffect, useState } from "react";
-// react toastify
-import { ToastContainer } from "react-toastify";
-import "react-toastify/dist/ReactToastify.css";
-// copy to clipboard button
-import copy from "copy-to-clipboard";
-// color picker
-import { SketchPicker } from "react-color";
-// mui components
+import React, { useState } from "react";
+import { styled } from "@mui/material/styles";
+import Divider from "@mui/material/Divider";
+import Paper from "@mui/material/Paper";
+import ToggleButton from "@mui/material/ToggleButton";
+import ToggleButtonGroup from "@mui/material/ToggleButtonGroup";
 import {
   Button,
-  Checkbox,
-  FormControlLabel,
-  FormGroup,
+  Container,
   Grid,
-  Slider,
+  Stack,
+  TextField,
   Typography,
 } from "@mui/material";
-import { Container } from "@mui/system";
-// icon
+import { Box } from "@mui/system";
+// icons
 import AssignmentIcon from "@mui/icons-material/Assignment";
-// react toastify
-import { notify } from "./functions/toast";
-// custom hooks
-import UseTitle from "../hooks/useTitle";
+import FormatAlignLeftIcon from "@mui/icons-material/FormatAlignLeft";
+import FormatAlignCenterIcon from "@mui/icons-material/FormatAlignCenter";
+import FormatAlignRightIcon from "@mui/icons-material/FormatAlignRight";
+import FormatAlignJustifyIcon from "@mui/icons-material/FormatAlignJustify";
+import FormatBoldIcon from "@mui/icons-material/FormatBold";
+import FormatItalicIcon from "@mui/icons-material/FormatItalic";
+import FormatUnderlinedIcon from "@mui/icons-material/FormatUnderlined";
+
+const StyledToggleButtonGroup = styled(ToggleButtonGroup)(({ theme }) => ({
+  "& .MuiToggleButtonGroup-grouped": {
+    margin: theme.spacing(0.3),
+    border: 0,
+    "&.Mui-disabled": {
+      border: 0,
+    },
+    "&:not(:first-of-type)": {
+      borderRadius: theme.shape.borderRadius,
+    },
+    "&:first-of-type": {
+      borderRadius: theme.shape.borderRadius,
+    },
+  },
+}));
 
 const TextEditor = () => {
-
-
-  useEffect(() => {}, []);
-  // copy to clipboard button
-//   const copyToClipboard = () => {
-//     copy(finalSource);
-//     notify("success", "Copied to clipboard ✔");
-//   };
-  // dynamic title
-  UseTitle("Magic CSS - Text Editor");
+  const [inputVal, setInputVal] = useState("");
+  const [alignment, setAlignment] = useState("left");
+  const [formats, setFormats] = useState("");
+  // text format
+  const handleFormat = (event, newFormats) => {
+    setFormats(newFormats);
+  };
+  // text alignment
+  const handleAlignment = (event, newAlignment) => {
+    setAlignment(newAlignment);
+  };
 
   return (
-    <Container>
-      <Grid container>
-        
+    <Container maxWidth="lg">
+      <Grid container flexDirection="column">
+        <Grid item sx={{ margin: "60px auto" }}>
+          <Paper
+            elevation={0}
+            sx={{
+              display: "flex",
+              border: (theme) => `1px solid ${theme.palette.divider}`,
+              flexWrap: "wrap",
+            }}
+          >
+            <Stack>
+              <StyledToggleButtonGroup
+                size="small"
+                value={alignment}
+                exclusive
+                onChange={handleAlignment}
+                aria-label="text alignment"
+              >
+                <ToggleButton value="left" aria-label="left aligned">
+                  <FormatAlignLeftIcon />
+                </ToggleButton>
+                <ToggleButton value="center" aria-label="centered">
+                  <FormatAlignCenterIcon />
+                </ToggleButton>
+                <ToggleButton value="right" aria-label="right aligned">
+                  <FormatAlignRightIcon />
+                </ToggleButton>
+                <ToggleButton value="justify" aria-label="justified">
+                  <FormatAlignJustifyIcon />
+                </ToggleButton>
+              </StyledToggleButtonGroup>
+
+              <StyledToggleButtonGroup
+                size="small"
+                value={formats}
+                onChange={handleFormat}
+                aria-label="text formatting"
+                sx={{ margin: "auto" }}
+              >
+                <ToggleButton value="bold" aria-label="bold">
+                  <FormatBoldIcon />
+                </ToggleButton>
+                <ToggleButton value="italic" aria-label="italic">
+                  <FormatItalicIcon />
+                </ToggleButton>
+                <ToggleButton value="underlined" aria-label="underlined">
+                  <FormatUnderlinedIcon />
+                </ToggleButton>
+              </StyledToggleButtonGroup>
+            </Stack>
+          </Paper>
+        </Grid>
+        {/* text field */}
+        <Grid
+          item
+          alignItems="center"
+          sx={{
+            margin: "1rem auto 0",
+            display: "flex",
+            flexDirection: "column",
+          }}
+        >
+          <TextField
+            size="small"
+            label="Text"
+            variant="filled"
+            value={inputVal}
+            onChange={(e) => setInputVal(e.target.value)}
+          />
+        </Grid>
+        {/* results */}
+        <Grid
+          item
+          mt={5}
+          sx={{ margin: "4rem auto" }}
+          style={{ display: "flex", flexDirection: "column" }}
+        >
+          <Box
+            className="custom-box"
+            textAlign="center"
+            padding={6}
+            sx={{ height: inputVal && "auto" }}
+          >
+            <Typography
+              variant="h5"
+              color="initial"
+              sx={{ wordBreak: "break-all" }}
+            >
+              {inputVal}
+              {/* {testText} */}
+            </Typography>
+          </Box>
+        </Grid>
       </Grid>
-      <ToastContainer />
     </Container>
   );
 };
-
 export default TextEditor;
