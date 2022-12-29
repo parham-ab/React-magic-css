@@ -3,6 +3,8 @@ import { v4 as uuidv4 } from "uuid";
 import Values from "values.js";
 // icons
 import SearchIcon from "@mui/icons-material/Search";
+// img
+import colorListImg from "../../assets/img/colors.svg";
 // custom hooks
 import UseTitle from "../../hooks/useTitle";
 // MUI components
@@ -15,13 +17,11 @@ import SingleColor from "./SingleColor";
 import { ToastContainer } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import { notify } from "../functions/toast";
-import { Typography } from "@mui/material";
 
 const ColorGenerator = () => {
   const [color, setColor] = useState("");
   const [error, setError] = useState(false);
   const [list, setList] = useState([]);
-
   // generate color lists
   const handleSubmit = (e) => {
     e.preventDefault();
@@ -62,9 +62,11 @@ const ColorGenerator = () => {
             }}
           />
           <Box display="flex" flexWrap="wrap" mt="100px" sx={{ ml: "50px" }}>
-            {list.map((item) => (
-              <SingleColor key={uuidv4()} {...item} />
-            ))}
+            {list.length ? (
+              list.map((item) => <SingleColor key={uuidv4()} {...item} />)
+            ) : (
+              <img src={colorListImg} alt="colors" className="colorListImg" />
+            )}
           </Box>
         </Grid>
       </Grid>
