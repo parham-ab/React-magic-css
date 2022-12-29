@@ -3,6 +3,8 @@ import { useState } from "react";
 import { Box } from "@mui/system";
 // copy to clipboard button
 import copy from "copy-to-clipboard";
+// rgb to hex function
+import rgbToHex from "../../helper/colorFormat";
 // react toastify
 import { ToastContainer } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
@@ -11,6 +13,7 @@ import { Typography } from "@mui/material";
 
 const SingleColor = ({ weight, rgb }) => {
   const [finalSource, setFinalSource] = useState();
+  const hex = rgbToHex(...rgb);
 
   // copy to clipboard function
   const copyToClipboard = () => {
@@ -43,7 +46,7 @@ const SingleColor = ({ weight, rgb }) => {
           boxShadow: 2,
         }}
       >
-        {weight}%
+        {hex}
       </Typography>
       <ToastContainer />
     </Box>
