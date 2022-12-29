@@ -5,12 +5,6 @@ import Values from "values.js";
 import SearchIcon from "@mui/icons-material/Search";
 // custom hooks
 import UseTitle from "../../hooks/useTitle";
-// copy to clipboard button
-import copy from "copy-to-clipboard";
-// react toastify
-import { ToastContainer } from "react-toastify";
-import "react-toastify/dist/ReactToastify.css";
-import { notify } from "../functions/toast";
 // MUI components
 import { Container } from "@mui/system";
 import { Grid, TextField } from "@mui/material";
@@ -64,7 +58,7 @@ const ColorGenerator = () => {
           <div>
             {/* {console.log(list)} */}
             {list.map((item) => (
-              <SingleColor key={uuidv4()} {...item} />
+              <SingleColor key={uuidv4()} id={uuidv4()} {...item} />
             ))}
           </div>
         </Grid>
