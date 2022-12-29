@@ -7,7 +7,7 @@ import SearchIcon from "@mui/icons-material/Search";
 import UseTitle from "../../hooks/useTitle";
 // MUI components
 import { Container } from "@mui/system";
-import { Grid, TextField } from "@mui/material";
+import { Box, Grid, TextField } from "@mui/material";
 import { useState } from "react";
 // components
 import SingleColor from "./SingleColor";
@@ -35,7 +35,7 @@ const ColorGenerator = () => {
   return (
     <Container>
       <Grid container>
-        <Grid item xs={12} display="flex" justifyContent="center" mt={"80px"}>
+        <Grid item xs={12} mt={"80px"} textAlign="center">
           <TextField
             id="color-info"
             size="small"
@@ -55,12 +55,11 @@ const ColorGenerator = () => {
               ),
             }}
           />
-          <div>
-            {/* {console.log(list)} */}
+          <Box display="flex" flexWrap="wrap" mt="100px" sx={{ ml: "50px" }}>
             {list.map((item) => (
-              <SingleColor key={uuidv4()} id={uuidv4()} {...item} />
+              <SingleColor key={uuidv4()} {...item} />
             ))}
-          </div>
+          </Box>
         </Grid>
       </Grid>
     </Container>

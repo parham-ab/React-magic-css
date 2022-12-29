@@ -7,8 +7,9 @@ import copy from "copy-to-clipboard";
 import { ToastContainer } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import { notify } from "../functions/toast";
+import { Typography } from "@mui/material";
 
-const SingleColor = ({ weight, rgb, id }) => {
+const SingleColor = ({ weight, rgb }) => {
   const [finalSource, setFinalSource] = useState();
 
   // copy to clipboard function
@@ -25,10 +26,25 @@ const SingleColor = ({ weight, rgb, id }) => {
         width: "180px",
         height: "180px",
         cursor: "pointer",
+        m: "2px",
       }}
       onClick={copyToClipboard}
+      display="flex"
+      alignItems="center"
+      justifyContent="center"
     >
-      {weight}%
+      <Typography
+        variant="body2"
+        component="p"
+        sx={{
+          background: "#e4e4e4",
+          padding: "5px",
+          borderRadius: "10px",
+          boxShadow: 2,
+        }}
+      >
+        {weight}%
+      </Typography>
       <ToastContainer />
     </Box>
   );
