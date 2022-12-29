@@ -11,6 +11,11 @@ import { Box, Grid, TextField } from "@mui/material";
 import { useState } from "react";
 // components
 import SingleColor from "./SingleColor";
+// react toastify
+import { ToastContainer } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
+import { notify } from "../functions/toast";
+import { Typography } from "@mui/material";
 
 const ColorGenerator = () => {
   const [color, setColor] = useState("");
@@ -26,9 +31,10 @@ const ColorGenerator = () => {
       setList(colors);
     } catch (error) {
       setError(true);
-      console.log(error);
+      notify("error", "Please enter a valid color!");
     }
   };
+
   // dynamic title
   UseTitle("Magic CSS - Color Generator");
 
@@ -62,6 +68,7 @@ const ColorGenerator = () => {
           </Box>
         </Grid>
       </Grid>
+      <ToastContainer />
     </Container>
   );
 };
