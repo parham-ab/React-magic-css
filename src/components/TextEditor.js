@@ -143,13 +143,19 @@ const TextEditor = () => {
             margin: "1rem auto 0",
           }}
         >
-          <TextField
-            size="small"
-            label="Text"
-            variant="filled"
-            value={inputVal}
-            onChange={(e) => setInputVal(e.target.value)}
-          />
+          <Box
+            sx={{
+              margin: "30px 0",
+            }}
+          >
+            <TextField
+              size="small"
+              label="Text"
+              variant="filled"
+              value={inputVal}
+              onChange={(e) => setInputVal(e.target.value)}
+            />
+          </Box>
           {/* results */}
           <Grid
             item

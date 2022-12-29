@@ -11,7 +11,7 @@ import "react-toastify/dist/ReactToastify.css";
 import { notify } from "../functions/toast";
 import { Typography } from "@mui/material";
 
-const SingleColor = ({ weight, rgb }) => {
+const SingleColor = ({ rgb }) => {
   const [finalSource, setFinalSource] = useState();
   const hex = rgbToHex(...rgb);
 
