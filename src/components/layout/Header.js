@@ -99,7 +99,7 @@ const Header = () => {
           // width: 100,
           flexShrink: 1,
           "& .MuiDrawer-paper": {
-            width: 36,
+            width: 30,
             boxSizing: "border-box",
           },
         }}
@@ -113,6 +113,7 @@ const Header = () => {
                 className={`${
                   window.location.pathname === item.path && "active"
                 }`}
+                sx={{ padding: "5px" }}
               >
                 {item.icon}
               </IconButton>
@@ -124,7 +125,7 @@ const Header = () => {
       <AppBar
         position="fixed"
         sx={{
-          width: `calc(100% - ${36}px)`,
+          width: `calc(100% - ${30}px)`,
           bgcolor: "#1c2442",
           flexFlow: "inherit",
           justifyContent: "space-between",

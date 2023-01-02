@@ -1,11 +1,11 @@
-import React from 'react';
+import ReactMarkdown from "react-markdown";
 
-const Html = () => {
-    return (
-        <div>
-            
-        </div>
-    );
+const Html = ({ children }) => {
+  return (
+    <>
+      <ReactMarkdown>{children}</ReactMarkdown>
+    </>
+  );
 };
 
 export default Html;
