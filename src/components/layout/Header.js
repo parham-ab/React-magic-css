@@ -22,6 +22,7 @@ import ColorLensIcon from "@mui/icons-material/ColorLens";
 import ImageIcon from "@mui/icons-material/Image";
 import FormatSizeIcon from "@mui/icons-material/FormatSize";
 import FormatPaintIcon from "@mui/icons-material/FormatPaint";
+import { BsMarkdownFill } from "react-icons/bs";
 // react awesome button
 import { AwesomeButton } from "react-awesome-button";
 import "react-awesome-button/dist/styles.css";
@@ -76,6 +77,13 @@ const Header = () => {
         <FormatPaintIcon color="text.secondary" sx={{ fontSize: "16px" }} />
       ),
       path: "/color-generator",
+    },
+    {
+      text: "markdownGenerator",
+      icon: (
+        <BsMarkdownFill color="text.secondary" style={{ fontSize: "16px" }} />
+      ),
+      path: "/markdown",
     },
     {
       text: "ImageFilter",

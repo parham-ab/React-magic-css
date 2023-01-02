@@ -15,6 +15,7 @@ import TextEditor from "./components/TextEditor";
 import ScrollToTop from "./components/functions/ScrollTotop";
 // mui
 import { createTheme, ThemeProvider } from "@mui/material/styles";
+import MarkdownGenerator from "./components/MarkdownGenerator";
 // font customizing
 const theme = createTheme({
   typography: {
@@ -45,6 +46,7 @@ const App = () => {
           <Route path="/color-generator" element={<ColorGenerator />} />
           <Route path="/text-editor" element={<TextEditor />} />
           <Route path="/donation" element={<Donate />} />
+          <Route path="/markdown" element={<MarkdownGenerator />} />
           <Route path="/*" element={<Navigate to="/shadowGenerator" />} />
         </Routes>
         <ScrollToTop />
