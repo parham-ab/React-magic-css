@@ -35,7 +35,7 @@ const Text = () => {
             height: "500px",
             overflow: "auto",
             background: "#e9e9e9",
-            padding: "15px",
+            padding: "25px",
             borderRadius: "10px",
             margin: "40px auto 0",
             boxShadow: "rgba(0, 0, 0, 0.25) 0px 25px 50px -12px",
