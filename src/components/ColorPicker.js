@@ -9,21 +9,15 @@ import UseTitle from "../hooks/useTitle";
 import AssignmentIcon from "@mui/icons-material/Assignment";
 // copy to clipboard button
 import copy from "copy-to-clipboard";
-// react toastify
-import { ToastContainer } from "react-toastify";
-import "react-toastify/dist/ReactToastify.css";
-import { notify } from "./functions/toast";
+import { notify } from "../utils/toast";
 import { Container } from "@mui/system";
 
 const ColorPicker = () => {
   const [firstColor, setFirstColor] = useState("");
   const [finalSource, setFinalSource] = useState();
-
-  // change hanlder
   const changeHandle = (e) => {
     setFirstColor(e.hex);
   };
-  // copy to clipboard function
   const copyToClipboard = () => {
     copy(finalSource);
     notify("success", "Copied to clipboard ✔");
@@ -31,7 +25,6 @@ const ColorPicker = () => {
   useEffect(() => {
     setFinalSource(firstColor);
   }, [firstColor]);
-  // dynamic title
   UseTitle("Magic CSS - Color Picker");
 
   return (
@@ -49,7 +42,6 @@ const ColorPicker = () => {
           </Button>
         </Grid>
       </Grid>
-      <ToastContainer />
     </Container>
   );
 };

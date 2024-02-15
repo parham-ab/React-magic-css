@@ -1,8 +1,5 @@
-// react router dom
 import { useNavigate } from "react-router-dom";
-// react router dom
 import { Link } from "react-router-dom";
-// mui components
 import Box from "@mui/material/Box";
 import Drawer from "@mui/material/Drawer";
 import CssBaseline from "@mui/material/CssBaseline";
@@ -11,23 +8,17 @@ import Toolbar from "@mui/material/Toolbar";
 import List from "@mui/material/List";
 import Typography from "@mui/material/Typography";
 import { IconButton } from "@mui/material";
-// icons
 import GitHubIcon from "@mui/icons-material/GitHub";
-
-// react awesome button
 import { AwesomeButton } from "react-awesome-button";
 import "react-awesome-button/dist/styles.css";
 import { menuItems } from "../../constants/menuItems";
 
 const Header = () => {
   const navigate = useNavigate();
- 
-
   return (
     <Box display="flex">
       <Drawer
         sx={{
-          // width: 100,
           flexShrink: 1,
           "& .MuiDrawer-paper": {
             width: 30,

@@ -1,11 +1,6 @@
 import { useEffect, useState } from "react";
-// copy to clipboard button
 import copy from "copy-to-clipboard";
-// react toastify
-import { ToastContainer } from "react-toastify";
-import "react-toastify/dist/ReactToastify.css";
-import { notify } from "./functions/toast";
-// mui components
+import { notify } from "../utils/toast";
 import {
   Button,
   Container,
@@ -38,7 +33,6 @@ const TextShadowGenerator = () => {
     copy(`text-shadow:${finalSource}`);
     notify("success", "Copied to clipboard ✔");
   };
-  // dynamic title
   UseTitle("Magic CSS - Text shadow");
 
   return (
@@ -148,7 +142,6 @@ const TextShadowGenerator = () => {
           />
         </Grid>
       </Grid>
-      <ToastContainer />
     </Container>
   );
 };

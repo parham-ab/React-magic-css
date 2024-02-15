@@ -1,12 +1,6 @@
 import { useEffect, useState } from "react";
-// react toastify
-import { ToastContainer } from "react-toastify";
-import "react-toastify/dist/ReactToastify.css";
-// copy to clipboard button
 import copy from "copy-to-clipboard";
-// color picker
 import { SketchPicker } from "react-color";
-// mui components
 import {
   Button,
   Checkbox,
@@ -17,11 +11,8 @@ import {
   Typography,
 } from "@mui/material";
 import { Container } from "@mui/system";
-// icon
 import AssignmentIcon from "@mui/icons-material/Assignment";
-// react toastify
-import { notify } from "./functions/toast";
-// custom hooks
+import { notify } from "./../utils/toast";
 import UseTitle from "../hooks/useTitle";
 
 const ShadowGenerator = () => {
@@ -42,14 +33,11 @@ const ShadowGenerator = () => {
           `box-shadow:${x}px ${y}px ${blur}px ${spread}px ${color}`
         );
   }, [x, y, blur, spread, insetStatus, color]);
-  // copy to clipboard button
   const copyToClipboard = () => {
     copy(finalSource);
     notify("success", "Copied to clipboard ✔");
   };
-  // dynamic title
   UseTitle("Magic CSS - shadow generator");
-
   return (
     <Container>
       <Grid container className="boxshadow-container">
@@ -152,7 +140,6 @@ const ShadowGenerator = () => {
           </Button>
         </Grid>
       </Grid>
-      <ToastContainer />
     </Container>
   );
 };

@@ -1,11 +1,6 @@
 import { useEffect, useState } from "react";
-// copy to clipboard button
 import copy from "copy-to-clipboard";
-// react toastify
-import { ToastContainer } from "react-toastify";
-import "react-toastify/dist/ReactToastify.css";
-import { notify } from "./functions/toast";
-// mui components
+
 import {
   Button,
   Container,
@@ -19,12 +14,10 @@ import {
   Typography,
 } from "@mui/material";
 import { Box } from "@mui/system";
-// icon
 import AssignmentIcon from "@mui/icons-material/Assignment";
-// react color picker
 import { SketchPicker } from "react-color";
-// custom hooks
 import UseTitle from "../hooks/useTitle";
+import { notify } from "../utils/toast";
 
 const Gradient = () => {
   const [firstColor, setFirstColor] = useState("");
@@ -32,7 +25,6 @@ const Gradient = () => {
   const [angle, setAngle] = useState(0);
   const [gradientType, setGradientType] = useState("Linear");
   const [finalSource, setFinalSource] = useState();
-  // copy to clipboard button
   useEffect(() => {
     gradientType === "Linear"
       ? setFinalSource(
@@ -42,12 +34,10 @@ const Gradient = () => {
           `background:radial-gradient(circle,${firstColor},${secondColor})`
         );
   }, [firstColor, secondColor, angle, gradientType]);
-  // copy to clipboard function
   const copyToClipboard = () => {
     copy(finalSource);
     notify("success", "Copied to clipboard ✔");
   };
-  // dynamic title
   UseTitle("Magic CSS - gradient");
 
   return (
@@ -150,7 +140,6 @@ const Gradient = () => {
           </Box>
         </Grid>
       </Grid>
-      <ToastContainer />
     </Container>
   );
 };

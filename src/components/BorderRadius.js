@@ -1,11 +1,6 @@
 import { useEffect, useState } from "react";
-// copy to clipboard button
 import copy from "copy-to-clipboard";
-// react toastify
-import { ToastContainer } from "react-toastify";
-import "react-toastify/dist/ReactToastify.css";
-import { notify } from "./functions/toast";
-// mui components
+import { notify } from "../utils/toast";
 import {
   Box,
   Button,
@@ -22,21 +17,17 @@ import {
   Typography,
 } from "@mui/material";
 import { Container } from "@mui/system";
-// icon
 import AssignmentIcon from "@mui/icons-material/Assignment";
-// custom hooks
 import UseTitle from "../hooks/useTitle";
 
 const BorderRadius = () => {
   const [type, setType] = useState("Same on all sides");
   const [allRadius, setAllRadius] = useState(0);
   const [unit, setUnit] = useState("px");
-  // each sides radius
   const [topLeft, setTopLeft] = useState(0);
   const [topRight, setTopRight] = useState(0);
   const [bottomRight, setBottomRight] = useState(0);
   const [bottomLeft, setBottomLeft] = useState(0);
-  // final source code
   const [finalSource, setFinalSource] = useState("");
 
   useEffect(() => {
@@ -62,7 +53,6 @@ const BorderRadius = () => {
     copy(finalSource);
     notify("success", "Copied to clipboard ✔");
   };
-  // dynamic title
   UseTitle("Magic CSS - Border radius");
 
   return (
@@ -265,7 +255,6 @@ const BorderRadius = () => {
           </Button>
         </Grid>
       </Grid>
-      <ToastContainer />
     </Container>
   );
 };

@@ -1,27 +1,18 @@
 import { useState } from "react";
-// MUI components
 import { Box } from "@mui/system";
-// copy to clipboard button
 import copy from "copy-to-clipboard";
-// rgb to hex function
-import rgbToHex from "../../helper/colorFormat";
-// react toastify
-import { ToastContainer } from "react-toastify";
-import "react-toastify/dist/ReactToastify.css";
-import { notify } from "../functions/toast";
+import rgbToHex from "../../utils/colorFormat";
+import { notify } from "../../utils/toast";
 import { Typography } from "@mui/material";
 
 const SingleColor = ({ rgb }) => {
   const [finalSource, setFinalSource] = useState();
   const hex = rgbToHex(...rgb);
-
-  // copy to clipboard function
   const copyToClipboard = () => {
     setFinalSource(`background-color: rgb(${rgb.join(", ")})`);
     copy(finalSource);
     notify("success", "Copied to clipboard ✔");
   };
-
   return (
     <Box
       sx={{
@@ -48,7 +39,6 @@ const SingleColor = ({ rgb }) => {
       >
         {hex}
       </Typography>
-      <ToastContainer />
     </Box>
   );
 };

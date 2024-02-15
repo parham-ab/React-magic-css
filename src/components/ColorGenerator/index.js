@@ -1,28 +1,18 @@
 import { v4 as uuidv4 } from "uuid";
-// value js package
 import Values from "values.js";
-// icons
 import SearchIcon from "@mui/icons-material/Search";
-// img
 import colorListImg from "../../assets/img/colors.svg";
-// custom hooks
 import UseTitle from "../../hooks/useTitle";
-// MUI components
 import { Container } from "@mui/system";
 import { Box, Grid, TextField } from "@mui/material";
 import { useState } from "react";
-// components
 import SingleColor from "./SingleColor";
-// react toastify
-import { ToastContainer } from "react-toastify";
-import "react-toastify/dist/ReactToastify.css";
-import { notify } from "../functions/toast";
+import { notify } from "../../utils/toast";
 
 const ColorGenerator = () => {
   const [color, setColor] = useState("");
   const [error, setError] = useState(false);
   const [list, setList] = useState([]);
-  // generate color lists
   const handleSubmit = (e) => {
     e.preventDefault();
     try {
@@ -34,8 +24,6 @@ const ColorGenerator = () => {
       notify("error", "Please enter a valid color!");
     }
   };
-
-  // dynamic title
   UseTitle("Magic CSS - Color Generator");
 
   return (
@@ -70,7 +58,6 @@ const ColorGenerator = () => {
           </Box>
         </Grid>
       </Grid>
-      <ToastContainer />
     </Container>
   );
 };

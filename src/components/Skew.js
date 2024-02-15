@@ -1,16 +1,9 @@
 import { useEffect, useState } from "react";
-// copy to clipboard button
 import copy from "copy-to-clipboard";
-// react toastify
-import { ToastContainer } from "react-toastify";
-import "react-toastify/dist/ReactToastify.css";
-import { notify } from "./functions/toast";
-// mui components
+import { notify } from "../utils/toast";
 import { Button, Container, Grid, Slider, Typography } from "@mui/material";
 import { Box } from "@mui/system";
-// icon
 import AssignmentIcon from "@mui/icons-material/Assignment";
-// custom hooks
 import UseTitle from "../hooks/useTitle";
 
 const Skew = () => {
@@ -21,12 +14,10 @@ const Skew = () => {
   useEffect(() => {
     setFinalSource(`transform: skew(${SkewX}deg, ${SkewY}deg);`);
   }, [SkewX, SkewY]);
-  //   copy to clipboard function
   const copyToClipboard = () => {
     copy(finalSource);
     notify("success", "Copied to clipboard ✔");
   };
-  // dynamic title
   UseTitle("Magic CSS - Skew");
 
   return (
@@ -90,7 +81,6 @@ const Skew = () => {
           ></Box>
         </Grid>
       </Grid>
-      <ToastContainer />
     </Container>
   );
 };

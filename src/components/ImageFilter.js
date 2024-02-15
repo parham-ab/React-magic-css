@@ -1,5 +1,4 @@
 import { useEffect, useState } from "react";
-// mui components
 import {
   Box,
   Button,
@@ -9,18 +8,12 @@ import {
   Slider,
   Typography,
 } from "@mui/material";
-// icons
 import PhotoCamera from "@mui/icons-material/PhotoCamera";
 import AssignmentIcon from "@mui/icons-material/Assignment";
 import RestartAltIcon from "@mui/icons-material/RestartAlt";
-// custom hooks
 import UseTitle from "../hooks/useTitle";
-// copy to clipboard button
 import copy from "copy-to-clipboard";
-// react toastify
-import { ToastContainer } from "react-toastify";
-import "react-toastify/dist/ReactToastify.css";
-import { notify } from "./functions/toast";
+import { notify } from "../utils/toast";
 
 const ImageFilter = () => {
   const [greyscaleVal, setGreyscaleVal] = useState(0);
@@ -71,10 +64,7 @@ const ImageFilter = () => {
     copy(finalSource);
     notify("success", "Copied to clipboard ✔");
   };
-
-  // dynamic title
   UseTitle("Magic CSS - Image filter");
-
   return (
     <Container>
       <Grid
@@ -262,7 +252,6 @@ const ImageFilter = () => {
           </Box>
         </Grid>
       </Grid>
-      <ToastContainer />
     </Container>
   );
 };
