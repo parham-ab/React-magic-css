@@ -1,11 +1,7 @@
 import React, { useEffect, useState } from "react";
-// mui components
 import { Button, Grid } from "@mui/material";
-// react color picker
 import { SketchPicker } from "react-color";
-// custom hooks
 import UseTitle from "../hooks/useTitle";
-// icon
 import AssignmentIcon from "@mui/icons-material/Assignment";
 import { Container } from "@mui/system";
 import { copyToClipboard } from './../utils/copyToClipboard';

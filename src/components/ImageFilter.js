@@ -46,7 +46,6 @@ const ImageFilter = () => {
   function onImageChange(e) {
     setImg(URL.createObjectURL(e.target.files[0]));
   }
-  //   reset input values (sliders)
   const resetBtn = () => {
     setGreyscaleVal(0);
     setBlurVal(0);

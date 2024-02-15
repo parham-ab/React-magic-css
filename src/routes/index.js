@@ -1,4 +1,3 @@
-// components
 import ShadowGenerator from "../components/ShadowGenerator";
 import Gradient from "../components/Gradient";
 import TextShadowGenerator from "../components/TextShadowGenerator";

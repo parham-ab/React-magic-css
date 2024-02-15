@@ -8,11 +8,8 @@ import {
   Typography,
 } from "@mui/material";
 import { Box } from "@mui/system";
-// icon
 import AssignmentIcon from "@mui/icons-material/Assignment";
-// react color picker
 import { SketchPicker } from "react-color";
-// custom hooks
 import UseTitle from "../hooks/useTitle";
 import { copyToClipboard } from "../utils/copyToClipboard";
 
