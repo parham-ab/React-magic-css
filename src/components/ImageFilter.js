@@ -12,8 +12,7 @@ import PhotoCamera from "@mui/icons-material/PhotoCamera";
 import AssignmentIcon from "@mui/icons-material/Assignment";
 import RestartAltIcon from "@mui/icons-material/RestartAlt";
 import UseTitle from "../hooks/useTitle";
-import copy from "copy-to-clipboard";
-import { notify } from "../utils/toast";
+import { copyToClipboard } from './../utils/copyToClipboard';
 
 const ImageFilter = () => {
   const [greyscaleVal, setGreyscaleVal] = useState(0);
@@ -58,11 +57,6 @@ const ImageFilter = () => {
     setContrastVal(100);
     setHueVal(0);
     setInvertVal(0);
-  };
-  // copy to clipboard function
-  const copyToClipboard = () => {
-    copy(finalSource);
-    notify("success", "Copied to clipboard ✔");
   };
   UseTitle("Magic CSS - Image filter");
   return (
@@ -229,7 +223,7 @@ const ImageFilter = () => {
           </IconButton>
 
           <Button
-            onClick={copyToClipboard}
+            onClick={() => copyToClipboard(finalSource)}
             sx={{ marginY: "50px" }}
             variant="contained"
             startIcon={<AssignmentIcon />}

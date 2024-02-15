@@ -1,6 +1,4 @@
 import { useEffect, useState } from "react";
-import copy from "copy-to-clipboard";
-import { notify } from "../utils/toast";
 import {
   Button,
   Container,
@@ -16,6 +14,7 @@ import AssignmentIcon from "@mui/icons-material/Assignment";
 import { SketchPicker } from "react-color";
 // custom hooks
 import UseTitle from "../hooks/useTitle";
+import { copyToClipboard } from "../utils/copyToClipboard";
 
 const TextShadowGenerator = () => {
   const [testText, setTestText] = useState("");
@@ -28,11 +27,6 @@ const TextShadowGenerator = () => {
   useEffect(() => {
     setFinalSource(`${x}px ${y}px ${blur}px ${color}`);
   }, [x, y, blur, color]);
-  // copy to clipboard button
-  const copyToClipboard = () => {
-    copy(`text-shadow:${finalSource}`);
-    notify("success", "Copied to clipboard ✔");
-  };
   UseTitle("Magic CSS - Text shadow");
 
   return (
@@ -55,7 +49,7 @@ const TextShadowGenerator = () => {
             onChange={(e) => setTestText(e.target.value)}
           />
           <Button
-            onClick={copyToClipboard}
+            onClick={() => copyToClipboard(finalSource)}
             sx={{ marginY: "10px", width: "40%" }}
             variant="contained"
             startIcon={<AssignmentIcon />}

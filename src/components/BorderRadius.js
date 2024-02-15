@@ -1,6 +1,4 @@
 import { useEffect, useState } from "react";
-import copy from "copy-to-clipboard";
-import { notify } from "../utils/toast";
 import {
   Box,
   Button,
@@ -19,6 +17,7 @@ import {
 import { Container } from "@mui/system";
 import AssignmentIcon from "@mui/icons-material/Assignment";
 import UseTitle from "../hooks/useTitle";
+import { copyToClipboard } from './../utils/copyToClipboard';
 
 const BorderRadius = () => {
   const [type, setType] = useState("Same on all sides");
@@ -48,11 +47,6 @@ const BorderRadius = () => {
       );
     }
   }, [type, allRadius, unit, topLeft, topRight, bottomRight, bottomLeft]);
-
-  const copyToClipboard = () => {
-    copy(finalSource);
-    notify("success", "Copied to clipboard ✔");
-  };
   UseTitle("Magic CSS - Border radius");
 
   return (
@@ -246,7 +240,7 @@ const BorderRadius = () => {
             }}
           ></Box>
           <Button
-            onClick={copyToClipboard}
+            onClick={() => copyToClipboard(finalSource)}
             sx={{ marginY: "50px", alignItems: "center" }}
             variant="contained"
             startIcon={<AssignmentIcon />}

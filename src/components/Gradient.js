@@ -1,6 +1,4 @@
 import { useEffect, useState } from "react";
-import copy from "copy-to-clipboard";
-
 import {
   Button,
   Container,
@@ -17,7 +15,7 @@ import { Box } from "@mui/system";
 import AssignmentIcon from "@mui/icons-material/Assignment";
 import { SketchPicker } from "react-color";
 import UseTitle from "../hooks/useTitle";
-import { notify } from "../utils/toast";
+import { copyToClipboard } from './../utils/copyToClipboard';
 
 const Gradient = () => {
   const [firstColor, setFirstColor] = useState("");
@@ -34,10 +32,6 @@ const Gradient = () => {
           `background:radial-gradient(circle,${firstColor},${secondColor})`
         );
   }, [firstColor, secondColor, angle, gradientType]);
-  const copyToClipboard = () => {
-    copy(finalSource);
-    notify("success", "Copied to clipboard ✔");
-  };
   UseTitle("Magic CSS - gradient");
 
   return (
@@ -110,7 +104,7 @@ const Gradient = () => {
                 </Box>
               )}
               <Button
-                onClick={copyToClipboard}
+                onClick={() => copyToClipboard(finalSource)}
                 sx={{ marginY: "50px" }}
                 variant="contained"
                 startIcon={<AssignmentIcon />}

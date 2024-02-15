@@ -1,10 +1,9 @@
 import { useEffect, useState } from "react";
-import copy from "copy-to-clipboard";
-import { notify } from "../utils/toast";
 import { Button, Container, Grid, Slider, Typography } from "@mui/material";
 import { Box } from "@mui/system";
 import AssignmentIcon from "@mui/icons-material/Assignment";
 import UseTitle from "../hooks/useTitle";
+import { copyToClipboard } from "../utils/copyToClipboard";
 
 const Skew = () => {
   const [SkewX, setSkewX] = useState(0);
@@ -14,10 +13,7 @@ const Skew = () => {
   useEffect(() => {
     setFinalSource(`transform: skew(${SkewX}deg, ${SkewY}deg);`);
   }, [SkewX, SkewY]);
-  const copyToClipboard = () => {
-    copy(finalSource);
-    notify("success", "Copied to clipboard ✔");
-  };
+
   UseTitle("Magic CSS - Skew");
 
   return (
@@ -63,7 +59,7 @@ const Skew = () => {
             size="small"
             variant="contained"
             sx={{ width: "100%" }}
-            onClick={copyToClipboard}
+            onClick={() => copyToClipboard(finalSource)}
             startIcon={<AssignmentIcon />}
           >
             Copy

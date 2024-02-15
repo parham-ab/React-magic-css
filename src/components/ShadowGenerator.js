@@ -1,5 +1,4 @@
 import { useEffect, useState } from "react";
-import copy from "copy-to-clipboard";
 import { SketchPicker } from "react-color";
 import {
   Button,
@@ -12,8 +11,8 @@ import {
 } from "@mui/material";
 import { Container } from "@mui/system";
 import AssignmentIcon from "@mui/icons-material/Assignment";
-import { notify } from "./../utils/toast";
 import UseTitle from "../hooks/useTitle";
+import { copyToClipboard } from "../utils/copyToClipboard";
 
 const ShadowGenerator = () => {
   const [x, setX] = useState(0);
@@ -33,10 +32,7 @@ const ShadowGenerator = () => {
           `box-shadow:${x}px ${y}px ${blur}px ${spread}px ${color}`
         );
   }, [x, y, blur, spread, insetStatus, color]);
-  const copyToClipboard = () => {
-    copy(finalSource);
-    notify("success", "Copied to clipboard ✔");
-  };
+
   UseTitle("Magic CSS - shadow generator");
   return (
     <Container>
@@ -53,7 +49,7 @@ const ShadowGenerator = () => {
             }}
           ></div>
         </Grid>
-        <Grid item mt={5} xs={12} sx={{ margin: "4rem auto" }}>
+        <Grid item xs={12} sx={{ margin: " auto" }}>
           <Typography variant="h5" color="text.secondary" textAlign="center">
             X
           </Typography>
@@ -131,7 +127,7 @@ const ShadowGenerator = () => {
             onChangeComplete={(e) => setColor(e.hex)}
           />
           <Button
-            onClick={copyToClipboard}
+            onClick={() => copyToClipboard(finalSource)}
             sx={{ marginY: "50px", width: "100%" }}
             variant="contained"
             startIcon={<AssignmentIcon />}

@@ -1,18 +1,10 @@
-import { useState } from "react";
 import { Box } from "@mui/system";
-import copy from "copy-to-clipboard";
 import rgbToHex from "../../utils/colorFormat";
-import { notify } from "../../utils/toast";
 import { Typography } from "@mui/material";
+import { copyToClipboard } from "./../../utils/copyToClipboard";
 
 const SingleColor = ({ rgb }) => {
-  const [finalSource, setFinalSource] = useState();
   const hex = rgbToHex(...rgb);
-  const copyToClipboard = () => {
-    setFinalSource(`background-color: rgb(${rgb.join(", ")})`);
-    copy(finalSource);
-    notify("success", "Copied to clipboard ✔");
-  };
   return (
     <Box
       sx={{
@@ -22,7 +14,9 @@ const SingleColor = ({ rgb }) => {
         cursor: "pointer",
         m: "2px",
       }}
-      onClick={copyToClipboard}
+      onClick={() =>
+        copyToClipboard(`background-color: rgb(${rgb.join(", ")})`)
+      }
       display="flex"
       alignItems="center"
       justifyContent="center"
@@ -42,5 +36,4 @@ const SingleColor = ({ rgb }) => {
     </Box>
   );
 };
-
 export default SingleColor;

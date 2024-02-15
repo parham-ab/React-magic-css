@@ -1,7 +1,6 @@
 import { useEffect, useState } from "react";
-import copy from "copy-to-clipboard";
 import UseTitle from "../hooks/useTitle";
-
+// () => copyToClipboard(finalSource)
 const BorderGenerator = () => {
     
   UseTitle("Magic CSS - Border Generator");

@@ -1,4 +1,4 @@
-// mui components
+import { copyToClipboard } from './../../utils/copyToClipboard';
 import {
   Button,
   Card,
@@ -7,8 +7,6 @@ import {
   CardMedia,
   Typography,
 } from "@mui/material";
-// copy to clipboard button
-import copy from "copy-to-clipboard";
 
 const DonateCard = ({ data }) => {
   return (
@@ -41,7 +39,7 @@ const DonateCard = ({ data }) => {
           size="small"
           variant="contained"
           sx={{ width: "100%" }}
-          onClick={() => copy(data.walletId)}
+          onClick={() => copyToClipboard(data.walletId)}
         >
           Copy
         </Button>
