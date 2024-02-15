@@ -14,19 +14,10 @@ import ColorGenerator from "./components/ColorGenerator";
 import TextEditor from "./components/TextEditor";
 import ScrollToTop from "./components/functions/ScrollTotop";
 // mui
-import { createTheme, ThemeProvider } from "@mui/material/styles";
+import { ThemeProvider } from "@mui/material/styles";
 import MarkdownGenerator from "./components/MarkdownGenerator";
-// font customizing
-const theme = createTheme({
-  typography: {
-    fontFamily: ["Quicksand"].join(","),
-    fontSize: 14,
-    fontWeightLight: 400,
-    fontWeightMedium: 500,
-    fontWeightRegular: 600,
-    fontWeightBold: 700,
-  },
-});
+import BorderGenerator from "./components/BorderGenerator";
+import { theme } from "./utils/theme";
 
 const App = () => {
   return (
@@ -42,6 +33,7 @@ const App = () => {
           <Route path="/border-radius" element={<BorderRadius />} />
           <Route path="/image-filter" element={<ImageFilter />} />
           <Route path="/skew" element={<Skew />} />
+          <Route path="/borderGenerator" element={<BorderGenerator />} />
           <Route path="/color-picker" element={<ColorPicker />} />
           <Route path="/color-generator" element={<ColorGenerator />} />
           <Route path="/text-editor" element={<TextEditor />} />
