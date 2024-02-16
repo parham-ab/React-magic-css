@@ -8,7 +8,6 @@ import Skew from "../components/Skew";
 import ColorPicker from "../components/ColorPicker";
 import ColorGenerator from "../components/ColorGenerator";
 import TextEditor from "../components/TextEditor";
-import BorderGenerator from "../components/BorderGenerator";
 import MarkdownGenerator from "../components/MarkdownGenerator";
 
 const mainRoutes = [
@@ -46,11 +45,6 @@ const mainRoutes = [
     title: "skew",
     path: "/skew",
     component: Skew,
-  },
-  {
-    title: "borderGenerator",
-    path: "/borderGenerator",
-    component: BorderGenerator,
   },
   {
     title: "color-picker",

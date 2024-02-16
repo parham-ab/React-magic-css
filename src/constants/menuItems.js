@@ -8,7 +8,6 @@ import ImageIcon from "@mui/icons-material/Image";
 import FormatSizeIcon from "@mui/icons-material/FormatSize";
 import FormatPaintIcon from "@mui/icons-material/FormatPaint";
 import { BsMarkdownFill } from "react-icons/bs";
-import BorderOuterIcon from "@mui/icons-material/BorderOuter";
 
 export const menuItems = [
   {
@@ -39,11 +38,6 @@ export const menuItems = [
     text: "skew",
     icon: <AspectRatioIcon color="text.secondary" sx={{ fontSize: "16px" }} />,
     path: "/skew",
-  },
-  {
-    text: "borderGenerator",
-    icon: <BorderOuterIcon color="text.secondary" sx={{ fontSize: "16px" }} />,
-    path: "/borderGenerator",
   },
   {
     text: "textGenerator",
