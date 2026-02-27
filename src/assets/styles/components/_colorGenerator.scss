@@ -3,3 +3,69 @@
   margin: auto;
   width: 700px;
 }
+.color-grid-wrapper {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(160px, 1fr));
+  gap: 7px;
+  width: 100%;
+  padding: 12px 0;
+}
+
+.search-field .MuiFilledInput-root {
+  background: rgba(255, 255, 255, 0.06) !important;
+  border-radius: 14px !important;
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  transition:
+    border-color 0.25s,
+    background 0.25s;
+  font-family: "Space Mono", monospace;
+}
+
+.search-field .MuiFilledInput-root:hover {
+  background: rgba(255, 255, 255, 0.09) !important;
+  border-color: rgba(255, 255, 255, 0.25);
+}
+
+.search-field .MuiFilledInput-root.Mui-focused {
+  background: rgba(255, 255, 255, 0.1) !important;
+  border-color: rgba(255, 200, 100, 0.6);
+}
+
+.search-field .MuiFilledInput-root::before,
+.search-field .MuiFilledInput-root::after {
+  display: none;
+}
+
+.search-field .MuiInputLabel-root {
+  color: rgba(255, 255, 255, 0.4);
+  font-size: 0.85rem;
+  letter-spacing: 0.04em;
+}
+
+.search-field .MuiInputLabel-root.Mui-focused {
+  color: rgba(255, 200, 100, 0.9);
+}
+
+.search-field .MuiFilledInput-input {
+  color: #fff;
+  font-size: 0.95rem;
+}
+
+.color-tile {
+  transition:
+    transform 0.2s ease,
+    box-shadow 0.2s ease;
+}
+
+.color-tile:hover {
+  transform: translateY(-4px) scale(1.03);
+  z-index: 2;
+}
+
+.empty-state-img {
+  filter: drop-shadow(0 0 40px rgba(255, 200, 100, 0.15));
+  max-width: 340px;
+  margin: 0 auto;
+  display: block;
+  opacity: 0.85;
+}

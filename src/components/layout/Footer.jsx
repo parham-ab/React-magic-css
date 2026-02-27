@@ -6,7 +6,6 @@ const Footer = () => {
       container
       sx={{
         backgroundColor: "#1c2442",
-        marginTop: "50px",
         flexFlow: "column",
       }}
     >

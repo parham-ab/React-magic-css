@@ -51,16 +51,10 @@ const Header = () => {
           flexFlow: "inherit",
           justifyContent: "space-between",
           alignItems: "center",
-          padding: "0 37px",
         }}
       >
         <Toolbar>
-          <Typography
-            variant="h6"
-            noWrap
-            component="div"
-            sx={{ display: { xs: "none", sm: "block" } }}
-          >
+          <Typography variant="h6" component="h1">
             Magic CSS
           </Typography>
         </Toolbar>
