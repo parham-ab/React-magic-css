@@ -55,17 +55,6 @@ const Header = () => {
           padding: "0 37px",
         }}
       >
-        <Link to="/donation">
-          <AwesomeButton
-            type="primary"
-            style={{
-              fontSize: "12px",
-              padding: "4px",
-            }}
-          >
-            Buy me a Coffee
-          </AwesomeButton>
-        </Link>
         <Toolbar>
           <Typography
             variant="h6"

@@ -12,7 +12,7 @@ import PhotoCamera from "@mui/icons-material/PhotoCamera";
 import AssignmentIcon from "@mui/icons-material/Assignment";
 import RestartAltIcon from "@mui/icons-material/RestartAlt";
 import UseTitle from "../hooks/useTitle";
-import { copyToClipboard } from './../utils/copyToClipboard';
+import { copyToClipboard } from '../utils/copyToClipboard';
 
 const ImageFilter = () => {
   const [greyscaleVal, setGreyscaleVal] = useState(0);

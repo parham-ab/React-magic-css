@@ -5,7 +5,7 @@ const Footer = () => {
     <Grid
       container
       sx={{
-        backgroundColor: "#d2cfff",
+        backgroundColor: "#1c2442",
         marginTop: "50px",
         flexFlow: "column",
       }}
@@ -13,7 +13,7 @@ const Footer = () => {
       <Grid item sx={{ margin: "15px auto" }} xs={8} sm={6} md={4} lg={3}>
         <Typography
           variant="body1"
-          color="text.secondary"
+          color="#fff"
           fontWeight={700}
           fontSize={"15px"}
         >

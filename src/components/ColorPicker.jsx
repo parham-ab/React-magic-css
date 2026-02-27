@@ -4,7 +4,7 @@ import { SketchPicker } from "react-color";
 import UseTitle from "../hooks/useTitle";
 import AssignmentIcon from "@mui/icons-material/Assignment";
 import { Container } from "@mui/system";
-import { copyToClipboard } from './../utils/copyToClipboard';
+import { copyToClipboard } from '../utils/copyToClipboard';
 
 const ColorPicker = () => {
   const [firstColor, setFirstColor] = useState("");

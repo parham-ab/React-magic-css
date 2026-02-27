@@ -3,7 +3,6 @@ import Gradient from "../components/Gradient";
 import TextShadowGenerator from "../components/TextShadowGenerator";
 import BorderRadius from "../components/BorderRadius";
 import ImageFilter from "../components/ImageFilter";
-import Donate from "../components/donation";
 import Skew from "../components/Skew";
 import ColorPicker from "../components/ColorPicker";
 import ColorGenerator from "../components/ColorGenerator";
@@ -60,11 +59,6 @@ const mainRoutes = [
     title: "text-editor",
     path: "/text-editor",
     component: TextEditor,
-  },
-  {
-    title: "donation",
-    path: "/donation",
-    component: Donate,
   },
   {
     title: "markdown",

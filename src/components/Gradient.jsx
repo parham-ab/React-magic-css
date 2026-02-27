@@ -15,7 +15,7 @@ import { Box } from "@mui/system";
 import AssignmentIcon from "@mui/icons-material/Assignment";
 import { SketchPicker } from "react-color";
 import UseTitle from "../hooks/useTitle";
-import { copyToClipboard } from './../utils/copyToClipboard';
+import { copyToClipboard } from '../utils/copyToClipboard';
 
 const Gradient = () => {
   const [firstColor, setFirstColor] = useState("");

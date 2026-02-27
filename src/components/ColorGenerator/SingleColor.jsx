@@ -1,7 +1,7 @@
 import { Box } from "@mui/system";
 import rgbToHex from "../../utils/colorFormat";
 import { Typography } from "@mui/material";
-import { copyToClipboard } from "./../../utils/copyToClipboard";
+import { copyToClipboard } from "../../utils/copyToClipboard";
 
 const SingleColor = ({ rgb }) => {
   const hex = rgbToHex(...rgb);
