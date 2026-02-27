@@ -1,5 +1,4 @@
 import { useNavigate } from "react-router-dom";
-import { Link } from "react-router-dom";
 import Box from "@mui/material/Box";
 import Drawer from "@mui/material/Drawer";
 import CssBaseline from "@mui/material/CssBaseline";
@@ -9,7 +8,6 @@ import List from "@mui/material/List";
 import Typography from "@mui/material/Typography";
 import { IconButton } from "@mui/material";
 import GitHubIcon from "@mui/icons-material/GitHub";
-import { AwesomeButton } from "react-awesome-button";
 import "react-awesome-button/dist/styles.css";
 import { menuItems } from "../../constants/menuItems";
 
@@ -23,6 +21,7 @@ const Header = () => {
           "& .MuiDrawer-paper": {
             width: 30,
             boxSizing: "border-box",
+            bgcolor: "#1c2442",
           },
         }}
         variant="permanent"
@@ -35,7 +34,7 @@ const Header = () => {
                 className={`${
                   window.location.pathname === item.path && "active"
                 }`}
-                sx={{ padding: "5px" }}
+                sx={{ padding: "5px", color: "white" }}
               >
                 {item.icon}
               </IconButton>

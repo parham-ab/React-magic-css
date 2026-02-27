@@ -3,7 +3,7 @@ import Values from "values.js";
 import SearchIcon from "@mui/icons-material/Search";
 import colorListImg from "../../assets/img/colors.svg";
 import UseTitle from "../../hooks/useTitle";
-import { Container } from "@mui/system";
+import { Container, minHeight } from "@mui/system";
 import { Box, Grid, TextField } from "@mui/material";
 import { useState } from "react";
 import SingleColor from "./SingleColor";
@@ -49,7 +49,12 @@ const ColorGenerator = () => {
               ),
             }}
           />
-          <Box display="flex" flexWrap="wrap" mt="100px" sx={{ ml: "50px" }}>
+          <Box
+            display="flex"
+            flexWrap="wrap"
+            mt="100px"
+            sx={{ ml: "50px", minHeight: "60vh" }}
+          >
             {list.length ? (
               list.map((item) => <SingleColor key={uuidv4()} {...item} />)
             ) : (
