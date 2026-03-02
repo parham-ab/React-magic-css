@@ -40,7 +40,7 @@ const ColorGenerator = () => {
   UseTitle("Magic CSS - Color Generator");
 
   return (
-    <Container maxWidth="lg">
+    <Container>
       {/* Header */}
       <Box textAlign="center" pt={5} pb={3}>
         <Typography

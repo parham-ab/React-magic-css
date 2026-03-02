@@ -2,7 +2,7 @@ import Header from "./Header";
 import Footer from "./Footer";
 import Box from "@mui/material/Box";
 
-const LayOut = ({ children }) => {
+const Layout = ({ children }) => {
   return (
     <Box
       sx={{
@@ -31,4 +31,4 @@ const LayOut = ({ children }) => {
   );
 };
 
-export default LayOut;
+export default Layout;

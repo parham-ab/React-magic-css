@@ -15,55 +15,55 @@ export const menuItems = [
     icon: (
       <AutoFixNormalIcon color="text.secondary" sx={{ fontSize: "16px" }} />
     ),
-    path: "/shadowGenerator",
+    path: "/pages/shadow-generator",
   },
   {
     text: "gradient",
     icon: <GradientIcon color="text.secondary" sx={{ fontSize: "16px" }} />,
-    path: "/gradient",
+    path: "/pages/gradient",
   },
   {
     text: "TextShadowGenerator",
     icon: (
       <FormatColorTextIcon color="text.secondary" sx={{ fontSize: "16px" }} />
     ),
-    path: "/TextShadowGenerator",
+    path: "/pages/TextShadowGenerator",
   },
   {
     text: "BorderRadius",
     icon: <VignetteIcon color="text.secondary" sx={{ fontSize: "16px" }} />,
-    path: "/border-radius",
+    path: "/pages/border-radius",
   },
   {
     text: "skew",
     icon: <AspectRatioIcon color="text.secondary" sx={{ fontSize: "16px" }} />,
-    path: "/skew",
+    path: "/pages/skew",
   },
   {
     text: "textGenerator",
     icon: <ColorLensIcon color="text.secondary" sx={{ fontSize: "16px" }} />,
-    path: "/color-picker",
+    path: "/pages/color-picker",
   },
   {
     text: "textEditor",
     icon: <FormatSizeIcon color="text.secondary" sx={{ fontSize: "16px" }} />,
-    path: "/text-editor",
+    path: "/pages/text-editor",
   },
   {
     text: "colorGenerator",
     icon: <FormatPaintIcon color="text.secondary" sx={{ fontSize: "16px" }} />,
-    path: "/color-generator",
+    path: "/pages/color-generator",
   },
   {
     text: "markdownGenerator",
     icon: (
       <BsMarkdownFill color="text.secondary" style={{ fontSize: "16px" }} />
     ),
-    path: "/markdown",
+    path: "/pages/markdown",
   },
   {
     text: "ImageFilter",
     icon: <ImageIcon color="text.secondary" sx={{ fontSize: "16px" }} />,
-    path: "/image-filter",
+    path: "/pages/image-filter",
   },
 ];

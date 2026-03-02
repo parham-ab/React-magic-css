@@ -2,8 +2,8 @@ import { useEffect, useState } from "react";
 import { Button, Container, Grid, Slider, Typography } from "@mui/material";
 import { Box } from "@mui/system";
 import AssignmentIcon from "@mui/icons-material/Assignment";
-import UseTitle from "../hooks/useTitle";
-import { copyToClipboard } from "../utils/copyToClipboard";
+import { copyToClipboard } from "../../utils/copyToClipboard";
+import UseTitle from "../../hooks/useTitle";
 
 const Skew = () => {
   const [SkewX, setSkewX] = useState(0);

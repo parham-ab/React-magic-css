@@ -13,8 +13,8 @@ import {
 import { Container } from "@mui/system";
 import ContentCopyIcon from "@mui/icons-material/ContentCopy";
 import CheckIcon from "@mui/icons-material/Check";
-import UseTitle from "../hooks/useTitle";
-import { copyToClipboard } from "../utils/copyToClipboard";
+import { copyToClipboard } from "../../utils/copyToClipboard";
+import UseTitle from "../../hooks/useTitle";
 
 const SliderControl = ({ label, min, max, value, onChange }) => (
   <>
@@ -90,7 +90,7 @@ const ShadowGenerator = () => {
   UseTitle("Magic CSS - Shadow Generator");
 
   return (
-    <Container maxWidth="lg">
+    <Container>
       {/* Header */}
       <Box textAlign="center" pt={5} pb={3}>
         <Typography

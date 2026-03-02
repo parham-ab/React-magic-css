@@ -16,8 +16,8 @@ import {
 } from "@mui/material";
 import { Container } from "@mui/system";
 import AssignmentIcon from "@mui/icons-material/Assignment";
-import UseTitle from "../hooks/useTitle";
-import { copyToClipboard } from '../utils/copyToClipboard';
+import UseTitle from "../../hooks/useTitle";
+import { copyToClipboard } from '../../utils/copyToClipboard';
 
 const BorderRadius = () => {
   const [type, setType] = useState("Same on all sides");

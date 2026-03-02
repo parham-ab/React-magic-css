@@ -9,7 +9,7 @@ import Typography from "@mui/material/Typography";
 import { IconButton } from "@mui/material";
 import GitHubIcon from "@mui/icons-material/GitHub";
 import "react-awesome-button/dist/styles.css";
-import { menuItems } from "../../constants/menuItems";
+import { menuItems } from "../constants/menuItems";
 
 const Header = () => {
   const navigate = useNavigate();
@@ -28,7 +28,7 @@ const Header = () => {
         anchor="left"
       >
         <List sx={{ padding: "2px" }}>
-          {menuItems.map((item) => (
+          {menuItems?.map((item) => (
             <div key={item.path} onClick={() => navigate(`${item.path}`)}>
               <IconButton
                 className={`${

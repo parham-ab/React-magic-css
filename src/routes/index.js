@@ -1,68 +1,63 @@
-import ShadowGenerator from "../components/ShadowGenerator";
-import Gradient from "../components/Gradient";
-import TextShadowGenerator from "../components/TextShadowGenerator";
-import BorderRadius from "../components/BorderRadius";
-import ImageFilter from "../components/ImageFilter";
-import Skew from "../components/Skew";
-import ColorPicker from "../components/ColorPicker";
-import ColorGenerator from "../components/ColorGenerator";
-import TextEditor from "../components/TextEditor";
-import MarkdownGenerator from "../components/MarkdownGenerator";
+import BorderRadius from "../pages/border-radius/BorderRadius";
+import ColorGenerator from "../pages/color-generator";
+import ColorPicker from "../pages/color-picker";
+import Gradient from "../pages/gradient";
+import ImageFilter from "../pages/image-filter/ImageFilter";
+import MarkdownGenerator from "../pages/markdown-generator";
+import ShadowGenerator from "../pages/shadow-generator";
+import Skew from "../pages/skew";
+import TextEditor from "../pages/text-editor";
+import TextShadowGenerator from "../pages/text-shadow-generator";
 
 const mainRoutes = [
   {
     title: "shadowGenerator",
-    path: "/shadowGenerator",
+    path: "/pages/shadow-generator",
     component: ShadowGenerator,
   },
   {
     title: "gradient",
-    path: "/gradient",
+    path: "/pages/gradient",
     component: Gradient,
   },
   {
     title: "textShadowGenerator",
-    path: "/textShadowGenerator",
+    path: "/pages/textShadowGenerator",
     component: TextShadowGenerator,
   },
   {
     title: "border-radius",
-    path: "/border-radius",
+    path: "/pages/border-radius",
     component: BorderRadius,
   },
   {
     title: "image-filter",
-    path: "/image-filter",
+    path: "/pages/image-filter",
     component: ImageFilter,
   },
   {
     title: "skew",
-    path: "/skew",
-    component: Skew,
-  },
-  {
-    title: "skew",
-    path: "/skew",
+    path: "/pages/skew",
     component: Skew,
   },
   {
     title: "color-picker",
-    path: "/color-picker",
+    path: "/pages/color-picker",
     component: ColorPicker,
   },
   {
     title: "color-generator",
-    path: "/color-generator",
+    path: "/pages/color-generator",
     component: ColorGenerator,
   },
   {
     title: "text-editor",
-    path: "/text-editor",
+    path: "/pages/text-editor",
     component: TextEditor,
   },
   {
     title: "markdown",
-    path: "/markdown",
+    path: "/pages/markdown",
     component: MarkdownGenerator,
   },
 ];

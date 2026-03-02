@@ -77,7 +77,7 @@ const TextEditor = () => {
   };
 
   return (
-    <Container maxWidth="lg">
+    <Container>
       <Grid container flexDirection="column">
         <Grid item sx={{ margin: "60px auto" }}>
           <Paper

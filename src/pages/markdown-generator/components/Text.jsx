@@ -1,6 +1,6 @@
+import { useState } from "react";
 import { Grid } from "@mui/material";
 import { Box } from "@mui/system";
-import React, { useState } from "react";
 import Html from "./Html";
 
 const Text = () => {

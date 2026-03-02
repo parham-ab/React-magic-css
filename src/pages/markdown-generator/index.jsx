@@ -1,6 +1,6 @@
 import { Typography } from "@mui/material";
 import UseTitle from "../../hooks/useTitle";
-import Text from "./Text";
+import Text from "./components/Text";
 
 const MarkdownGenerator = () => {
   UseTitle("Magic CSS - Markdown");
