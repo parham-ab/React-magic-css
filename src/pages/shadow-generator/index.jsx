@@ -1,67 +1,19 @@
 import { useEffect, useState } from "react";
 import { SketchPicker } from "react-color";
 import {
-  Button,
   Checkbox,
   FormControlLabel,
   Grid,
-  Slider,
   Typography,
   Box,
   Chip,
 } from "@mui/material";
 import { Container } from "@mui/system";
-import ContentCopyIcon from "@mui/icons-material/ContentCopy";
-import CheckIcon from "@mui/icons-material/Check";
 import { copyToClipboard } from "../../utils/copyToClipboard";
 import UseTitle from "../../hooks/useTitle";
-
-const SliderControl = ({ label, min, max, value, onChange }) => (
-  <>
-    <Box display="flex" justifyContent="space-between" alignItems="center">
-      <Typography
-        sx={{
-          fontSize: "0.7rem",
-          fontWeight: 700,
-          letterSpacing: "0.12em",
-          color: "rgba(255,255,255,0.45)",
-          textTransform: "uppercase",
-        }}
-      >
-        {label}
-      </Typography>
-      <Typography
-        sx={{
-          fontSize: "0.7rem",
-          color: "rgba(255,200,100,0.85)",
-        }}
-      >
-        {value}px
-      </Typography>
-    </Box>
-    <Slider
-      min={min}
-      max={max}
-      size="small"
-      value={value}
-      onChange={(e) => onChange(e.target.value)}
-      valueLabelDisplay="off"
-      sx={{
-        color: "rgba(255,200,100,0.75)",
-        height: 3,
-        "& .MuiSlider-thumb": {
-          width: 14,
-          height: 14,
-          backgroundColor: "#ffc864",
-          boxShadow: "0 0 0 3px rgba(255,200,100,0.2)",
-          "&:hover": { boxShadow: "0 0 0 6px rgba(255,200,100,0.25)" },
-        },
-        "& .MuiSlider-track": { border: "none" },
-        "& .MuiSlider-rail": { opacity: 0.2 },
-      }}
-    />
-  </>
-);
+import HeaderTitle from "../../components/HeaderTitle";
+import SliderControl from "../../components/SliderControl";
+import CopyButton from "../../components/CopyButton";
 
 const ShadowGenerator = () => {
   const [x, setX] = useState(0);
@@ -92,27 +44,10 @@ const ShadowGenerator = () => {
   return (
     <Container>
       {/* Header */}
-      <Box textAlign="center" pt={5} pb={3}>
-        <Typography
-          variant="h3"
-          sx={{
-            color: "#fff",
-            fontWeight: 600,
-            fontSize: { xs: "2rem", md: "2.8rem" },
-          }}
-        >
-          Shadow Generator
-        </Typography>
-        <Typography
-          sx={{
-            color: "rgba(255,255,255,0.38)",
-            fontSize: "0.95rem",
-            fontWeight: 300,
-          }}
-        >
-          Craft the perfect box-shadow — visually, in real time
-        </Typography>
-      </Box>
+      <HeaderTitle
+        title={"Shadow Generator"}
+        description={"Craft the perfect box-shadow — visually, in real time"}
+      />
 
       <Grid container spacing={4} alignItems="flex-start">
         {/* LEFT — Preview */}
@@ -170,62 +105,11 @@ const ShadowGenerator = () => {
             </Box>
 
             {/* CSS Output */}
-            <Box
-              sx={{
-                background: "rgba(0,0,0,0.35)",
-                borderRadius: "12px",
-                border: "1px solid rgba(255,255,255,0.07)",
-                p: 1.5,
-                display: "flex",
-                alignItems: "center",
-                justifyContent: "space-between",
-                gap: 2,
-              }}
-            >
-              <Typography
-                sx={{
-                  fontSize: "0.7rem",
-                  color: "rgba(255,200,100,0.85)",
-                  wordBreak: "break-all",
-                  flex: 1,
-                  lineHeight: 1.6,
-                }}
-              >
-                {finalSource}
-              </Typography>
-              <Button
-                onClick={handleCopy}
-                variant="contained"
-                size="small"
-                startIcon={copied ? <CheckIcon /> : <ContentCopyIcon />}
-                sx={{
-                  flexShrink: 0,
-                  fontWeight: 600,
-                  fontSize: "0.72rem",
-                  textTransform: "none",
-                  borderRadius: "10px",
-                  px: 2,
-                  py: 1,
-                  background: copied
-                    ? "rgba(100,200,100,0.15)"
-                    : "rgba(255,200,100,0.12)",
-                  border: copied
-                    ? "1px solid rgba(100,200,100,0.35)"
-                    : "1px solid rgba(255,200,100,0.3)",
-                  color: copied ? "#80e080" : "#ffc864",
-                  boxShadow: "none",
-                  "&:hover": {
-                    background: copied
-                      ? "rgba(100,200,100,0.2)"
-                      : "rgba(255,200,100,0.2)",
-                    boxShadow: "none",
-                  },
-                  transition: "all 0.3s ease",
-                }}
-              >
-                {copied ? "Copied!" : "Copy"}
-              </Button>
-            </Box>
+            <CopyButton
+              copied={copied}
+              finalSource={finalSource}
+              handleCopy={handleCopy}
+            />
           </Box>
         </Grid>
 
@@ -249,6 +133,16 @@ const ShadowGenerator = () => {
             >
               Controls
             </Typography>
+
+            {/* {sliderTypes?.map((item) => (
+              <SliderControl
+                label={item?.label}
+                min={item?.min}
+                max={item?.max}
+                value={item?.value}
+                onChange={item?.onChange}
+              />
+            ))} */}
 
             <SliderControl
               label="Offset X"

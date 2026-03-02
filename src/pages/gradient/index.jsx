@@ -1,6 +1,5 @@
 import { useEffect, useState } from "react";
 import {
-  Button,
   Grid,
   Slider,
   Typography,
@@ -10,12 +9,11 @@ import {
   ToggleButtonGroup,
 } from "@mui/material";
 import { Container } from "@mui/system";
-import ContentCopyIcon from "@mui/icons-material/ContentCopy";
-import CheckIcon from "@mui/icons-material/Check";
 import { SketchPicker } from "react-color";
 import UseTitle from "../../hooks/useTitle";
 import { copyToClipboard } from "../../utils/copyToClipboard";
 import CopyButton from "../../components/CopyButton";
+import HeaderTitle from "../../components/HeaderTitle";
 
 const Gradient = () => {
   const [firstColor, setFirstColor] = useState("#ff6b6b");
@@ -52,27 +50,12 @@ const Gradient = () => {
   return (
     <Container>
       {/* Header */}
-      <Box textAlign="center" pt={5} pb={3}>
-        <Typography
-          variant="h3"
-          sx={{
-            color: "#fff",
-            fontWeight: 600,
-            fontSize: { xs: "2rem", md: "2.8rem" },
-          }}
-        >
-          Gradient Generator
-        </Typography>
-        <Typography
-          sx={{
-            color: "rgba(255,255,255,0.38)",
-            fontSize: "0.95rem",
-            fontWeight: 300,
-          }}
-        >
-          Build beautiful linear & radial gradients — live preview included
-        </Typography>
-      </Box>
+      <HeaderTitle
+        title={"Gradient Generator"}
+        description={
+          "Build beautiful linear & radial gradients — live preview included"
+        }
+      />
 
       <Grid container spacing={4} alignItems="flex-start">
         {/* LEFT — Preview */}
@@ -85,7 +68,7 @@ const Gradient = () => {
               p: 1.5,
               display: "flex",
               flexDirection: "column",
-              gap: 3,
+              gap: 2,
             }}
           >
             <Typography
@@ -357,7 +340,7 @@ const Gradient = () => {
                   {[
                     { id: "first", color: firstColor, label: "Start" },
                     { id: "second", color: secondColor, label: "End" },
-                  ].map(({ id, color, label }) => (
+                  ]?.map(({ id, color, label }) => (
                     <Box
                       key={id}
                       onClick={() => setActiveColor(id)}

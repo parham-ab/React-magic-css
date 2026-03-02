@@ -1,80 +1,13 @@
 import { useEffect, useState } from "react";
-import {
-  Button,
-  Grid,
-  Slider,
-  TextField,
-  Typography,
-  Box,
-  Chip,
-} from "@mui/material";
+import { Grid, TextField, Typography, Box, Chip } from "@mui/material";
 import { Container } from "@mui/system";
-import ContentCopyIcon from "@mui/icons-material/ContentCopy";
-import CheckIcon from "@mui/icons-material/Check";
 import { SketchPicker } from "react-color";
 import UseTitle from "../../hooks/useTitle";
 import { copyToClipboard } from "../../utils/copyToClipboard";
 import CopyButton from "../../components/CopyButton";
-
-const SliderControl = ({ label, min, max, value, onChange }) => (
-  <Box mb={2.5}>
-    <Box
-      display="flex"
-      justifyContent="space-between"
-      alignItems="center"
-      mb={0.5}
-    >
-      <Typography
-        sx={{
-          fontSize: "0.7rem",
-          fontWeight: 700,
-          letterSpacing: "0.12em",
-          color: "rgba(255,255,255,0.45)",
-          textTransform: "uppercase",
-        }}
-      >
-        {label}
-      </Typography>
-      <Typography
-        sx={{
-          fontSize: "0.7rem",
-          color: "rgba(255,200,100,0.85)",
-        }}
-      >
-        {value}px
-      </Typography>
-    </Box>
-    <Slider
-      min={min}
-      max={max}
-      size="small"
-      value={value}
-      onChange={(e) => onChange(e.target.value)}
-      valueLabelDisplay="off"
-      sx={{
-        color: "rgba(255,200,100,0.75)",
-        height: 3,
-        "& .MuiSlider-thumb": {
-          width: 14,
-          height: 14,
-          backgroundColor: "#ffc864",
-          boxShadow: "0 0 0 3px rgba(255,200,100,0.2)",
-          "&:hover": { boxShadow: "0 0 0 6px rgba(255,200,100,0.25)" },
-        },
-        "& .MuiSlider-track": { border: "none" },
-        "& .MuiSlider-rail": { opacity: 0.2 },
-      }}
-    />
-  </Box>
-);
-
-const PRESETS = [
-  { label: "Glow", x: 0, y: 0, blur: 18, color: "rgba(130,100,255,0.95)" },
-  { label: "Hard", x: 4, y: 4, blur: 0, color: "rgba(0,0,0,0.9)" },
-  { label: "Neon", x: 0, y: 0, blur: 12, color: "rgba(0,255,180,0.95)" },
-  { label: "Lift", x: 2, y: 6, blur: 10, color: "rgba(0,0,0,0.5)" },
-  { label: "Fire", x: 0, y: 4, blur: 14, color: "rgba(255,100,20,0.9)" },
-];
+import HeaderTitle from "../../components/HeaderTitle";
+import PRESETS from "./constants/presets";
+import SliderControl from "../../components/SliderControl";
 
 const TextShadowGenerator = () => {
   const [testText, setTestText] = useState("Magic CSS");
@@ -148,29 +81,12 @@ const TextShadowGenerator = () => {
 
       <Container>
         {/* Header */}
-        <Box textAlign="center" pt={5} pb={3}>
-          <Typography
-            variant="h3"
-            sx={{
-              color: "#fff",
-              fontWeight: 600,
-              fontSize: { xs: "2rem", md: "2.8rem" },
-              letterSpacing: "-0.02em",
-              lineHeight: 1.15,
-            }}
-          >
-            Text Shadow Generator
-          </Typography>
-          <Typography
-            sx={{
-              color: "rgba(255,255,255,0.38)",
-              fontSize: "0.95rem",
-              fontWeight: 300,
-            }}
-          >
-            Craft expressive text shadows — glows, lifts, neon effects & more
-          </Typography>
-        </Box>
+        <HeaderTitle
+          title={"Text Shadow Generator"}
+          description={
+            "Craft expressive text shadows — glows, lifts, neon effects & more"
+          }
+        />
 
         <Grid container spacing={4} alignItems="flex-start">
           {/* LEFT — Preview */}
@@ -183,13 +99,12 @@ const TextShadowGenerator = () => {
                 p: 1.5,
                 display: "flex",
                 flexDirection: "column",
-                gap: 3,
+                gap: 2,
               }}
             >
               <Typography
                 sx={{
                   fontSize: "0.65rem",
-                  letterSpacing: "0.14em",
                   color: "rgba(255,255,255,0.25)",
                   textTransform: "uppercase",
                 }}
@@ -255,7 +170,7 @@ const TextShadowGenerator = () => {
                   Presets
                 </Typography>
                 <Box display="flex" gap={1} flexWrap="wrap">
-                  {PRESETS.map((preset, idx) => (
+                  {PRESETS?.map((preset, idx) => (
                     <Chip
                       key={preset.label}
                       label={preset.label}
