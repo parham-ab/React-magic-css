@@ -11,7 +11,7 @@ import { BsMarkdownFill } from "react-icons/bs";
 
 export const menuItems = [
   {
-    text: "Shadow Generator",
+    text: "shadow-generator",
     icon: (
       <AutoFixNormalIcon color="text.secondary" sx={{ fontSize: "16px" }} />
     ),
@@ -23,14 +23,14 @@ export const menuItems = [
     path: "/pages/gradient",
   },
   {
-    text: "TextShadowGenerator",
+    text: "text-shadow-generator",
     icon: (
       <FormatColorTextIcon color="text.secondary" sx={{ fontSize: "16px" }} />
     ),
-    path: "/pages/TextShadowGenerator",
+    path: "/pages/text-shadow-generator",
   },
   {
-    text: "BorderRadius",
+    text: "border-radius",
     icon: <VignetteIcon color="text.secondary" sx={{ fontSize: "16px" }} />,
     path: "/pages/border-radius",
   },
@@ -40,29 +40,29 @@ export const menuItems = [
     path: "/pages/skew",
   },
   {
-    text: "textGenerator",
+    text: "text-generator",
     icon: <ColorLensIcon color="text.secondary" sx={{ fontSize: "16px" }} />,
     path: "/pages/color-picker",
   },
   {
-    text: "textEditor",
+    text: "text-editor",
     icon: <FormatSizeIcon color="text.secondary" sx={{ fontSize: "16px" }} />,
     path: "/pages/text-editor",
   },
   {
-    text: "colorGenerator",
+    text: "color-generator",
     icon: <FormatPaintIcon color="text.secondary" sx={{ fontSize: "16px" }} />,
     path: "/pages/color-generator",
   },
   {
-    text: "markdownGenerator",
+    text: "markdown-generator",
     icon: (
       <BsMarkdownFill color="text.secondary" style={{ fontSize: "16px" }} />
     ),
     path: "/pages/markdown",
   },
   {
-    text: "ImageFilter",
+    text: "Image-filter",
     icon: <ImageIcon color="text.secondary" sx={{ fontSize: "16px" }} />,
     path: "/pages/image-filter",
   },

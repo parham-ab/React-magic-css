@@ -13,7 +13,7 @@ import {
   Fade,
 } from "@mui/material";
 import { useState } from "react";
-import SingleColor from "./SingleColor";
+import SingleColor from "./components/SingleColor";
 import { notify } from "../../utils/toast";
 
 const ColorGenerator = () => {

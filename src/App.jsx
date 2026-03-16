@@ -19,11 +19,15 @@ const App = () => {
               element={<item.component />}
             />
           ))}
-          <Route path="/*" element={<Navigate to="/shadowGenerator" />} />
+          <Route path="/*" element={<Navigate to="/shadow-generator" />} />
         </Routes>
         <ScrollToTop />
       </Layout>
-      <ToastContainer />
+      <ToastContainer
+        style={{
+          fontSize: "12px",
+        }}
+      />
     </ThemeProvider>
   );
 };

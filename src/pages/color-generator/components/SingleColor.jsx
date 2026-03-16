@@ -1,8 +1,8 @@
 import { Box, Typography, Tooltip } from "@mui/material";
 import ContentCopyIcon from "@mui/icons-material/ContentCopy";
 import { useState } from "react";
-import rgbToHex from "../../utils/colorFormat";
-import { copyToClipboard } from "../../utils/copyToClipboard";
+import rgbToHex from "../../../utils/colorFormat";
+import { copyToClipboard } from "../../../utils/copyToClipboard";
 
 const SingleColor = ({ rgb, weight }) => {
   const hex = rgbToHex(...rgb);

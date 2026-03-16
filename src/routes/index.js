@@ -1,8 +1,8 @@
-import BorderRadius from "../pages/border-radius/BorderRadius";
+import BorderRadius from "../pages/border-radius";
 import ColorGenerator from "../pages/color-generator";
 import ColorPicker from "../pages/color-picker";
 import Gradient from "../pages/gradient";
-import ImageFilter from "../pages/image-filter/ImageFilter";
+import ImageFilter from "../pages/image-filter";
 import MarkdownGenerator from "../pages/markdown-generator";
 import ShadowGenerator from "../pages/shadow-generator";
 import Skew from "../pages/skew";
@@ -11,7 +11,7 @@ import TextShadowGenerator from "../pages/text-shadow-generator";
 
 const mainRoutes = [
   {
-    title: "shadowGenerator",
+    title: "shadow-generator",
     path: "/pages/shadow-generator",
     component: ShadowGenerator,
   },
@@ -21,8 +21,8 @@ const mainRoutes = [
     component: Gradient,
   },
   {
-    title: "textShadowGenerator",
-    path: "/pages/textShadowGenerator",
+    title: "text-shadow-generator",
+    path: "/pages/text-shadow-generator",
     component: TextShadowGenerator,
   },
   {

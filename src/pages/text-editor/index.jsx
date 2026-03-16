@@ -66,7 +66,7 @@ const TextEditor = () => {
         "text-align": alignment,
       });
     }
-  }, [alignment, setAlignment, formats]);
+  }, [alignment, setAlignment, formats, finalSource]);
   // text format
   const handleFormat = (e, newFormats) => {
     setFormats(newFormats);
