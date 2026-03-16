@@ -17,7 +17,7 @@ import {
 import { Container } from "@mui/system";
 import AssignmentIcon from "@mui/icons-material/Assignment";
 import UseTitle from "../../hooks/useTitle";
-import { copyToClipboard } from '../../utils/copyToClipboard';
+import { copyToClipboard } from "../../utils/copyToClipboard";
 
 const BorderRadius = () => {
   const [type, setType] = useState("Same on all sides");
@@ -39,11 +39,11 @@ const BorderRadius = () => {
     // -----Different on all Sides-----
     if (type === "Different on all Sides" && unit === "px") {
       setFinalSource(
-        `border-radius:${topLeft}px ${topRight}px ${bottomRight}px ${bottomLeft}px`
+        `border-radius:${topLeft}px ${topRight}px ${bottomRight}px ${bottomLeft}px`,
       );
     } else if (type === "Different on all Sides" && unit === "%") {
       setFinalSource(
-        `border-radius:${topLeft}% ${topRight}% ${bottomRight}% ${bottomLeft}%`
+        `border-radius:${topLeft}% ${topRight}% ${bottomRight}% ${bottomLeft}%`,
       );
     }
   }, [type, allRadius, unit, topLeft, topRight, bottomRight, bottomLeft]);
@@ -231,12 +231,12 @@ const BorderRadius = () => {
                 type === "Same on all sides" && unit === "px"
                   ? `${allRadius}px`
                   : type === "Same on all sides" && unit === "%"
-                  ? `${allRadius}%`
-                  : type === "Different on all Sides" && unit === "px"
-                  ? `${topLeft}px ${topRight}px ${bottomRight}px ${bottomLeft}px`
-                  : type === "Different on all Sides" && unit === "%"
-                  ? `${topLeft}% ${topRight}% ${bottomRight}% ${bottomLeft}%`
-                  : "",
+                    ? `${allRadius}%`
+                    : type === "Different on all Sides" && unit === "px"
+                      ? `${topLeft}px ${topRight}px ${bottomRight}px ${bottomLeft}px`
+                      : type === "Different on all Sides" && unit === "%"
+                        ? `${topLeft}% ${topRight}% ${bottomRight}% ${bottomLeft}%`
+                        : "",
             }}
           ></Box>
           <Button

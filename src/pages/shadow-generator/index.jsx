@@ -31,7 +31,7 @@ const ShadowGenerator = () => {
 
   useEffect(() => {
     setFinalSource(`box-shadow: ${shadowValue};`);
-  }, [x, y, blur, spread, insetStatus, color]);
+  }, [x, y, blur, spread, insetStatus, color, shadowValue]);
 
   const handleCopy = () => {
     copyToClipboard(finalSource);

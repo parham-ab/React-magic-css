@@ -31,7 +31,7 @@ const Gradient = () => {
 
   useEffect(() => {
     setFinalSource(`background: ${gradientCSS};`);
-  }, [firstColor, secondColor, angle, gradientType]);
+  }, [firstColor, secondColor, angle, gradientType, gradientCSS]);
 
   const handleCopy = () => {
     copyToClipboard(finalSource);
