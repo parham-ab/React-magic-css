@@ -12,14 +12,14 @@ const App = () => {
     <ThemeProvider theme={theme}>
       <Layout>
         <Routes>
-          {routes.map((item) => (
+          {routes?.map((item) => (
             <Route
               key={item?.title}
               path={item?.path}
               element={<item.component />}
             />
           ))}
-          <Route path="/*" element={<Navigate to="/shadow-generator" />} />
+          {/* <Route path="/*" element={<Navigate to="/shadow-generator" />} /> */}
         </Routes>
         <ScrollToTop />
       </Layout>
