@@ -4,11 +4,11 @@ import { Container } from "@mui/system";
 import UseTitle from "../../hooks/useTitle";
 import HeaderTitle from "../../components/HeaderTitle";
 import SliderControl from "../../components/SliderControl";
-import CopyButton from "../../components/CopyButton";
 import PRESETS from "./constants/presets";
 import { getSkewSliders } from "./constants/sliderTypes";
 import { useCopy } from "../../hooks/useCopy";
 import ControlsContainer from "../../components/ControlsContainer";
+import LivePreviewContainer from "../../components/LivePreviewContainer";
 
 const Skew = () => {
   const [skewX, setSkewX] = useState(0);
@@ -41,29 +41,53 @@ const Skew = () => {
       />
 
       <Grid container spacing={4} alignItems="flex-start">
-        {/* LEFT — Preview */}
-        <Grid item xs={12} md={7}>
-          <Box
-            sx={{
-              background: "rgba(255,255,255,0.03)",
-              border: "1px solid rgba(255,255,255,0.07)",
-              borderRadius: "24px",
-              p: 1.5,
-              display: "flex",
-              flexDirection: "column",
-              gap: 2,
-            }}
-          >
-            <Typography
+        <Grid item xs={12} md={5}>
+          <ControlsContainer>
+            {getSkewSliders(skewX, setSkewX, skewY, setSkewY, clearPreset)?.map(
+              (slider) => (
+                <SliderControl
+                  key={slider.label}
+                  label={slider.label}
+                  min={slider.min}
+                  max={slider.max}
+                  value={slider.value}
+                  onChange={slider.onChange}
+                />
+              ),
+            )}
+
+            {/* Reset */}
+            <Button
+              onClick={() => {
+                setSkewX(0);
+                setSkewY(0);
+                setActivePreset(0);
+              }}
+              variant="text"
+              size="small"
               sx={{
                 fontSize: "0.65rem",
                 color: "rgba(255,255,255,0.25)",
-                textTransform: "uppercase",
+                textTransform: "none",
+                letterSpacing: "0.06em",
+                alignSelf: "flex-start",
+                "&:hover": {
+                  color: "rgba(255, 255, 255, 0.574)",
+                  background: "none",
+                },
               }}
             >
-              Live Preview
-            </Typography>
+              Reset to flat
+            </Button>
+          </ControlsContainer>
+        </Grid>
 
+        <Grid item xs={12} md={7}>
+          <LivePreviewContainer
+            copied={copied}
+            finalSource={finalSource}
+            handleCopy={handleCopy}
+          >
             {/* Preview area */}
             <Box
               sx={{
@@ -177,56 +201,7 @@ const Skew = () => {
                 ))}
               </Box>
             </Box>
-
-            {/* CSS Output + Copy */}
-            <CopyButton
-              copied={copied}
-              finalSource={finalSource}
-              handleCopy={handleCopy}
-            />
-          </Box>
-        </Grid>
-
-        {/* RIGHT — Controls */}
-        <Grid item xs={12} md={5}>
-          <ControlsContainer>
-            {getSkewSliders(skewX, setSkewX, skewY, setSkewY, clearPreset)?.map(
-              (slider) => (
-                <SliderControl
-                  key={slider.label}
-                  label={slider.label}
-                  min={slider.min}
-                  max={slider.max}
-                  value={slider.value}
-                  onChange={slider.onChange}
-                />
-              ),
-            )}
-
-            {/* Reset */}
-            <Button
-              onClick={() => {
-                setSkewX(0);
-                setSkewY(0);
-                setActivePreset(0);
-              }}
-              variant="text"
-              size="small"
-              sx={{
-                fontSize: "0.65rem",
-                color: "rgba(255,255,255,0.25)",
-                textTransform: "none",
-                letterSpacing: "0.06em",
-                alignSelf: "flex-start",
-                "&:hover": {
-                  color: "rgba(255, 255, 255, 0.574)",
-                  background: "none",
-                },
-              }}
-            >
-              Reset to flat
-            </Button>
-          </ControlsContainer>
+          </LivePreviewContainer>
         </Grid>
       </Grid>
     </Container>

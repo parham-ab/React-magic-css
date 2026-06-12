@@ -10,7 +10,6 @@ import {
 import PhotoCamera from "@mui/icons-material/PhotoCamera";
 import RestartAltIcon from "@mui/icons-material/RestartAlt";
 import UseTitle from "../../hooks/useTitle";
-import CopyButton from "../../components/CopyButton";
 import SliderControl from "../../components/SliderControl";
 import DEFAULTS from "./constants/defaults";
 import PRESETS from "./constants/presets";
@@ -18,6 +17,7 @@ import { getFilterSliders } from "./constants/sliderTypes";
 import HeaderTitle from "../../components/HeaderTitle";
 import { useCopy } from "../../hooks/useCopy";
 import ControlsContainer from "../../components/ControlsContainer";
+import LivePreviewContainer from "../../components/LivePreviewContainer";
 
 const ImageFilter = () => {
   const [vals, setVals] = useState({ ...DEFAULTS });
@@ -76,29 +76,28 @@ const ImageFilter = () => {
         }
       />
       <Grid container spacing={4} alignItems="flex-start">
-        {/* LEFT — Preview */}
-        <Grid item xs={12} md={7}>
-          <Box
-            sx={{
-              background: "rgba(255,255,255,0.03)",
-              border: "1px solid rgba(255,255,255,0.07)",
-              borderRadius: "24px",
-              p: 1.5,
-              display: "flex",
-              flexDirection: "column",
-              gap: 2,
-            }}
-          >
-            <Typography
-              sx={{
-                fontSize: "0.65rem",
-                color: "rgba(255,255,255,0.25)",
-                textTransform: "uppercase",
-              }}
-            >
-              Live Preview
-            </Typography>
+        <Grid item xs={12} md={5}>
+          <ControlsContainer>
+            {getFilterSliders(vals, set).map((slider) => (
+              <SliderControl
+                key={slider.label}
+                label={slider.label}
+                min={slider.min}
+                max={slider.max}
+                value={slider.value}
+                unit={slider.unit}
+                onChange={slider.onChange}
+              />
+            ))}
+          </ControlsContainer>
+        </Grid>
 
+        <Grid item xs={12} md={7}>
+          <LivePreviewContainer
+            copied={copied}
+            finalSource={finalSource}
+            handleCopy={handleCopy}
+          >
             {/* Image area */}
             <Box
               sx={{
@@ -234,30 +233,7 @@ const ImageFilter = () => {
                 ))}
               </Box>
             </Box>
-
-            <CopyButton
-              copied={copied}
-              finalSource={finalSource}
-              handleCopy={handleCopy}
-            />
-          </Box>
-        </Grid>
-
-        {/* RIGHT — Controls */}
-        <Grid item xs={12} md={5}>
-          <ControlsContainer>
-            {getFilterSliders(vals, set).map((slider) => (
-              <SliderControl
-                key={slider.label}
-                label={slider.label}
-                min={slider.min}
-                max={slider.max}
-                value={slider.value}
-                unit={slider.unit}
-                onChange={slider.onChange}
-              />
-            ))}
-          </ControlsContainer>
+          </LivePreviewContainer>
         </Grid>
       </Grid>
     </Container>

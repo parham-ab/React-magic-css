@@ -9,13 +9,13 @@ import {
 } from "@mui/material";
 import { Container } from "@mui/system";
 import UseTitle from "../../hooks/useTitle";
-import CopyButton from "../../components/CopyButton";
 import HeaderTitle from "../../components/HeaderTitle";
 import SliderControl from "../../components/SliderControl";
 import { useCopy } from "../../hooks/useCopy";
 import PRESETS from "./constants/presets";
 import { getCornerSliders } from "./constants/cornerSliders";
 import ControlsContainer from "../../components/ControlsContainer";
+import LivePreviewContainer from "../../components/LivePreviewContainer";
 
 const BorderRadius = () => {
   const [mode, setMode] = useState("same"); // "same" | "different"
@@ -216,27 +216,11 @@ const BorderRadius = () => {
         </Grid>
 
         <Grid item xs={12} md={7}>
-          <Box
-            sx={{
-              background: "rgba(255,255,255,0.03)",
-              border: "1px solid rgba(255,255,255,0.07)",
-              borderRadius: "24px",
-              p: 1.5,
-              display: "flex",
-              flexDirection: "column",
-              gap: 2,
-            }}
+          <LivePreviewContainer
+            copied={copied}
+            finalSource={finalSource}
+            handleCopy={handleCopy}
           >
-            <Typography
-              sx={{
-                fontSize: "0.65rem",
-                color: "rgba(255,255,255,0.25)",
-                textTransform: "uppercase",
-              }}
-            >
-              Live Preview
-            </Typography>
-
             {/* Preview area */}
             <Box
               sx={{
@@ -322,14 +306,7 @@ const BorderRadius = () => {
                 ))}
               </Box>
             </Box>
-
-            {/* CSS Output + Copy */}
-            <CopyButton
-              copied={copied}
-              finalSource={finalSource}
-              handleCopy={handleCopy}
-            />
-          </Box>
+          </LivePreviewContainer>
         </Grid>
       </Grid>
     </Container>

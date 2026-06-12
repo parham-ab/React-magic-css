@@ -17,10 +17,10 @@ import FormatBoldIcon from "@mui/icons-material/FormatBold";
 import FormatItalicIcon from "@mui/icons-material/FormatItalic";
 import FormatUnderlinedIcon from "@mui/icons-material/FormatUnderlined";
 import UseTitle from "../../hooks/useTitle";
-import CopyButton from "../../components/CopyButton";
 import HeaderTitle from "../../components/HeaderTitle";
 import { useCopy } from "../../hooks/useCopy";
 import ControlsContainer from "../../components/ControlsContainer";
+import LivePreviewContainer from "../../components/LivePreviewContainer";
 
 const toggleSx = {
   gap: 0.5,
@@ -69,108 +69,6 @@ const TextEditor = () => {
         }
       />
       <Grid container spacing={4} alignItems="flex-start">
-        {/* LEFT — Preview */}
-        <Grid item xs={12} md={7}>
-          <Box
-            sx={{
-              background: "rgba(255,255,255,0.03)",
-              border: "1px solid rgba(255,255,255,0.07)",
-              borderRadius: "24px",
-              p: 1.5,
-              display: "flex",
-              flexDirection: "column",
-              gap: 2,
-            }}
-          >
-            <Typography
-              sx={{
-                fontSize: "0.65rem",
-                color: "rgba(255,255,255,0.25)",
-                textTransform: "uppercase",
-              }}
-            >
-              Live Preview
-            </Typography>
-
-            {/* Preview area */}
-            <Box
-              sx={{
-                minHeight: 200,
-                borderRadius: "16px",
-                background:
-                  "repeating-conic-gradient(rgba(255,255,255,0.03) 0% 25%, transparent 0% 50%) 0 0 / 24px 24px",
-                border: "1px solid rgba(255,255,255,0.05)",
-                display: "flex",
-                alignItems: "center",
-                p: 1.5,
-              }}
-            >
-              <Typography
-                sx={{
-                  width: "100%",
-                  fontSize: "2rem",
-                  fontWeight: isBold ? 700 : 400,
-                  fontStyle: isItalic ? "italic" : "normal",
-                  textDecoration: isUnderlined ? "underline" : "none",
-                  textAlign: alignment,
-                  color: "#fff",
-                  wordBreak: "break-all",
-                  lineHeight: 1.3,
-                  transition: "all 0.15s ease",
-                  minHeight: 48,
-                }}
-              >
-                {inputVal || (
-                  <span style={{ opacity: 0.2 }}>Type something…</span>
-                )}
-              </Typography>
-            </Box>
-
-            {/* Text input */}
-            <TextField
-              size="small"
-              label="Preview text"
-              variant="filled"
-              fullWidth
-              value={inputVal}
-              onChange={(e) => setInputVal(e.target.value)}
-              sx={{
-                "& .MuiFilledInput-root": {
-                  background: "rgba(255,255,255,0.06)",
-                  borderRadius: "12px",
-                  border: "1px solid rgba(255,255,255,0.1)",
-                  "&:hover": { background: "rgba(255,255,255,0.09)" },
-                  "&.Mui-focused": {
-                    background: "rgba(255,255,255,0.1)",
-                    borderColor: "rgba(255,200,100,0.55)",
-                  },
-                  "&::before, &::after": { display: "none" },
-                },
-                "& .MuiInputLabel-root": {
-                  color: "rgba(255,255,255,0.35)",
-                  fontSize: "0.85rem",
-                },
-                "& .MuiInputLabel-root.Mui-focused": {
-                  color: "rgba(255,200,100,0.85)",
-                },
-                "& .MuiFilledInput-input": {
-                  color: "#fff",
-                  fontSize: "0.95rem",
-                  pt: "20px",
-                  pb: "10px",
-                },
-              }}
-            />
-
-            <CopyButton
-              copied={copied}
-              finalSource={finalSource}
-              handleCopy={handleCopy}
-            />
-          </Box>
-        </Grid>
-
-        {/* RIGHT — Controls */}
         <Grid item xs={12} md={5}>
           <ControlsContainer>
             {/* Alignment */}
@@ -240,6 +138,85 @@ const TextEditor = () => {
               </ToggleButtonGroup>
             </Box>
           </ControlsContainer>
+        </Grid>
+
+        <Grid item xs={12} md={7}>
+          <LivePreviewContainer
+            copied={copied}
+            finalSource={finalSource}
+            handleCopy={handleCopy}
+          >
+            {/* Preview area */}
+            <Box
+              sx={{
+                height: 200,
+                overflow: "auto",
+                borderRadius: "16px",
+                background:
+                  "repeating-conic-gradient(rgba(255,255,255,0.03) 0% 25%, transparent 0% 50%) 0 0 / 24px 24px",
+                border: "1px solid rgba(255,255,255,0.05)",
+                display: "flex",
+                alignItems: "center",
+                p: 1.5,
+              }}
+            >
+              <Typography
+                sx={{
+                  width: "100%",
+                  fontSize: "2rem",
+                  fontWeight: isBold ? 700 : 400,
+                  fontStyle: isItalic ? "italic" : "normal",
+                  textDecoration: isUnderlined ? "underline" : "none",
+                  textAlign: alignment,
+                  color: "#fff",
+                  wordBreak: "break-all",
+                  lineHeight: 1.3,
+                  transition: "all 0.15s ease",
+                  minHeight: 48,
+                }}
+              >
+                {inputVal || (
+                  <span style={{ opacity: 0.2 }}>Type something…</span>
+                )}
+              </Typography>
+            </Box>
+
+            {/* Text input */}
+            <TextField
+              size="small"
+              label="Preview text"
+              variant="filled"
+              fullWidth
+              value={inputVal}
+              onChange={(e) => setInputVal(e.target.value)}
+              sx={{
+                "& .MuiFilledInput-root": {
+                  background: "rgba(255,255,255,0.06)",
+                  borderRadius: "12px",
+                  border: "1px solid rgba(255,255,255,0.1)",
+                  "&:hover": { background: "rgba(255,255,255,0.09)" },
+                  "&.Mui-focused": {
+                    background: "rgba(255,255,255,0.1)",
+                    borderColor: "rgba(255,200,100,0.55)",
+                  },
+                  "&::before, &::after": { display: "none" },
+                },
+                "& .MuiInputLabel-root": {
+                  color: "rgba(255,255,255,0.35)",
+                  fontSize: "0.85rem",
+                },
+                "& .MuiInputLabel-root.Mui-focused": {
+                  color: "rgba(255,200,100,0.85)",
+                },
+                "& .MuiFilledInput-input": {
+                  color: "#fff",
+                  fontSize: "0.95rem",
+                  pt: "20px",
+                  pb: "10px",
+                },
+              }}
+            />
+          </LivePreviewContainer>
         </Grid>
       </Grid>
     </Container>

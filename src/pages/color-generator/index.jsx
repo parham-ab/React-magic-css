@@ -1,4 +1,3 @@
-import { v4 as uuidv4 } from "uuid";
 import Values from "values.js";
 import SearchIcon from "@mui/icons-material/Search";
 import colorListImg from "../../assets/img/colors.svg";
@@ -141,8 +140,8 @@ const ColorGenerator = () => {
               {list.length} shades generated
             </Typography>
             <div className="color-grid-wrapper">
-              {list.map((item) => (
-                <SingleColor key={uuidv4()} {...item} />
+              {list?.map((item, idx) => (
+                <SingleColor key={idx} {...item} />
               ))}
             </div>
           </Box>

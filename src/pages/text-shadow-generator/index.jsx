@@ -2,7 +2,6 @@ import { useEffect, useState } from "react";
 import { Grid, TextField, Typography, Box, Chip } from "@mui/material";
 import { Container } from "@mui/system";
 import UseTitle from "../../hooks/useTitle";
-import CopyButton from "../../components/CopyButton";
 import HeaderTitle from "../../components/HeaderTitle";
 import PRESETS from "./constants/presets";
 import { getTextShadowSliders } from "./constants/sliderTypes";
@@ -10,6 +9,7 @@ import SliderControl from "../../components/SliderControl";
 import { useCopy } from "../../hooks/useCopy";
 import ControlsContainer from "../../components/ControlsContainer";
 import { RgbaStringColorPicker } from "react-colorful";
+import LivePreviewContainer from "../../components/LivePreviewContainer";
 
 const TextShadowGenerator = () => {
   const [testText, setTestText] = useState("Magic CSS");
@@ -36,13 +36,6 @@ const TextShadowGenerator = () => {
     setActivePreset(idx);
   };
 
-  const handleColorComplete = (c) => {
-    const value =
-      c.rgb.a < 1 ? `rgba(${c.rgb.r},${c.rgb.g},${c.rgb.b},${c.rgb.a})` : c.hex;
-    setColor(value);
-    setActivePreset(null);
-  };
-
   const shadowValue = `${x}px ${y}px ${blur}px ${color}`;
 
   return (
@@ -56,29 +49,45 @@ const TextShadowGenerator = () => {
       />
 
       <Grid container spacing={4} alignItems="flex-start">
-        {/* LEFT — Preview */}
-        <Grid item xs={12} md={7}>
-          <Box
-            sx={{
-              background: "rgba(255,255,255,0.03)",
-              border: "1px solid rgba(255,255,255,0.07)",
-              borderRadius: "24px",
-              p: 1.5,
-              display: "flex",
-              flexDirection: "column",
-              gap: 2,
-            }}
-          >
+        <Grid item xs={12} md={5}>
+          <ControlsContainer>
+            {getTextShadowSliders(x, setX, y, setY, blur, setBlur)?.map(
+              (slider) => (
+                <SliderControl
+                  key={slider.label}
+                  label={slider.label}
+                  min={slider.min}
+                  max={slider.max}
+                  value={slider.value}
+                  onChange={slider.onChange}
+                />
+              ),
+            )}
+
             <Typography
               sx={{
                 fontSize: "0.65rem",
+                letterSpacing: "0.14em",
                 color: "rgba(255,255,255,0.25)",
                 textTransform: "uppercase",
+                mb: 1.5,
+                mt: 1,
               }}
             >
-              Live Preview
+              Shadow Color
             </Typography>
+            <section className="custom-pointers">
+              <RgbaStringColorPicker color={color} onChange={setColor} />
+            </section>
+          </ControlsContainer>
+        </Grid>
 
+        <Grid item xs={12} md={7}>
+          <LivePreviewContainer
+            copied={copied}
+            finalSource={finalSource}
+            handleCopy={handleCopy}
+          >
             {/* Text preview area */}
             <Box
               sx={{
@@ -180,48 +189,7 @@ const TextShadowGenerator = () => {
                 ))}
               </Box>
             </Box>
-
-            {/* CSS Output + Copy */}
-            <CopyButton
-              copied={copied}
-              finalSource={finalSource}
-              handleCopy={handleCopy}
-            />
-          </Box>
-        </Grid>
-
-        {/* RIGHT — Controls */}
-        <Grid item xs={12} md={5}>
-          <ControlsContainer>
-            {getTextShadowSliders(x, setX, y, setY, blur, setBlur)?.map(
-              (slider) => (
-                <SliderControl
-                  key={slider.label}
-                  label={slider.label}
-                  min={slider.min}
-                  max={slider.max}
-                  value={slider.value}
-                  onChange={slider.onChange}
-                />
-              ),
-            )}
-
-            <Typography
-              sx={{
-                fontSize: "0.65rem",
-                letterSpacing: "0.14em",
-                color: "rgba(255,255,255,0.25)",
-                textTransform: "uppercase",
-                mb: 1.5,
-                mt: 1,
-              }}
-            >
-              Shadow Color
-            </Typography>
-            <section className="custom-pointers">
-              <RgbaStringColorPicker color={color} onChange={setColor} />
-            </section>
-          </ControlsContainer>
+          </LivePreviewContainer>
         </Grid>
       </Grid>
     </Container>
