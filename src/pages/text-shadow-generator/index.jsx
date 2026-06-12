@@ -49,246 +49,214 @@ const TextShadowGenerator = () => {
   const shadowValue = `${x}px ${y}px ${blur}px ${color}`;
 
   return (
-    <>
-      <style>{`
-        .text-input .MuiFilledInput-root {
-          background: rgba(255,255,255,0.06) !important;
-          border-radius: 12px !important;
-          border: 1px solid rgba(255,255,255,0.1);
-          transition: border-color 0.25s, background 0.25s;
+    <Container>
+      {/* Header */}
+      <HeaderTitle
+        title={"Text Shadow Generator"}
+        description={
+          "Craft expressive text shadows — glows, lifts, neon effects & more"
         }
-        .text-input .MuiFilledInput-root:hover {
-          background: rgba(255,255,255,0.09) !important;
-          border-color: rgba(255,255,255,0.2);
-        }
-        .text-input .MuiFilledInput-root.Mui-focused {
-          background: rgba(255,255,255,0.1) !important;
-          border-color: rgba(255,200,100,0.55);
-        }
-        .text-input .MuiFilledInput-root::before,
-        .text-input .MuiFilledInput-root::after { display: none; }
-        .text-input .MuiInputLabel-root {
-          color: rgba(255,255,255,0.35);
-          font-size: 0.85rem;
-        }
-        .text-input .MuiInputLabel-root.Mui-focused { color: rgba(255,200,100,0.85); }
-        .text-input .MuiFilledInput-input {
-          color: #fff;
-          font-size: 0.95rem;
-          letter-spacing: 0.04em;
-        }
-      `}</style>
+      />
 
-      <Container>
-        {/* Header */}
-        <HeaderTitle
-          title={"Text Shadow Generator"}
-          description={
-            "Craft expressive text shadows — glows, lifts, neon effects & more"
-          }
-        />
+      <Grid container spacing={4} alignItems="flex-start">
+        {/* LEFT — Preview */}
+        <Grid item xs={12} md={7}>
+          <Box
+            sx={{
+              background: "rgba(255,255,255,0.03)",
+              border: "1px solid rgba(255,255,255,0.07)",
+              borderRadius: "24px",
+              p: 1.5,
+              display: "flex",
+              flexDirection: "column",
+              gap: 2,
+            }}
+          >
+            <Typography
+              sx={{
+                fontSize: "0.65rem",
+                color: "rgba(255,255,255,0.25)",
+                textTransform: "uppercase",
+              }}
+            >
+              Live Preview
+            </Typography>
 
-        <Grid container spacing={4} alignItems="flex-start">
-          {/* LEFT — Preview */}
-          <Grid item xs={12} md={7}>
+            {/* Text preview area */}
             <Box
               sx={{
-                background: "rgba(255,255,255,0.03)",
-                border: "1px solid rgba(255,255,255,0.07)",
-                borderRadius: "24px",
-                p: 1.5,
+                minHeight: 220,
+                borderRadius: "18px",
+                background:
+                  "repeating-conic-gradient(rgba(255,255,255,0.03) 0% 25%, transparent 0% 50%) 0 0 / 24px 24px",
                 display: "flex",
-                flexDirection: "column",
-                gap: 2,
+                alignItems: "center",
+                justifyContent: "center",
+                p: 4,
+                border: "1px solid rgba(255,255,255,0.05)",
               }}
             >
               <Typography
                 sx={{
-                  fontSize: "0.65rem",
-                  color: "rgba(255,255,255,0.25)",
-                  textTransform: "uppercase",
+                  fontWeight: 800,
+                  fontSize: { xs: "2.2rem", md: "3.2rem" },
+                  color: "#fff",
+                  textShadow: shadowValue,
+                  wordBreak: "break-all",
+                  textAlign: "center",
+                  lineHeight: 1.2,
+                  transition: "text-shadow 0.1s ease",
+                  letterSpacing: "-0.02em",
                 }}
               >
-                Live Preview
+                {testText || "Type something…"}
               </Typography>
-
-              {/* Text preview area */}
-              <Box
-                sx={{
-                  width: "100%",
-                  minHeight: 220,
-                  borderRadius: "18px",
-                  background:
-                    "repeating-conic-gradient(rgba(255,255,255,0.03) 0% 25%, transparent 0% 50%) 0 0 / 24px 24px",
-                  display: "flex",
-                  alignItems: "center",
-                  justifyContent: "center",
-                  p: 4,
-                  border: "1px solid rgba(255,255,255,0.05)",
-                }}
-              >
-                <Typography
-                  sx={{
-                    fontWeight: 800,
-                    fontSize: { xs: "2.2rem", md: "3.2rem" },
-                    color: "#fff",
-                    textShadow: shadowValue,
-                    wordBreak: "break-all",
-                    textAlign: "center",
-                    lineHeight: 1.2,
-                    transition: "text-shadow 0.1s ease",
-                    letterSpacing: "-0.02em",
-                  }}
-                >
-                  {testText || "Type something…"}
-                </Typography>
-              </Box>
-
-              {/* Text input */}
-              <TextField
-                className="text-input"
-                size="small"
-                label="Preview text"
-                variant="filled"
-                fullWidth
-                value={testText}
-                onChange={(e) => setTestText(e.target.value)}
-                placeholder="Magic CSS"
-              />
-
-              {/* Presets */}
-              <Box>
-                <Typography
-                  sx={{
-                    fontSize: "0.6rem",
-                    letterSpacing: "0.14em",
-                    color: "rgba(255,255,255,0.22)",
-                    textTransform: "uppercase",
-                    mb: 1,
-                  }}
-                >
-                  Presets
-                </Typography>
-                <Box display="flex" gap={1} flexWrap="wrap">
-                  {PRESETS?.map((preset, idx) => (
-                    <Chip
-                      key={preset.label}
-                      label={preset.label}
-                      size="small"
-                      onClick={() => applyPreset(preset, idx)}
-                      sx={{
-                        height: 26,
-                        fontSize: "0.65rem",
-                        cursor: "pointer",
-                        bgcolor:
-                          activePreset === idx
-                            ? "rgba(255,200,100,0.15)"
-                            : "rgba(255,255,255,0.05)",
-                        color:
-                          activePreset === idx
-                            ? "#ffc864"
-                            : "rgba(255,255,255,0.4)",
-                        border:
-                          activePreset === idx
-                            ? "1px solid rgba(255,200,100,0.35)"
-                            : "1px solid rgba(255,255,255,0.07)",
-                        "&:hover": { bgcolor: "rgba(255,200,100,0.1)" },
-                        // small color dot before label
-                        "& .MuiChip-label": { px: 1.5 },
-                      }}
-                      avatar={
-                        <Box
-                          component="span"
-                          sx={{
-                            width: "8px !important",
-                            height: "8px !important",
-                            borderRadius: "50%",
-                            background: preset.color,
-                            ml: "6px !important",
-                            flexShrink: 0,
-                            border: "1px solid rgba(255,255,255,0.15)",
-                          }}
-                        />
-                      }
-                    />
-                  ))}
-                </Box>
-              </Box>
-
-              {/* CSS Output + Copy */}
-              <CopyButton
-                copied={copied}
-                finalSource={finalSource}
-                handleCopy={handleCopy}
-              />
             </Box>
-          </Grid>
 
-          {/* RIGHT — Controls */}
-          <Grid item xs={12} md={5}>
-            <Box
-              sx={{
-                background: "rgba(255,255,255,0.03)",
-                border: "1px solid rgba(255,255,255,0.07)",
-                borderRadius: "24px",
-                p: 1.5,
-              }}
-            >
+            {/* Text input */}
+            <TextField
+              className="text-input"
+              size="small"
+              label="Preview text"
+              variant="filled"
+              fullWidth
+              value={testText}
+              onChange={(e) => setTestText(e.target.value)}
+              placeholder="Magic CSS"
+            />
+
+            {/* Presets */}
+            <Box>
               <Typography
                 sx={{
-                  fontSize: "0.65rem",
+                  fontSize: "0.6rem",
                   letterSpacing: "0.14em",
-                  color: "rgba(255,255,255,0.25)",
+                  color: "rgba(255,255,255,0.22)",
                   textTransform: "uppercase",
-                  mb: 3,
+                  mb: 1,
                 }}
               >
-                Controls
+                Presets
               </Typography>
-
-              <SliderControl
-                label="Offset X"
-                min={-40}
-                max={40}
-                value={x}
-                onChange={setX}
-              />
-              <SliderControl
-                label="Offset Y"
-                min={-40}
-                max={40}
-                value={y}
-                onChange={setY}
-              />
-              <SliderControl
-                label="Blur"
-                min={0}
-                max={60}
-                value={blur}
-                onChange={setBlur}
-              />
-
-              <Typography
-                sx={{
-                  fontSize: "0.65rem",
-                  letterSpacing: "0.14em",
-                  color: "rgba(255,255,255,0.25)",
-                  textTransform: "uppercase",
-                  mb: 1.5,
-                  mt: 1,
-                }}
-              >
-                Shadow Color
-              </Typography>
-              <SketchPicker
-                color={color}
-                onChangeComplete={handleColorComplete}
-              />
+              <Box display="flex" gap={1} flexWrap="wrap">
+                {PRESETS?.map((preset, idx) => (
+                  <Chip
+                    key={preset.label}
+                    label={preset.label}
+                    size="small"
+                    onClick={() => applyPreset(preset, idx)}
+                    sx={{
+                      height: 26,
+                      fontSize: "0.65rem",
+                      cursor: "pointer",
+                      bgcolor:
+                        activePreset === idx
+                          ? "rgba(255,200,100,0.15)"
+                          : "rgba(255,255,255,0.05)",
+                      color:
+                        activePreset === idx
+                          ? "#ffc864"
+                          : "rgba(255,255,255,0.4)",
+                      border:
+                        activePreset === idx
+                          ? "1px solid rgba(255,200,100,0.35)"
+                          : "1px solid rgba(255,255,255,0.07)",
+                      "&:hover": { bgcolor: "rgba(255,200,100,0.1)" },
+                      // small color dot before label
+                      "& .MuiChip-label": { px: 1.5 },
+                    }}
+                    avatar={
+                      <Box
+                        component="span"
+                        sx={{
+                          width: "8px !important",
+                          height: "8px !important",
+                          borderRadius: "50%",
+                          background: preset.color,
+                          ml: "6px !important",
+                          flexShrink: 0,
+                          border: "1px solid rgba(255,255,255,0.15)",
+                        }}
+                      />
+                    }
+                  />
+                ))}
+              </Box>
             </Box>
-          </Grid>
+
+            {/* CSS Output + Copy */}
+            <CopyButton
+              copied={copied}
+              finalSource={finalSource}
+              handleCopy={handleCopy}
+            />
+          </Box>
         </Grid>
-      </Container>
-    </>
+
+        {/* RIGHT — Controls */}
+        <Grid item xs={12} md={5}>
+          <Box
+            sx={{
+              background: "rgba(255,255,255,0.03)",
+              border: "1px solid rgba(255,255,255,0.07)",
+              borderRadius: "24px",
+              p: 1.5,
+            }}
+          >
+            <Typography
+              sx={{
+                fontSize: "0.65rem",
+                letterSpacing: "0.14em",
+                color: "rgba(255,255,255,0.25)",
+                textTransform: "uppercase",
+                mb: 3,
+              }}
+            >
+              Controls
+            </Typography>
+
+            <SliderControl
+              label="Offset X"
+              min={-40}
+              max={40}
+              value={x}
+              onChange={setX}
+            />
+            <SliderControl
+              label="Offset Y"
+              min={-40}
+              max={40}
+              value={y}
+              onChange={setY}
+            />
+            <SliderControl
+              label="Blur"
+              min={0}
+              max={60}
+              value={blur}
+              onChange={setBlur}
+            />
+
+            <Typography
+              sx={{
+                fontSize: "0.65rem",
+                letterSpacing: "0.14em",
+                color: "rgba(255,255,255,0.25)",
+                textTransform: "uppercase",
+                mb: 1.5,
+                mt: 1,
+              }}
+            >
+              Shadow Color
+            </Typography>
+            <SketchPicker
+              color={color}
+              onChangeComplete={handleColorComplete}
+            />
+          </Box>
+        </Grid>
+      </Grid>
+    </Container>
   );
 };
 

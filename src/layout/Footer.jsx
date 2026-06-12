@@ -1,35 +1,48 @@
-import { Grid, Typography } from "@mui/material";
+import { Box, Typography } from "@mui/material";
 
 const Footer = () => {
   return (
-    <Grid
-      container
+    <Box
+      component="footer"
       sx={{
-        backgroundColor: "#1c2442",
-        flexFlow: "column",
+        background: "rgba(15,15,20,0.92)",
+        backdropFilter: "blur(16px)",
+        borderTop: "1px solid rgba(255,255,255,0.06)",
+        py: 2,
+        px: 3,
+        display: "flex",
+        alignItems: "center",
+        justifyContent: "center",
       }}
     >
-      <Grid item sx={{ margin: "15px auto" }} xs={8} sm={6} md={4} lg={3}>
-        <Typography
-          variant="body1"
-          color="#fff"
-          fontWeight={700}
-          fontSize={"15px"}
+      <Typography
+        sx={{
+          fontSize: "0.78rem",
+          color: "rgba(255,255,255,0.3)",
+          letterSpacing: "0.02em",
+        }}
+      >
+        Made with{" "}
+        <Box component="span" sx={{ color: "rgb(211,0,0)" }}>
+          ❤
+        </Box>{" "}
+        by{" "}
+        <Box
+          component="a"
+          href="https://parham-ab.netlify.app/"
+          target="_blank"
+          rel="noreferrer"
+          sx={{
+            color: "rgba(255,200,100,0.75)",
+            textDecoration: "none",
+            transition: "color 0.2s",
+            "&:hover": { color: "#ffc864" },
+          }}
         >
-          Made with
-          <span style={{ color: "rgb(211, 0, 0)" }}> ❤ </span>
-          by
-          <a
-            href="https://parham-ab.netlify.app/"
-            target={"_blank"}
-            rel="noreferrer"
-          >
-            {" "}
-            Parham Abolghasemi
-          </a>
-        </Typography>
-      </Grid>
-    </Grid>
+          Parham Abolghasemi
+        </Box>
+      </Typography>
+    </Box>
   );
 };
 

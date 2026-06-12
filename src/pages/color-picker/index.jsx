@@ -40,7 +40,7 @@ const ColorPicker = () => {
     <Container>
       {/* Header */}
       <HeaderTitle
-        title={"Color Generator"}
+        title={"Color Picker"}
         description={"Pick a color and copy its HEX/RGB/RGBA value"}
       />
       <Grid container spacing={4} alignItems="flex-start">
@@ -103,7 +103,6 @@ const ColorPicker = () => {
             {/* Large color swatch */}
             <Box
               sx={{
-                width: "100%",
                 height: 220,
                 borderRadius: "16px",
                 background: finalSource || color.hex,

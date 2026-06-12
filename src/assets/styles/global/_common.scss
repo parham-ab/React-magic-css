@@ -18,6 +18,38 @@ $big: 1078px;
     width: 50rem !important;
   }
 }
+.text-input .MuiFilledInput-root {
+  background: rgba(255, 255, 255, 0.06) !important;
+  border-radius: 12px !important;
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  transition:
+    border-color 0.25s,
+    background 0.25s;
+}
+.text-input .MuiFilledInput-root:hover {
+  background: rgba(255, 255, 255, 0.09) !important;
+  border-color: rgba(255, 255, 255, 0.2);
+}
+.text-input .MuiFilledInput-root.Mui-focused {
+  background: rgba(255, 255, 255, 0.1) !important;
+  border-color: rgba(255, 200, 100, 0.55);
+}
+.text-input .MuiFilledInput-root::before,
+.text-input .MuiFilledInput-root::after {
+  display: none;
+}
+.text-input .MuiInputLabel-root {
+  color: rgba(255, 255, 255, 0.35);
+  font-size: 0.85rem;
+}
+.text-input .MuiInputLabel-root.Mui-focused {
+  color: rgba(255, 200, 100, 0.85);
+}
+.text-input .MuiFilledInput-input {
+  color: #fff;
+  font-size: 0.95rem;
+  letter-spacing: 0.04em;
+}
 @media screen and (max-width: $medium) {
   .custom-box {
     width: 30rem !important;

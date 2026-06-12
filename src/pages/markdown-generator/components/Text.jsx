@@ -12,7 +12,7 @@ const Text = () => {
   };
 
   return (
-    <Grid container spacing={3} alignItems="flex-start" py={4}>
+    <Grid container spacing={3} alignItems="flex-start">
       {/* LEFT — Markdown Input */}
       <Grid item xs={12} md={6}>
         <Box

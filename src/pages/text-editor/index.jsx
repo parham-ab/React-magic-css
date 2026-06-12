@@ -100,7 +100,6 @@ const TextEditor = () => {
             {/* Preview area */}
             <Box
               sx={{
-                width: "100%",
                 minHeight: 200,
                 borderRadius: "16px",
                 background:
@@ -108,7 +107,7 @@ const TextEditor = () => {
                 border: "1px solid rgba(255,255,255,0.05)",
                 display: "flex",
                 alignItems: "center",
-                p: 4,
+                p: 1.5,
               }}
             >
               <Typography

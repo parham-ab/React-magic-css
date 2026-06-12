@@ -200,7 +200,6 @@ const Skew = () => {
               p: 1.5,
               display: "flex",
               flexDirection: "column",
-              gap: 0,
             }}
           >
             <Typography
