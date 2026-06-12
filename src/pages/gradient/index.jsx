@@ -11,9 +11,10 @@ import {
 import { Container } from "@mui/system";
 import { SketchPicker } from "react-color";
 import UseTitle from "../../hooks/useTitle";
-import { copyToClipboard } from "../../utils/copyToClipboard";
 import CopyButton from "../../components/CopyButton";
 import HeaderTitle from "../../components/HeaderTitle";
+import { useCopy } from "../../hooks/useCopy";
+import ControlsContainer from "../../components/ControlsContainer";
 
 const Gradient = () => {
   const [firstColor, setFirstColor] = useState("#ff6b6b");
@@ -21,7 +22,6 @@ const Gradient = () => {
   const [angle, setAngle] = useState(135);
   const [gradientType, setGradientType] = useState("linear");
   const [finalSource, setFinalSource] = useState("");
-  const [copied, setCopied] = useState(false);
   const [activeColor, setActiveColor] = useState("first"); // which picker is active
 
   const gradientCSS =
@@ -33,12 +33,6 @@ const Gradient = () => {
     setFinalSource(`background: ${gradientCSS};`);
   }, [firstColor, secondColor, angle, gradientType, gradientCSS]);
 
-  const handleCopy = () => {
-    copyToClipboard(finalSource);
-    setCopied(true);
-    setTimeout(() => setCopied(false), 1800);
-  };
-
   const handleColorComplete = (c) => {
     const value =
       c.rgb.a < 1 ? `rgba(${c.rgb.r},${c.rgb.g},${c.rgb.b},${c.rgb.a})` : c.hex;
@@ -46,6 +40,8 @@ const Gradient = () => {
   };
 
   UseTitle("Magic CSS - Gradient Generator");
+  const { copied, copy } = useCopy();
+  const handleCopy = () => copy(finalSource);
 
   return (
     <Container>
@@ -174,27 +170,7 @@ const Gradient = () => {
 
         {/* RIGHT — Controls */}
         <Grid item xs={12} md={5}>
-          <Box
-            sx={{
-              background: "rgba(255,255,255,0.03)",
-              border: "1px solid rgba(255,255,255,0.07)",
-              borderRadius: "24px",
-              p: 1.5,
-              display: "flex",
-              flexDirection: "column",
-              gap: 3,
-            }}
-          >
-            <Typography
-              sx={{
-                fontSize: "0.65rem",
-                color: "rgba(255,255,255,0.25)",
-                textTransform: "uppercase",
-              }}
-            >
-              Controls
-            </Typography>
-
+          <ControlsContainer>
             {/* Gradient Type Toggle */}
             <Box>
               <Typography
@@ -393,7 +369,7 @@ const Gradient = () => {
                 onChangeComplete={handleColorComplete}
               />
             </Box>
-          </Box>
+          </ControlsContainer>
         </Grid>
       </Grid>
     </Container>

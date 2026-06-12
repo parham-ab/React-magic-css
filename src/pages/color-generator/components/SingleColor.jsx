@@ -1,8 +1,7 @@
 import { Box, Typography, Tooltip } from "@mui/material";
 import ContentCopyIcon from "@mui/icons-material/ContentCopy";
-import { useState } from "react";
 import rgbToHex from "../../../utils/colorFormat";
-import { copyToClipboard } from "../../../utils/copyToClipboard";
+import { useCopy } from "../../../hooks/useCopy";
 
 const SingleColor = ({ rgb, weight }) => {
   const hex = rgbToHex(...rgb);
@@ -14,13 +13,9 @@ const SingleColor = ({ rgb, weight }) => {
     luminance > 0.55 ? "rgba(0,0,0,0.75)" : "rgba(255,255,255,0.85)";
   const subTextColor =
     luminance > 0.55 ? "rgba(0,0,0,0.45)" : "rgba(255,255,255,0.45)";
-  const [copied, setCopied] = useState(false);
 
-  const handleCopy = () => {
-    copyToClipboard(`background-color: ${hex};`);
-    setCopied(true);
-    setTimeout(() => setCopied(false), 1500);
-  };
+  const { copied, copy } = useCopy();
+  const handleCopy = () => copy(`background-color: ${hex};`);
 
   return (
     <Tooltip

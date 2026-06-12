@@ -11,17 +11,17 @@ import PhotoCamera from "@mui/icons-material/PhotoCamera";
 import RestartAltIcon from "@mui/icons-material/RestartAlt";
 import UseTitle from "../../hooks/useTitle";
 import CopyButton from "../../components/CopyButton";
-import { copyToClipboard } from "../../utils/copyToClipboard";
 import SliderControl from "../../components/SliderControl";
 import DEFAULTS from "./constants/defaults";
 import PRESETS from "./constants/presets";
 import HeaderTitle from "../../components/HeaderTitle";
+import { useCopy } from "../../hooks/useCopy";
+import ControlsContainer from "../../components/ControlsContainer";
 
 const ImageFilter = () => {
   const [vals, setVals] = useState({ ...DEFAULTS });
   const [img, setImg] = useState(null);
   const [finalSource, setFinalSource] = useState("");
-  const [copied, setCopied] = useState(false);
   const [activePreset, setActivePreset] = useState(0);
 
   const {
@@ -57,17 +57,13 @@ const ImageFilter = () => {
     setActivePreset(0);
   };
 
-  const handleCopy = () => {
-    copyToClipboard(finalSource);
-    setCopied(true);
-    setTimeout(() => setCopied(false), 1800);
-  };
-
   function onImageChange(e) {
     if (e.target.files[0]) setImg(URL.createObjectURL(e.target.files[0]));
   }
 
   UseTitle("Magic CSS - Image Filter");
+  const { copied, copy } = useCopy();
+  const handleCopy = () => copy(finalSource);
 
   return (
     <Container>
@@ -248,28 +244,7 @@ const ImageFilter = () => {
 
         {/* RIGHT — Controls */}
         <Grid item xs={12} md={5}>
-          <Box
-            sx={{
-              background: "rgba(255,255,255,0.03)",
-              border: "1px solid rgba(255,255,255,0.07)",
-              borderRadius: "24px",
-              p: 1.5,
-              display: "flex",
-              flexDirection: "column",
-              gap: 1,
-            }}
-          >
-            <Typography
-              sx={{
-                fontSize: "0.65rem",
-                color: "rgba(255,255,255,0.25)",
-                textTransform: "uppercase",
-                mb: 3,
-              }}
-            >
-              Controls
-            </Typography>
-
+          <ControlsContainer>
             <SliderControl
               label="Grayscale"
               min={0}
@@ -342,7 +317,7 @@ const ImageFilter = () => {
               unit="%"
               onChange={set("invert")}
             />
-          </Box>
+          </ControlsContainer>
         </Grid>
       </Grid>
     </Container>

@@ -1,4 +1,4 @@
-import { Route, Routes } from "react-router-dom";
+import { Navigate, Route, Routes } from "react-router-dom";
 import ScrollToTop from "./utils/ScrollTotop";
 import { ThemeProvider } from "@mui/material/styles";
 import { theme } from "./utils/theme";
@@ -19,7 +19,10 @@ const App = () => {
               element={<item.component />}
             />
           ))}
-          {/* <Route path="/*" element={<Navigate to="/shadow-generator" />} /> */}
+          <Route
+            path="/*"
+            element={<Navigate to="/pages/shadow-generator" />}
+          />
         </Routes>
         <ScrollToTop />
       </Layout>

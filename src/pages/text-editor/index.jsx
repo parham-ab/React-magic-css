@@ -17,9 +17,10 @@ import FormatBoldIcon from "@mui/icons-material/FormatBold";
 import FormatItalicIcon from "@mui/icons-material/FormatItalic";
 import FormatUnderlinedIcon from "@mui/icons-material/FormatUnderlined";
 import UseTitle from "../../hooks/useTitle";
-import { copyToClipboard } from "../../utils/copyToClipboard";
 import CopyButton from "../../components/CopyButton";
 import HeaderTitle from "../../components/HeaderTitle";
+import { useCopy } from "../../hooks/useCopy";
+import ControlsContainer from "../../components/ControlsContainer";
 
 const toggleSx = {
   gap: 0.5,
@@ -42,8 +43,8 @@ const TextEditor = () => {
   const [alignment, setAlignment] = useState("left");
   const [formats, setFormats] = useState([]);
   const [finalSource, setFinalSource] = useState("");
-  const [copied, setCopied] = useState(false);
-
+  const { copied, copy } = useCopy();
+  const handleCopy = () => copy(finalSource);
   const isBold = formats.includes("bold");
   const isItalic = formats.includes("italic");
   const isUnderlined = formats.includes("underlined");
@@ -54,13 +55,7 @@ const TextEditor = () => {
     if (isItalic) props.push("font-style: italic;");
     if (isUnderlined) props.push("text-decoration: underline;");
     setFinalSource(props.join("\n"));
-  }, [alignment, formats]);
-
-  const handleCopy = () => {
-    copyToClipboard(finalSource);
-    setCopied(true);
-    setTimeout(() => setCopied(false), 1800);
-  };
+  }, [alignment, formats, isBold, isItalic, isUnderlined]);
 
   UseTitle("Magic CSS - Text Editor");
 
@@ -177,27 +172,7 @@ const TextEditor = () => {
 
         {/* RIGHT — Controls */}
         <Grid item xs={12} md={5}>
-          <Box
-            sx={{
-              background: "rgba(255,255,255,0.03)",
-              border: "1px solid rgba(255,255,255,0.07)",
-              borderRadius: "24px",
-              p: 1.5,
-              display: "flex",
-              flexDirection: "column",
-              gap: 2,
-            }}
-          >
-            <Typography
-              sx={{
-                fontSize: "0.65rem",
-                color: "rgba(255,255,255,0.25)",
-                textTransform: "uppercase",
-              }}
-            >
-              Controls
-            </Typography>
-
+          <ControlsContainer>
             {/* Alignment */}
             <Box>
               <Typography
@@ -264,7 +239,7 @@ const TextEditor = () => {
                 </ToggleButton>
               </ToggleButtonGroup>
             </Box>
-          </Box>
+          </ControlsContainer>
         </Grid>
       </Grid>
     </Container>

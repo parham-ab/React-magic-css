@@ -28,7 +28,8 @@
     "start": "react-scripts start",
     "build": "react-scripts build",
     "test": "react-scripts test",
-    "eject": "react-scripts eject"
+    "eject": "react-scripts eject",
+    "knip": "knip"
   },
   "eslintConfig": {
     "extends": [
@@ -47,5 +48,10 @@
       "last 1 firefox version",
       "last 1 safari version"
     ]
+  },
+  "devDependencies": {
+    "@types/node": "^25.9.3",
+    "knip": "^6.16.1",
+    "typescript": "^6.0.3"
   }
 }

@@ -1,18 +1,18 @@
 import { useEffect, useState } from "react";
 import { Button, Grid, Typography, Chip, Box } from "@mui/material";
 import { Container } from "@mui/system";
-import { copyToClipboard } from "../../utils/copyToClipboard";
 import UseTitle from "../../hooks/useTitle";
 import HeaderTitle from "../../components/HeaderTitle";
 import SliderControl from "../../components/SliderControl";
 import CopyButton from "../../components/CopyButton";
 import PRESETS from "./constants/presets";
+import { useCopy } from "../../hooks/useCopy";
+import ControlsContainer from "../../components/ControlsContainer";
 
 const Skew = () => {
   const [skewX, setSkewX] = useState(0);
   const [skewY, setSkewY] = useState(0);
   const [finalSource, setFinalSource] = useState("");
-  const [copied, setCopied] = useState(false);
   const [activePreset, setActivePreset] = useState(0);
 
   useEffect(() => {
@@ -20,12 +20,8 @@ const Skew = () => {
   }, [skewX, skewY]);
 
   UseTitle("Magic CSS - Skew");
-
-  const handleCopy = () => {
-    copyToClipboard(finalSource);
-    setCopied(true);
-    setTimeout(() => setCopied(false), 1800);
-  };
+  const { copied, copy } = useCopy();
+  const handleCopy = () => copy(finalSource);
 
   const applyPreset = (preset, idx) => {
     setSkewX(preset.x);
@@ -192,27 +188,7 @@ const Skew = () => {
 
         {/* RIGHT — Controls */}
         <Grid item xs={12} md={5}>
-          <Box
-            sx={{
-              background: "rgba(255,255,255,0.03)",
-              border: "1px solid rgba(255,255,255,0.07)",
-              borderRadius: "24px",
-              p: 1.5,
-              display: "flex",
-              flexDirection: "column",
-            }}
-          >
-            <Typography
-              sx={{
-                fontSize: "0.65rem",
-                color: "rgba(255,255,255,0.25)",
-                textTransform: "uppercase",
-                mb: 3,
-              }}
-            >
-              Controls
-            </Typography>
-
+          <ControlsContainer>
             <SliderControl
               label="Skew X"
               min={-50}
@@ -257,7 +233,7 @@ const Skew = () => {
             >
               Reset to flat
             </Button>
-          </Box>
+          </ControlsContainer>
         </Grid>
       </Grid>
     </Container>

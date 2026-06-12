@@ -3,11 +3,12 @@ import { Grid, TextField, Typography, Box, Chip } from "@mui/material";
 import { Container } from "@mui/system";
 import { SketchPicker } from "react-color";
 import UseTitle from "../../hooks/useTitle";
-import { copyToClipboard } from "../../utils/copyToClipboard";
 import CopyButton from "../../components/CopyButton";
 import HeaderTitle from "../../components/HeaderTitle";
 import PRESETS from "./constants/presets";
 import SliderControl from "../../components/SliderControl";
+import { useCopy } from "../../hooks/useCopy";
+import ControlsContainer from "../../components/ControlsContainer";
 
 const TextShadowGenerator = () => {
   const [testText, setTestText] = useState("Magic CSS");
@@ -16,7 +17,6 @@ const TextShadowGenerator = () => {
   const [blur, setBlur] = useState(14);
   const [color, setColor] = useState("rgba(130,100,255,0.9)");
   const [finalSource, setFinalSource] = useState("");
-  const [copied, setCopied] = useState(false);
   const [activePreset, setActivePreset] = useState(null);
 
   useEffect(() => {
@@ -24,12 +24,8 @@ const TextShadowGenerator = () => {
   }, [x, y, blur, color]);
 
   UseTitle("Magic CSS - Text Shadow Generator");
-
-  const handleCopy = () => {
-    copyToClipboard(finalSource);
-    setCopied(true);
-    setTimeout(() => setCopied(false), 1800);
-  };
+  const { copied, copy } = useCopy();
+  const handleCopy = () => copy(finalSource);
 
   const applyPreset = (preset, idx) => {
     setX(preset.x);
@@ -195,26 +191,7 @@ const TextShadowGenerator = () => {
 
         {/* RIGHT — Controls */}
         <Grid item xs={12} md={5}>
-          <Box
-            sx={{
-              background: "rgba(255,255,255,0.03)",
-              border: "1px solid rgba(255,255,255,0.07)",
-              borderRadius: "24px",
-              p: 1.5,
-            }}
-          >
-            <Typography
-              sx={{
-                fontSize: "0.65rem",
-                letterSpacing: "0.14em",
-                color: "rgba(255,255,255,0.25)",
-                textTransform: "uppercase",
-                mb: 3,
-              }}
-            >
-              Controls
-            </Typography>
-
+          <ControlsContainer>
             <SliderControl
               label="Offset X"
               min={-40}
@@ -253,7 +230,7 @@ const TextShadowGenerator = () => {
               color={color}
               onChangeComplete={handleColorComplete}
             />
-          </Box>
+          </ControlsContainer>
         </Grid>
       </Grid>
     </Container>

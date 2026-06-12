@@ -9,20 +9,12 @@ import {
 } from "@mui/material";
 import { Container } from "@mui/system";
 import UseTitle from "../../hooks/useTitle";
-import { copyToClipboard } from "../../utils/copyToClipboard";
 import CopyButton from "../../components/CopyButton";
 import HeaderTitle from "../../components/HeaderTitle";
 import SliderControl from "../../components/SliderControl";
-
-const PRESETS = [
-  { label: "Sharp", values: [0, 0, 0, 0] },
-  { label: "Soft", values: [12, 12, 12, 12] },
-  { label: "Pill", values: [50, 50, 50, 50] },
-  { label: "Circle", values: [50, 50, 50, 50], unit: "%" },
-  { label: "Squircle", values: [30, 30, 30, 30] },
-  { label: "Leaf", values: [80, 8, 80, 8] },
-  { label: "Scallop", values: [50, 0, 50, 0] },
-];
+import { useCopy } from "../../hooks/useCopy";
+import PRESETS from "./constants/presets";
+import ControlsContainer from "../../components/ControlsContainer";
 
 const BorderRadius = () => {
   const [mode, setMode] = useState("same"); // "same" | "different"
@@ -33,7 +25,6 @@ const BorderRadius = () => {
   const [bottomRight, setBottomRight] = useState(20);
   const [bottomLeft, setBottomLeft] = useState(20);
   const [finalSource, setFinalSource] = useState("");
-  const [copied, setCopied] = useState(false);
   const [activePreset, setActivePreset] = useState(null);
 
   const borderRadiusValue =
@@ -43,15 +34,12 @@ const BorderRadius = () => {
 
   useEffect(() => {
     setFinalSource(`border-radius: ${borderRadiusValue};`);
-  }, [mode, allRadius, unit, topLeft, topRight, bottomRight, bottomLeft]);
+  }, [borderRadiusValue]);
 
   UseTitle("Magic CSS - Border Radius");
 
-  const handleCopy = () => {
-    copyToClipboard(finalSource);
-    setCopied(true);
-    setTimeout(() => setCopied(false), 1800);
-  };
+  const { copied, copy } = useCopy();
+  const handleCopy = () => copy(finalSource);
 
   const applyPreset = (preset, idx) => {
     const u = preset.unit || "px";
@@ -201,28 +189,7 @@ const BorderRadius = () => {
 
         {/* RIGHT — Controls */}
         <Grid item xs={12} md={5}>
-          <Box
-            sx={{
-              background: "rgba(255,255,255,0.03)",
-              border: "1px solid rgba(255,255,255,0.07)",
-              borderRadius: "24px",
-              p: 1.5,
-              display: "flex",
-              flexDirection: "column",
-              gap: 0,
-            }}
-          >
-            <Typography
-              sx={{
-                fontSize: "0.65rem",
-                color: "rgba(255,255,255,0.25)",
-                textTransform: "uppercase",
-                mb: 3,
-              }}
-            >
-              Controls
-            </Typography>
-
+          <ControlsContainer>
             {/* Mode toggle */}
             <Box>
               <Typography
@@ -383,7 +350,7 @@ const BorderRadius = () => {
                 />
               </>
             )}
-          </Box>
+          </ControlsContainer>
         </Grid>
       </Grid>
     </Container>

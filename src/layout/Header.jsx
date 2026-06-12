@@ -73,7 +73,7 @@ const Header = () => {
                   sx={{
                     width: "100%",
                     borderRadius: "10px",
-                    padding: "7px",
+                    padding: "5px",
                     color: isActive ? "#ffc864" : "rgba(255,255,255,0.35)",
                     background: isActive
                       ? "rgba(255,200,100,0.12)"
@@ -112,7 +112,6 @@ const Header = () => {
           flexDirection: "row",
           justifyContent: "space-between",
           alignItems: "center",
-          pr: 1.5,
         }}
       >
         <Toolbar variant="dense" sx={{ minHeight: 48 }}>

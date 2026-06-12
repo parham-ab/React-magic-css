@@ -9,11 +9,13 @@ import {
   Chip,
 } from "@mui/material";
 import { Container } from "@mui/system";
-import { copyToClipboard } from "../../utils/copyToClipboard";
 import UseTitle from "../../hooks/useTitle";
 import HeaderTitle from "../../components/HeaderTitle";
 import SliderControl from "../../components/SliderControl";
 import CopyButton from "../../components/CopyButton";
+import { useCopy } from "../../hooks/useCopy";
+import { SHADOW_SLIDER_TYPES } from "./constants/slider-types";
+import ControlsContainer from "../../components/ControlsContainer";
 
 const ShadowGenerator = () => {
   const [x, setX] = useState(0);
@@ -23,7 +25,6 @@ const ShadowGenerator = () => {
   const [insetStatus, setInsetStatus] = useState(false);
   const [color, setColor] = useState("rgba(0,0,0,0.5)");
   const [finalSource, setFinalSource] = useState("");
-  const [copied, setCopied] = useState(false);
 
   const shadowValue = insetStatus
     ? `inset ${x}px ${y}px ${blur}px ${spread}px ${color}`
@@ -33,13 +34,9 @@ const ShadowGenerator = () => {
     setFinalSource(`box-shadow: ${shadowValue};`);
   }, [x, y, blur, spread, insetStatus, color, shadowValue]);
 
-  const handleCopy = () => {
-    copyToClipboard(finalSource);
-    setCopied(true);
-    setTimeout(() => setCopied(false), 1800);
-  };
-
   UseTitle("Magic CSS - Shadow Generator");
+  const { copied, copy } = useCopy();
+  const handleCopy = () => copy(finalSource);
 
   return (
     <Container>
@@ -115,63 +112,26 @@ const ShadowGenerator = () => {
 
         {/* RIGHT — Controls */}
         <Grid item xs={12} md={6}>
-          <Box
-            sx={{
-              background: "rgba(255,255,255,0.03)",
-              border: "1px solid rgba(255,255,255,0.07)",
-              borderRadius: "24px",
-              p: 1.5,
-            }}
-          >
-            <Typography
-              sx={{
-                fontSize: "0.65rem",
-                color: "rgba(255,255,255,0.25)",
-                textTransform: "uppercase",
-                mb: 3,
-              }}
-            >
-              Controls
-            </Typography>
-
-            {/* {sliderTypes?.map((item) => (
+          <ControlsContainer>
+            {SHADOW_SLIDER_TYPES({
+              x,
+              y,
+              blur,
+              spread,
+              setX,
+              setY,
+              setBlur,
+              setSpread,
+            }).map((item) => (
               <SliderControl
-                label={item?.label}
-                min={item?.min}
-                max={item?.max}
-                value={item?.value}
-                onChange={item?.onChange}
+                key={item.label}
+                label={item.label}
+                min={item.min}
+                max={item.max}
+                value={item.value}
+                onChange={item.onChange}
               />
-            ))} */}
-
-            <SliderControl
-              label="Offset X"
-              min={-130}
-              max={130}
-              value={x}
-              onChange={setX}
-            />
-            <SliderControl
-              label="Offset Y"
-              min={-130}
-              max={130}
-              value={y}
-              onChange={setY}
-            />
-            <SliderControl
-              label="Blur"
-              min={0}
-              max={130}
-              value={blur}
-              onChange={setBlur}
-            />
-            <SliderControl
-              label="Spread"
-              min={-50}
-              max={50}
-              value={spread}
-              onChange={setSpread}
-            />
+            ))}
 
             {/* Inset Toggle */}
             <Box
@@ -261,7 +221,7 @@ const ShadowGenerator = () => {
                 )
               }
             />
-          </Box>
+          </ControlsContainer>
         </Grid>
       </Grid>
     </Container>

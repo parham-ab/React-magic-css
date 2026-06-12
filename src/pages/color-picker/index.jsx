@@ -3,10 +3,10 @@ import { Grid, Box, Typography } from "@mui/material";
 import { SketchPicker } from "react-color";
 import { Container } from "@mui/system";
 import UseTitle from "../../hooks/useTitle";
-import { copyToClipboard } from "../../utils/copyToClipboard";
 import CopyButton from "../../components/CopyButton";
 import COLOR_SWATCHES from "./constants/color-swatches";
 import HeaderTitle from "../../components/HeaderTitle";
+import { useCopy } from "../../hooks/useCopy";
 
 const ColorPicker = () => {
   const [color, setColor] = useState({
@@ -14,7 +14,6 @@ const ColorPicker = () => {
     rgb: { r: 139, g: 92, b: 246, a: 1 },
   });
   const [finalSource, setFinalSource] = useState("");
-  const [copied, setCopied] = useState(false);
 
   const handleChange = (c) => setColor(c);
 
@@ -23,13 +22,9 @@ const ColorPicker = () => {
     setFinalSource(a < 1 ? `rgba(${r}, ${g}, ${b}, ${a})` : color.hex);
   }, [color]);
 
-  const handleCopy = () => {
-    copyToClipboard(finalSource);
-    setCopied(true);
-    setTimeout(() => setCopied(false), 1800);
-  };
-
   UseTitle("Magic CSS - Color Picker");
+  const { copied, copy } = useCopy();
+  const handleCopy = () => copy(finalSource);
 
   const { r, g, b, a } = color.rgb;
   const luminance = (0.299 * r + 0.587 * g + 0.114 * b) / 255;
