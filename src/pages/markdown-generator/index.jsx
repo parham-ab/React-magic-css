@@ -1,22 +1,18 @@
-import { Typography } from "@mui/material";
+import { Container } from "@mui/system";
 import UseTitle from "../../hooks/useTitle";
+import HeaderTitle from "../../components/HeaderTitle";
 import Text from "./components/Text";
 
 const MarkdownGenerator = () => {
   UseTitle("Magic CSS - Markdown");
   return (
-    <>
-      <Typography
-        variant="h4"
-        component="h1"
-        textAlign="center"
-        my={5}
-        color={"#7689cd"}
-      >
-        Markdown Generator
-      </Typography>
+    <Container>
+      <HeaderTitle
+        title="Markdown Generator"
+        description="Convert markdown to beautiful HTML preview in real time"
+      />
       <Text />
-    </>
+    </Container>
   );
 };
 

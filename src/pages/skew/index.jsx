@@ -126,7 +126,6 @@ const Skew = () => {
                 >
                   <Typography
                     sx={{
-                      fontFamily: "'Space Mono', monospace",
                       fontSize: "0.55rem",
                       color: "rgba(255,255,255,0.4)",
                       textAlign: "center",
@@ -161,7 +160,6 @@ const Skew = () => {
                     onClick={() => applyPreset(preset, idx)}
                     sx={{
                       height: 26,
-                      fontFamily: "'Space Mono', monospace",
                       fontSize: "0.65rem",
                       cursor: "pointer",
                       bgcolor:
@@ -183,7 +181,6 @@ const Skew = () => {
               </Box>
             </Box>
 
-            {/* CSS Output + Copy */}
             {/* CSS Output + Copy */}
             <CopyButton
               copied={copied}
