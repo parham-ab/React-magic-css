@@ -6,6 +6,7 @@ import UseTitle from "../../hooks/useTitle";
 import CopyButton from "../../components/CopyButton";
 import HeaderTitle from "../../components/HeaderTitle";
 import PRESETS from "./constants/presets";
+import { getTextShadowSliders } from "./constants/sliderTypes";
 import SliderControl from "../../components/SliderControl";
 import { useCopy } from "../../hooks/useCopy";
 import ControlsContainer from "../../components/ControlsContainer";
@@ -192,27 +193,18 @@ const TextShadowGenerator = () => {
         {/* RIGHT — Controls */}
         <Grid item xs={12} md={5}>
           <ControlsContainer>
-            <SliderControl
-              label="Offset X"
-              min={-40}
-              max={40}
-              value={x}
-              onChange={setX}
-            />
-            <SliderControl
-              label="Offset Y"
-              min={-40}
-              max={40}
-              value={y}
-              onChange={setY}
-            />
-            <SliderControl
-              label="Blur"
-              min={0}
-              max={60}
-              value={blur}
-              onChange={setBlur}
-            />
+            {getTextShadowSliders(x, setX, y, setY, blur, setBlur)?.map(
+              (slider) => (
+                <SliderControl
+                  key={slider.label}
+                  label={slider.label}
+                  min={slider.min}
+                  max={slider.max}
+                  value={slider.value}
+                  onChange={slider.onChange}
+                />
+              ),
+            )}
 
             <Typography
               sx={{

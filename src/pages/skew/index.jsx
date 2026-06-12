@@ -6,6 +6,7 @@ import HeaderTitle from "../../components/HeaderTitle";
 import SliderControl from "../../components/SliderControl";
 import CopyButton from "../../components/CopyButton";
 import PRESETS from "./constants/presets";
+import { getSkewSliders } from "./constants/sliderTypes";
 import { useCopy } from "../../hooks/useCopy";
 import ControlsContainer from "../../components/ControlsContainer";
 
@@ -189,26 +190,18 @@ const Skew = () => {
         {/* RIGHT — Controls */}
         <Grid item xs={12} md={5}>
           <ControlsContainer>
-            <SliderControl
-              label="Skew X"
-              min={-50}
-              max={50}
-              value={skewX}
-              onChange={(v) => {
-                setSkewX(Number(v));
-                clearPreset();
-              }}
-            />
-            <SliderControl
-              label="Skew Y"
-              min={-50}
-              max={50}
-              value={skewY}
-              onChange={(v) => {
-                setSkewY(Number(v));
-                clearPreset();
-              }}
-            />
+            {getSkewSliders(skewX, setSkewX, skewY, setSkewY, clearPreset)?.map(
+              (slider) => (
+                <SliderControl
+                  key={slider.label}
+                  label={slider.label}
+                  min={slider.min}
+                  max={slider.max}
+                  value={slider.value}
+                  onChange={slider.onChange}
+                />
+              ),
+            )}
 
             {/* Reset */}
             <Button

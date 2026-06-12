@@ -12,52 +12,52 @@ import TextShadowGenerator from "../pages/text-shadow-generator";
 const mainRoutes = [
   {
     title: "shadow-generator",
-    path: "/pages/shadow-generator",
+    path: "/shadow-generator",
     component: ShadowGenerator,
   },
   {
     title: "gradient",
-    path: "/pages/gradient",
+    path: "/gradient",
     component: Gradient,
   },
   {
     title: "text-shadow-generator",
-    path: "/pages/text-shadow-generator",
+    path: "/text-shadow-generator",
     component: TextShadowGenerator,
   },
   {
     title: "border-radius",
-    path: "/pages/border-radius",
+    path: "/border-radius",
     component: BorderRadius,
   },
   {
     title: "image-filter",
-    path: "/pages/image-filter",
+    path: "/image-filter",
     component: ImageFilter,
   },
   {
     title: "skew",
-    path: "/pages/skew",
+    path: "/skew",
     component: Skew,
   },
   {
     title: "color-picker",
-    path: "/pages/color-picker",
+    path: "/color-picker",
     component: ColorPicker,
   },
   {
     title: "color-generator",
-    path: "/pages/color-generator",
+    path: "/color-generator",
     component: ColorGenerator,
   },
   {
     title: "text-editor",
-    path: "/pages/text-editor",
+    path: "/text-editor",
     component: TextEditor,
   },
   {
     title: "markdown",
-    path: "/pages/markdown",
+    path: "/markdown",
     component: MarkdownGenerator,
   },
 ];

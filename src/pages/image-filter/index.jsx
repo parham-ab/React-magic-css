@@ -14,6 +14,7 @@ import CopyButton from "../../components/CopyButton";
 import SliderControl from "../../components/SliderControl";
 import DEFAULTS from "./constants/defaults";
 import PRESETS from "./constants/presets";
+import { getFilterSliders } from "./constants/sliderTypes";
 import HeaderTitle from "../../components/HeaderTitle";
 import { useCopy } from "../../hooks/useCopy";
 import ControlsContainer from "../../components/ControlsContainer";
@@ -245,78 +246,17 @@ const ImageFilter = () => {
         {/* RIGHT — Controls */}
         <Grid item xs={12} md={5}>
           <ControlsContainer>
-            <SliderControl
-              label="Grayscale"
-              min={0}
-              max={100}
-              value={greyscale}
-              unit="%"
-              onChange={set("greyscale")}
-            />
-            <SliderControl
-              label="Blur"
-              min={0}
-              max={30}
-              value={blur}
-              unit="px"
-              onChange={set("blur")}
-            />
-            <SliderControl
-              label="Sepia"
-              min={0}
-              max={100}
-              value={sepia}
-              unit="%"
-              onChange={set("sepia")}
-            />
-            <SliderControl
-              label="Saturate"
-              min={0}
-              max={300}
-              value={saturate}
-              unit="%"
-              onChange={set("saturate")}
-            />
-            <SliderControl
-              label="Opacity"
-              min={0}
-              max={100}
-              value={opacity}
-              unit="%"
-              onChange={set("opacity")}
-            />
-            <SliderControl
-              label="Brightness"
-              min={0}
-              max={200}
-              value={brightness}
-              unit="%"
-              onChange={set("brightness")}
-            />
-            <SliderControl
-              label="Contrast"
-              min={0}
-              max={200}
-              value={contrast}
-              unit="%"
-              onChange={set("contrast")}
-            />
-            <SliderControl
-              label="Hue Rotate"
-              min={0}
-              max={360}
-              value={hue}
-              unit="°"
-              onChange={set("hue")}
-            />
-            <SliderControl
-              label="Invert"
-              min={0}
-              max={100}
-              value={invert}
-              unit="%"
-              onChange={set("invert")}
-            />
+            {getFilterSliders(vals, set).map((slider) => (
+              <SliderControl
+                key={slider.label}
+                label={slider.label}
+                min={slider.min}
+                max={slider.max}
+                value={slider.value}
+                unit={slider.unit}
+                onChange={slider.onChange}
+              />
+            ))}
           </ControlsContainer>
         </Grid>
       </Grid>

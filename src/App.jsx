@@ -1,10 +1,9 @@
 import { Navigate, Route, Routes } from "react-router-dom";
+import { Toaster } from "react-hot-toast";
 import ScrollToTop from "./utils/ScrollTotop";
 import { ThemeProvider } from "@mui/material/styles";
 import { theme } from "./utils/theme";
 import { routes } from "./routes";
-import { ToastContainer } from "react-toastify";
-import "react-toastify/dist/ReactToastify.css";
 import Layout from "./layout";
 
 const App = () => {
@@ -19,18 +18,12 @@ const App = () => {
               element={<item.component />}
             />
           ))}
-          <Route
-            path="/*"
-            element={<Navigate to="/pages/shadow-generator" />}
-          />
+          <Route path="/*" element={<Navigate to="/shadow-generator" />} />
         </Routes>
         <ScrollToTop />
       </Layout>
-      <ToastContainer
-        style={{
-          fontSize: "12px",
-        }}
-      />
+
+      <Toaster position="top-center" reverseOrder={false} />
     </ThemeProvider>
   );
 };

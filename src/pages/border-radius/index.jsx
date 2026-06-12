@@ -14,6 +14,7 @@ import HeaderTitle from "../../components/HeaderTitle";
 import SliderControl from "../../components/SliderControl";
 import { useCopy } from "../../hooks/useCopy";
 import PRESETS from "./constants/presets";
+import { getCornerSliders } from "./constants/cornerSliders";
 import ControlsContainer from "../../components/ControlsContainer";
 
 const BorderRadius = () => {
@@ -37,7 +38,6 @@ const BorderRadius = () => {
   }, [borderRadiusValue]);
 
   UseTitle("Magic CSS - Border Radius");
-
   const { copied, copy } = useCopy();
   const handleCopy = () => copy(finalSource);
 
@@ -60,6 +60,17 @@ const BorderRadius = () => {
 
   const maxVal = unit === "%" ? 50 : 100;
 
+  const cornerSliders = getCornerSliders(
+    topLeft,
+    setTopLeft,
+    topRight,
+    setTopRight,
+    bottomRight,
+    setBottomRight,
+    bottomLeft,
+    setBottomLeft,
+  );
+
   return (
     <Container maxWidth="lg">
       {/* Header */}
@@ -69,125 +80,6 @@ const BorderRadius = () => {
       />
 
       <Grid container spacing={4} alignItems="flex-start">
-        {/* LEFT — Preview */}
-        <Grid item xs={12} md={7}>
-          <Box
-            sx={{
-              background: "rgba(255,255,255,0.03)",
-              border: "1px solid rgba(255,255,255,0.07)",
-              borderRadius: "24px",
-              p: 1.5,
-              display: "flex",
-              flexDirection: "column",
-              gap: 2,
-            }}
-          >
-            <Typography
-              sx={{
-                fontSize: "0.65rem",
-                color: "rgba(255,255,255,0.25)",
-                textTransform: "uppercase",
-              }}
-            >
-              Live Preview
-            </Typography>
-
-            {/* Preview area */}
-            <Box
-              sx={{
-                width: "100%",
-                minHeight: 280,
-                borderRadius: "18px",
-                background:
-                  "repeating-conic-gradient(rgba(255,255,255,0.03) 0% 25%, transparent 0% 50%) 0 0 / 24px 24px",
-                display: "flex",
-                alignItems: "center",
-                justifyContent: "center",
-                border: "1px solid rgba(255,255,255,0.05)",
-              }}
-            >
-              <Box
-                sx={{
-                  width: 180,
-                  height: 180,
-                  background:
-                    "linear-gradient(135deg, rgba(255,200,100,0.25), rgba(130,100,255,0.25))",
-                  border: "1px solid rgba(255,255,255,0.12)",
-                  borderRadius: borderRadiusValue,
-                  transition: "border-radius 0.15s ease",
-                  boxShadow: "0 8px 40px rgba(0,0,0,0.4)",
-                  display: "flex",
-                  alignItems: "center",
-                  justifyContent: "center",
-                }}
-              >
-                <Typography
-                  sx={{
-                    fontSize: "0.6rem",
-                    color: "rgba(255,255,255,0.3)",
-                    textAlign: "center",
-                    px: 1,
-                  }}
-                >
-                  {borderRadiusValue}
-                </Typography>
-              </Box>
-            </Box>
-
-            {/* Presets */}
-            <Box>
-              <Typography
-                sx={{
-                  fontSize: "0.65rem",
-                  fontWeight: 700,
-                  letterSpacing: "0.12em",
-                  color: "rgba(255,255,255,0.35)",
-                  textTransform: "uppercase",
-                  mb: 1.2,
-                }}
-              >
-                Presets
-              </Typography>
-              <Box display="flex" gap={1} flexWrap="wrap">
-                {PRESETS?.map((preset, idx) => (
-                  <Chip
-                    key={preset.label}
-                    label={preset.label}
-                    size="small"
-                    onClick={() => applyPreset(preset, idx)}
-                    sx={{
-                      height: 26,
-                      fontSize: "0.65rem",
-                      cursor: "pointer",
-                      bgcolor:
-                        activePreset === idx
-                          ? "rgba(255,200,100,0.15)"
-                          : "rgba(255,255,255,0.05)",
-                      color:
-                        activePreset === idx
-                          ? "#ffc864"
-                          : "rgba(255,255,255,0.4)",
-                      border:
-                        activePreset === idx
-                          ? "1px solid rgba(255,200,100,0.35)"
-                          : "1px solid rgba(255,255,255,0.07)",
-                      "&:hover": { bgcolor: "rgba(255,200,100,0.1)" },
-                    }}
-                  />
-                ))}
-              </Box>
-            </Box>
-
-            {/* CSS Output + Copy */}
-            <CopyButton
-              copied={copied}
-              finalSource={finalSource}
-              handleCopy={handleCopy}
-            />
-          </Box>
-        </Grid>
-
-        {/* RIGHT — Controls */}
         <Grid item xs={12} md={5}>
           <ControlsContainer>
             {/* Mode toggle */}
@@ -304,53 +196,140 @@ const BorderRadius = () => {
               />
             ) : (
               <>
-                <SliderControl
-                  label="Top Left"
-                  min={0}
-                  max={maxVal}
-                  value={topLeft}
-                  unit={unit}
-                  onChange={(v) => {
-                    setTopLeft(Number(v));
-                    setActivePreset(null);
-                  }}
-                />
-                <SliderControl
-                  label="Top Right"
-                  min={0}
-                  max={maxVal}
-                  value={topRight}
-                  unit={unit}
-                  onChange={(v) => {
-                    setTopRight(Number(v));
-                    setActivePreset(null);
-                  }}
-                />
-                <SliderControl
-                  label="Bottom Right"
-                  min={0}
-                  max={maxVal}
-                  value={bottomRight}
-                  unit={unit}
-                  onChange={(v) => {
-                    setBottomRight(Number(v));
-                    setActivePreset(null);
-                  }}
-                />
-                <SliderControl
-                  label="Bottom Left"
-                  min={0}
-                  max={maxVal}
-                  value={bottomLeft}
-                  unit={unit}
-                  onChange={(v) => {
-                    setBottomLeft(Number(v));
-                    setActivePreset(null);
-                  }}
-                />
+                {cornerSliders?.map((slider) => (
+                  <SliderControl
+                    key={slider.label}
+                    label={slider.label}
+                    min={0}
+                    max={maxVal}
+                    value={slider.state}
+                    unit={unit}
+                    onChange={(v) => {
+                      slider.setState(Number(v));
+                      setActivePreset(null);
+                    }}
+                  />
+                ))}
               </>
             )}
           </ControlsContainer>
+        </Grid>
+
+        <Grid item xs={12} md={7}>
+          <Box
+            sx={{
+              background: "rgba(255,255,255,0.03)",
+              border: "1px solid rgba(255,255,255,0.07)",
+              borderRadius: "24px",
+              p: 1.5,
+              display: "flex",
+              flexDirection: "column",
+              gap: 2,
+            }}
+          >
+            <Typography
+              sx={{
+                fontSize: "0.65rem",
+                color: "rgba(255,255,255,0.25)",
+                textTransform: "uppercase",
+              }}
+            >
+              Live Preview
+            </Typography>
+
+            {/* Preview area */}
+            <Box
+              sx={{
+                width: "100%",
+                minHeight: 280,
+                borderRadius: "18px",
+                background:
+                  "repeating-conic-gradient(rgba(255,255,255,0.03) 0% 25%, transparent 0% 50%) 0 0 / 24px 24px",
+                display: "flex",
+                alignItems: "center",
+                justifyContent: "center",
+                border: "1px solid rgba(255,255,255,0.05)",
+              }}
+            >
+              <Box
+                sx={{
+                  width: 180,
+                  height: 180,
+                  background:
+                    "linear-gradient(135deg, rgba(255,200,100,0.25), rgba(130,100,255,0.25))",
+                  border: "1px solid rgba(255,255,255,0.12)",
+                  borderRadius: borderRadiusValue,
+                  transition: "border-radius 0.15s ease",
+                  boxShadow: "0 8px 40px rgba(0,0,0,0.4)",
+                  display: "flex",
+                  alignItems: "center",
+                  justifyContent: "center",
+                }}
+              >
+                <Typography
+                  sx={{
+                    fontSize: "0.6rem",
+                    color: "rgba(255,255,255,0.3)",
+                    textAlign: "center",
+                    px: 1,
+                  }}
+                >
+                  {borderRadiusValue}
+                </Typography>
+              </Box>
+            </Box>
+
+            {/* Presets */}
+            <Box>
+              <Typography
+                sx={{
+                  fontSize: "0.65rem",
+                  fontWeight: 700,
+                  letterSpacing: "0.12em",
+                  color: "rgba(255,255,255,0.35)",
+                  textTransform: "uppercase",
+                  mb: 1.2,
+                }}
+              >
+                Presets
+              </Typography>
+              <Box display="flex" gap={1} flexWrap="wrap">
+                {PRESETS?.map((preset, idx) => (
+                  <Chip
+                    key={preset.label}
+                    label={preset.label}
+                    size="small"
+                    onClick={() => applyPreset(preset, idx)}
+                    sx={{
+                      height: 26,
+                      fontSize: "0.65rem",
+                      cursor: "pointer",
+                      bgcolor:
+                        activePreset === idx
+                          ? "rgba(255,200,100,0.15)"
+                          : "rgba(255,255,255,0.05)",
+                      color:
+                        activePreset === idx
+                          ? "#ffc864"
+                          : "rgba(255,255,255,0.4)",
+                      border:
+                        activePreset === idx
+                          ? "1px solid rgba(255,200,100,0.35)"
+                          : "1px solid rgba(255,255,255,0.07)",
+                      "&:hover": { bgcolor: "rgba(255,200,100,0.1)" },
+                    }}
+                  />
+                ))}
+              </Box>
+            </Box>
+
+            {/* CSS Output + Copy */}
+            <CopyButton
+              copied={copied}
+              finalSource={finalSource}
+              handleCopy={handleCopy}
+            />
+          </Box>
         </Grid>
       </Grid>
     </Container>

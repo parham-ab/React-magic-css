@@ -50,6 +50,21 @@ $big: 1078px;
   font-size: 0.95rem;
   letter-spacing: 0.04em;
 }
+
+.custom-pointers div {
+  width: 100%;
+}
+.custom-pointers .react-colorful__saturation-pointer {
+  width: 10px;
+  height: 10px;
+  border-radius: 3px;
+}
+.custom-pointers .react-colorful__hue-pointer,
+.custom-pointers .react-colorful__alpha-pointer {
+  width: 10px;
+  border-radius: 3px;
+}
+
 @media screen and (max-width: $medium) {
   .custom-box {
     width: 30rem !important;
