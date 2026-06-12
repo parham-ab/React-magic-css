@@ -1,7 +1,6 @@
 import { useEffect, useState } from "react";
 import { Grid, TextField, Typography, Box, Chip } from "@mui/material";
 import { Container } from "@mui/system";
-import { SketchPicker } from "react-color";
 import UseTitle from "../../hooks/useTitle";
 import CopyButton from "../../components/CopyButton";
 import HeaderTitle from "../../components/HeaderTitle";
@@ -10,6 +9,7 @@ import { getTextShadowSliders } from "./constants/sliderTypes";
 import SliderControl from "../../components/SliderControl";
 import { useCopy } from "../../hooks/useCopy";
 import ControlsContainer from "../../components/ControlsContainer";
+import { RgbaStringColorPicker } from "react-colorful";
 
 const TextShadowGenerator = () => {
   const [testText, setTestText] = useState("Magic CSS");
@@ -218,10 +218,9 @@ const TextShadowGenerator = () => {
             >
               Shadow Color
             </Typography>
-            <SketchPicker
-              color={color}
-              onChangeComplete={handleColorComplete}
-            />
+            <section className="custom-pointers">
+              <RgbaStringColorPicker color={color} onChange={setColor} />
+            </section>
           </ControlsContainer>
         </Grid>
       </Grid>
